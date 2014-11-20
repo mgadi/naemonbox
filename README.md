@@ -10,3 +10,7 @@ tar zxvf naemonbox-VerNum.tar.gz
 cd naemon 
 ./install
 ```
+
+### More info ###
+
+Visit the MG Monotoring homepage at https://blog.mg-monitoring.com/
