@@ -13,4 +13,4 @@ cd naemon
 
 ### More info ###
 
-Visit the MG Monotoring homepage at https://blog.mg-monitoring.com/
+Visit the MG Monitoring homepage at https://blog.mg-monitoring.com/
