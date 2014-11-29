@@ -15,6 +15,10 @@ tar zxvf naemonbox-VerNum.tar.gz
 cd naemon 
 ./install
 ```
+Go to url http://your_ip_adress/
+
+    Login/password : admin/admin
+    Wiki Login/password : wikiadmin/admin
 
 ### License ###
 
