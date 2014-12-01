@@ -9,11 +9,11 @@ Having the Nagios/Naemon tools already installed and configured for you, will br
 
 ### Installing ###
 
-When installing from a released tarball, all you need to do is run
+When installing from a released tarball, all you need to do is run as root
 ```
-tar zxvf naemonbox-VerNum.tar.gz
-cd naemon 
-./install
+# tar zxvf naemonbox-VerNum.tar.gz
+# cd naemon 
+# ./install
 ```
 Go to url http://your_ip_adress/
 
