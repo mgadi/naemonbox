@@ -9,9 +9,9 @@ Having the Nagios/Naemon tools already installed and configured for you, will br
 
 ### Requirements ###
 For x86_64 architecture only.
-. 
-When installing from a released tarball, all you need to do is run as root
+
 ### Installing ###
+When installing from a released tarball, all you need to do is run as root
 ```
 # tar zxvf naemonbox-VerNum.tar.gz
 # cd naemon 
