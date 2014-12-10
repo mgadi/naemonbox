@@ -9,7 +9,7 @@ Having the Nagios/Naemon tools already installed and configured for you, will br
 
 ### Requirements ###
 For x86_64 architecture only. You need to enable the non-free packages to install gettext.
-Download this https://github.com/mgadi/naemonbox/blob/master/naemonbox-apt-config.sh and do as root
+Download this file https://github.com/mgadi/naemonbox/blob/master/naemonbox-apt-config.sh and do as root
 ```
 # chmod +x naemonbox-apt-config.sh
 # ./naemonbox-apt-config.sh
