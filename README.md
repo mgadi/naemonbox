@@ -8,7 +8,7 @@ NAEMONBOX is based on Debian. This software provide a quick and easy installatio
 Having the Nagios/Naemon tools already installed and configured for you, will bring you more than you expect ...
 
 ### Requirements ###
-For x86_64 architecture only. You need to enable the non-free packages to install gettext. Edit with vi or nano /etc/apt/sources.list and ad the non-free repository as
+For x86_64 architecture only. You need to enable the non-free packages to install gettext. Edit with vi or nano /etc/apt/sources.list and add the non-free repository as
 ```
 deb http://ftp.fr.debian.org/debian/ wheezy main non-free contrib
 deb-src http://ftp.fr.debian.org/debian/ wheezy main non-free contrib
