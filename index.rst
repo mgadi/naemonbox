@@ -11,7 +11,7 @@ NaemonBox is a monitoring framework. It comes with a set of applications that me
 
 A whole new way to share IT content with the various actors of an information system (Governance, Administrators, Technicians, Operators, …). And exciting new connections between apps and devices. All that and more make NaemonBox better than ever.
 
-Naemon checks the availability of your network resources, notifies users of outages, and generates performance data for reporting. It creates automated ticket with GLPI in the release of an alarm from Naemon.  It allows you to centralize, and analyze log messages, and many other possibilities …
+Naemon checks the availability of your network resources, notifies users of outages, and generates performance data for reporting. It creates automated ticket with GLPI in the release of an alarm from Naemon.  It allows you to centralize, and analyze log messages with cacti and rsyslog, and many other possibilities …
 
 
 
