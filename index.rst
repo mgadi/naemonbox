@@ -75,6 +75,16 @@ Recommended system requirements
    * 2 processors core or hyper-thread for each virtualized CPU.
    * 2 GB of RAM.
 
+openvz VPS ONLY
+=======
+To use NaemonBox on openvz VPS, first you need to do as root (according to your timezone, change the third command line below):
+
+::
+
+    cd /etc/
+    rm localtime
+    ln -s /usr/share/zoneinfo/Europe/Paris ./localtime
+
 GNU/Linux Debian 7 Installation Only
 =========
 
