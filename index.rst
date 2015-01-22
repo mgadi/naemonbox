@@ -24,13 +24,12 @@ Naemon comes with a PHP based web-tool for configuring the monitoring software, 
 
    * Easy to install : install is mainly done with the install script provide with the release tarball.
    * Easy for new users : once installed, Naemonbox provide a single WebUI to interface with all modules and packs.
-   * Easy to migrate from Nagios : we want Nagios configuration and plugins to work in Naemonbox with Naemon, so that it is a "in place" replacement.
+   * Easy to migrate from Nagios : we want Nagios configuration and plugins to work in with Naemon.
      Plugins provide great flexibility and are a big legacy codebase to use. It would be a shame not to use all this community work
    * Debian-platform : Naemonbox is only available for Debian OS. 
-   * Independent from other monitoring solution : our goal is to provide a modular *tool* that can integrate with others through standard interfaces). Flexibility first.
-   * Flexible : in a architecture point view. It is very close to our scalability wish. Cloud computing is make architecture moving a lot, we have to fit to it.
+   * Independent from other monitoring solution : our goal is to provide a modular *tool* that can integrate with others through standard interfaces. Flexibility first.
  
-This is basically what Naemonbox is made of. Maybe add the "keep it simple" Linux principle and it's prefect. There is nothing we don't want, we consider every features / ideas.
+This is basically what Naemonbox is made of. Maybe add the "keep it simple" Linux principle and it's perfect. There is nothing we don't want, we consider every features / ideas.
 
 
 Features
@@ -39,7 +38,7 @@ Features
 
 Naemonbox has a lot of features, we started to list some of them in the last paragraph. Let's go into details :
 
-    * NAEMON: core monitoring application. Role separated daemons : we want a daemon to do one thing but doing it good. Naemon have at least 4 daemon called worker
+    * NAEMON: core monitoring application. Role separated daemons : we want a daemon to do one thing but doing it good. Naemon have at least 4 daemon called worker.
     * CACTI and PNP4NAGIOS : Perfomance Management.
     * WEATHERMAP : Mapping bandwith.
     * NAGVIS : Customizable mapping.
