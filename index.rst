@@ -1,6 +1,7 @@
 ===================================
 Welcome to Naemonbox's documentation!
 ===================================
+
 .. toctree::
     :maxdepth: 2
 
