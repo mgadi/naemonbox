@@ -5,7 +5,7 @@ Welcome to Naemonbox's documentation!
 .. toctree::
     :maxdepth: 2
 
-    01_introduction/index
+    About
     02_gettingstarted/index
     03_configuration/index
     
