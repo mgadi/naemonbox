@@ -6,8 +6,9 @@ This is a quick guide to the basics of NAEMONBOX, written from a new user’s pe
 Step one
 =========
 
-Before using NAEMONBOX, you’ll need to know the fundamentals of Nagios and Linux commands. 
+Before using NAEMONBOX, you’ll need to know the fundamentals and Linux commands. 
 I recommend you read the : 
     * `Naemon documentation available <http://www.naemon.org/documentation/usersguide/toc.html>`_.
     * `Cacti documentation available <http://docs.cacti.net/>`_.
     * `Pnp4Nagios <http://docs.pnp4nagios.org/>`_.
+    * `Weathermaps <http://network-weathermap.com/docs>`_.
