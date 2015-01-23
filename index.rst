@@ -2,13 +2,6 @@
 Welcome to Naemonbox's documentation!
 ===================================
 
-.. toctree::
-    :maxdepth: 2
-
-    About
-    02_gettingstarted/index
-    03_configuration/index
-    
 ==============
 About Naemonbox
 ==============
