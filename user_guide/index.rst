@@ -12,3 +12,4 @@ I recommend you read the :
     * `Cacti documentation available <http://docs.cacti.net/>`_.
     * `Pnp4Nagios <http://docs.pnp4nagios.org/>`_.
     * `Weathermaps <http://network-weathermap.com/docs>`_.
+    * `Nagvis <http://www.nagvis.org/doc>`_.
