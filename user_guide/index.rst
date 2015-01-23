@@ -13,3 +13,6 @@ I recommend you read the :
     * `Pnp4Nagios <http://docs.pnp4nagios.org/>`_.
     * `Weathermaps <http://network-weathermap.com/docs>`_.
     * `Nagvis <http://www.nagvis.org/doc>`_.
+    * `Glpi <http://www.glpi-project.org/spip.php?rubrique18>`_.
+    * `Fusion Inventory <http://www.fusioninventory.org/documentation>/`_.
+    * `SNMPTT <http://snmptt.sourceforge.net/docs/snmptt.shtml>/`_.
