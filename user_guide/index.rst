@@ -7,4 +7,4 @@ Step one
 =========
 
 Before using NAEMONBOX, you’ll need to know the fundamentals of Nagios and Linux commands. 
-I recommend you read the `Naemon documentation available <http://www.naemon.org/documentation/usersguide/toc.html>`
+I recommend you read the `Naemon documentation available <http://www.naemon.org/documentation/usersguide/toc.html>`_
