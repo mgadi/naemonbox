@@ -8,8 +8,8 @@ A whole new way to share IT content with the various actors of an information sy
 
 Naemon checks the availability of your network resources, notifies users of outages, and generates performance data for reporting. It creates automated ticket with GLPI in the release of an alarm from Naemon.  It allows you to centralize, and analyze log messages with cacti and rsyslog, and many other possibilities …
 
-
-
+.. image:: https://cloud.githubusercontent.com/assets/4088423/5887194/4d91bc94-a3c3-11e4-9a84-5416b6495dfc.png
+ :scale: 90 %
 Naemonbox Project
 ================
 The purpose of NAEMONBOX is to provide a quick and easy installation wich includes the most-used tools in the Nagios/Naemon community.
