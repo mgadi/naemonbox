@@ -21,3 +21,11 @@ I recommend you read the product documents:
     * `NRPE <http://nagios.sourceforge.net/docs/nrpe/NRPE.pdf>`_.
     * `NSCA <http://nagios.sourceforge.net/download/contrib/documentation/misc/NSCA_Setup.pdf>`_.
     * `Webmin <http://www.webmin.com/docs.html>`_.
+
+Step two
+=========
+
+Connect to applications
+    * Use root and your password to connect by ssh or TTY
+    * Use admin / admin for web application (naemon, nagvis, cacti, glpi, phpmyadmin, webmin)
+    * Use wikiadmin/admin for the wiki.
