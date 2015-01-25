@@ -24,7 +24,8 @@ I recommend you read the product documents:
 
 Step two
 =========
-
+.. image:: https://cloud.githubusercontent.com/assets/4088423/5887203/4dbd9da0-a3c3-11e4-89a4-e3d9f974c832.png
+ :scale: 50 %
 Connect to applications
     * Use root and your password to connect by ssh or TTY
     * Use admin / admin for web application (naemon, nagvis, cacti, glpi, phpmyadmin, webmin)
