@@ -32,3 +32,5 @@ Connect to applications
     * Use root and your password to connect by ssh or TTY
     * Use admin / admin for web application (naemon, nagvis, cacti, glpi, phpmyadmin, webmin)
     * Use wikiadmin / admin for the wiki.
+
+You are strongly suggested to change credentials of the admin default user.
