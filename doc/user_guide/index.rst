@@ -33,4 +33,4 @@ Connect to applications
     * Use admin / admin for web application (naemon, nagvis, cacti, glpi, phpmyadmin, webmin)
     * Use wikiadmin / admin for the wiki.
 
-You are strongly suggested to change credentials of the admin default user.
+You are strongly suggested to change credentials of the admin default user. Ready? Let’s go!
