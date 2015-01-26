@@ -24,9 +24,11 @@ I recommend you read the product documents:
 
 Step two
 =========
-.. image:: images/naemonbox-naemon-login.png
+.. image:: /images/naemonbox-naemon-login.png
  :scale: 50 %
+ 
 Connect to applications
+
     * Use root and your password to connect by ssh or TTY
     * Use admin / admin for web application (naemon, nagvis, cacti, glpi, phpmyadmin, webmin)
     * Use wikiadmin / admin for the wiki.
