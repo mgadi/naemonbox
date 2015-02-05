@@ -30,7 +30,7 @@ To use NaemonBox on openvz VPS, first you need to do as root (according to your 
 GNU/Linux Debian 7 Installation 
 =========
 
-Naemonbox require for running a machine with Debian GNU/Linux 7 ready (or based on Debian) that has network access.
+`Naemonbox <https://blog.mg-monitoring.com/>`_ require for running a machine with Debian GNU/Linux 7 ready (or based on Debian) that has network access.
 
 Once you have access to your server, either directly or by SSH, you can install Naemonbox using the install script.
 
