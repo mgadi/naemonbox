@@ -7,4 +7,3 @@ Welcome to Naemonbox's documentation!
   about/index
   installation_guide/index
   user_guide/index
-  Configuring-NaemonBox/index
