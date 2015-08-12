@@ -1,5 +1,5 @@
 ======================
-Centralisation des logs Windows dans CACTI
+Centralize logs in Windows with CACTI
 ======================
 
 When it comes to management, monitoring , one of the major commandments is based on the importance and attention that must be given to the logs. This is a unique source of information to have on hand in order to exploit and thus back to the source of the problem. To support its analysis and its exploitation, we will centralize event logs. This requires that all messages are transmitted to a central server Cacti with syslog plugin, an rsyslog server. " Rsyslog " centralizes the various event logs on the monitoring server . We can quickly and efficiently locate these failures on a network.
