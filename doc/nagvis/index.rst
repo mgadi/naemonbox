@@ -56,3 +56,8 @@ A window opens **Create Object**. In the host_name field, select the server name
 
 Modify Object
  =========
+select the MAP you want to modify. Move your mouse to the object you want to change , once in edit mode :
+
+
++ Modify : In the case you have to change to the server name.
++ Delete : If you delete the server or stop his monitoring.
