@@ -39,7 +39,7 @@ Now it is time to create some configuration object definitions in order to monit
 
 Add an hostgroup
 ================
-For editing , we will go through the Naemon Setup menu Tool > Object settings > Hostgroup.
+For editing , we will go through the Naemon Setup menu Config Tool > Object settings > Hostgroups.
 You can create or clone. Make changes and click on Apply.
 
 Add a command
@@ -115,3 +115,56 @@ We will add a "command / plugin " check_local_swap that will be used by swap usa
 • Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
+
+Add a service
+================
+
+We will add a service "system start" to find out how long the system is started, to oversee our "host ".
+
+**System Start**
+
+We will go through the Naemon Setup menu Config Tool > Object settings > Services.
+• Completing the "system start" Service Description
+• Enter the host name S34XXXXXXX
+• Choose Systeme_Start service model
+• Add a contact group Supervisors
+• Save and click apply
+
+The service is now present in Naemon configuration.
+
+**CPU Use**
+To know the CPU load
+
+We will go through the Naemon Setup menu Config Tool > Object settings > Services.
+• Completing the "cpu_use" Service Description
+• Enter the host name S34XXXXXXX
+• Choose Win-Cpu_Use service model
+• Add a contact group Supervisors
+• Save and click apply
+
+The service is now present in Naemon configuration.
+
+**CURRENT Load**
+To know the local load
+
+We will go through the Naemon Setup menu Config Tool > Object settings > Services.
+• Completing the "local_load" Service Description
+• Enter the host name S34XXXXXXX
+• Choose generic-service service model
+• Add a contact group Supervisors
+• Save and click apply
+
+The service is now present in Naemon configuration.
+
+**CURRENT Users**
+To know the numbers of users connected
+
+We will go through the Naemon Setup menu Config Tool > Object settings > Services.
+• Completing the "Current_Users" Service Description
+• Enter the host name S34XXXXXXX
+• Choose generic-service service model
+• Add a contact group Supervisors
+• Save and click apply
+
+The service is now present in Naemon configuration.
+
