@@ -168,3 +168,17 @@ We will go through the Naemon Setup menu Config Tool > Object settings > Service
 
 The service is now present in Naemon configuration.
 
+
+Network status
+================
+
+Each monitored server consists of several services ( DHCP - WINS - SQL - TINA etc ...). Each monitored service uses a command.
+To check a service on the server, take control of the server and start a NET START command line or open the Services management method
+
+To monitor the McAfee status services , we create a template *TMP-McAfee_Services* that each host will be associated to McAfee_Service
+Setting the Service Template : *TMP-McAfee_Services*
+• Name: *TMP-McAfee_Services*
+• Service Description : McAfee_Services
+• Service Model used : generic Service
+• Command verification : check_nt_services
+• Arguments: 'McAfee Framework Service!McShield McAfee!McAfee Task Manager!McAfee Validation Trust Protection Service'
