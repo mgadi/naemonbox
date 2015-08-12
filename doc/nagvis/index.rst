@@ -76,3 +76,19 @@ In the Personal menu / Manage Users menu, we can:
 • Assign a role to a user
 • Delete user
 • Change password
+
+Role Management : 
+=========
+
+Signed different roles define the actions that the user is able to perform . Permissions are hard-coded into Nagvis .
+
+In the Personal menu / Manage Roles menu, we can:
+
+• Create Role
+• Set permissions for a role
+
+An authorization is composed of three elements:
+
+• Module: The different modules (Map , Automap , Rotation , ...)
+• Action: The action can ( view, edit , delete, ... )
+• Object : The different object (A Particular user , map, ... )
