@@ -29,7 +29,7 @@ In Create a map complete the field as follows :
 + Background Map . Select from the pull down menu, the map you just downloaded on the Linux server MAP_Name.png .
 
  Adding elements to map 
- =========
+=========
  
  Now that we have our map , we have to add elements to our map .
 We already have a default panel item with Nagvis :
@@ -55,9 +55,14 @@ You can unlock the object added , while clicking , support and move the object. 
 A window opens **Create Object**. In the host_name field, select the server name , then in the service_description field, select the service name and confirm your choice by clicking on the "Save" button. The mouse pointer changes to a + sign , click on the server to modify.
 
 Modify Object
- =========
+=========
 select the MAP you want to modify. Move your mouse to the object you want to change , once in edit mode :
 
 
 + Modify : In the case you have to change to the server name.
 + Delete : If you delete the server or stop his monitoring.
+
+Authentication / Authorization
+=========
+
+Account management and access go through two modules:
