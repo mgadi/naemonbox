@@ -31,3 +31,14 @@ To create rules deletion, click on the red cross to the right of the log and the
 For example, to delete all events from the **naemon** server,  just click on the red cross and complete the following steps.
 Here we remove all UDP connection messages from the monitoring server .
 There it's finished. Well logs !
+
+Management of authentication and access permissions
+=========
+
+Now you want to configure Cacti to provide authentication and additional permissions . This configuration is done from the web console cacti .
+We want to restrict viewing an account on the [ Console ] and [ syslog ] tab .
+In the Utilities / User Management menu, click add to create our first account. 
+
++ Then fill in the [ User Name ], [ Full Name ] . 
++ Add a password (X2) . Enabled Check the box to activate the account . 
++ In the [ Realm permissions ] check the boxes [ Console Access ] and [ Plugin - > Syslog User] .
