@@ -219,3 +219,27 @@ The service is now present in Naemon configuration, we need to export it to appl
 Export Naemon Configuration Files
 Menu Config Tool/Object settings and then click Apply to save your change to disk, check your configuration changes, reload your monitoring core
 
+Add a host
+=========
+
+We will add a Windows server-based host in our Naemon configuration.
+We will go to the Setup menu Tool/Object settings/Hosts . Clone an existing host or creat a new one. Then, fill the fields :
+
++ Host name ( "host name") : S34XXXXXXX
++ Host Description ( "Alias" ) : Web Server
++ IP address / DNS : 10.xx.xxx.xxx
++ Add a template (template) associated with this host . A Template is the centralization of characteristics common to a machine.
++ Then select the template : Servers-Win2k3
++ Fill the Control Period : 24x7
++ Add a contact group : Supervisors
++ Save and click on apply
+
+At this point, the host www is in the Naemon configuration 
+
+We will now export the new configuration changes to Naemon by clicking on Apply.
+View diff of changed files compares files 
+
++ Save changes to disk dumps the configuration .
++ Check your configuration checks changes if there is no error
++ Reload your monitoring core recover Naemon .
+
