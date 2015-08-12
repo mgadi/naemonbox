@@ -80,7 +80,7 @@ In the Personal menu / Manage Users menu, we can:
 Role Management : 
 =========
 
-Signed different roles define the actions that the user is able to perform . Permissions are hard-coded into Nagvis .
+Asigned different roles what the user is able to perform . Permissions are hard-coded into Nagvis .
 
 In the Personal menu / Manage Roles menu, we can:
 
