@@ -243,3 +243,5 @@ View diff of changed files compares files
 + Check your configuration checks changes if there is no error
 + Reload your monitoring core recover Naemon .
 
+access management , authentication and authorization
+=========
