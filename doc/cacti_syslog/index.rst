@@ -22,3 +22,12 @@ Go to All Programs and launch el2sl Configurator. This window opens :
 + **gate** , enter the monitoring server address. Leave the default port
 + You can change for each log , record types that will be sent to the server according to their order of importance ( critical [2] Warning [ 4] ... )
 + Click "close" .
+
+Create a rule deletion
+=========
+
+To create rules deletion, click on the red cross to the right of the log and then enter a name for your rule .
+
+For example, to delete all events from the **naemon** server,  just click on the red cross and complete the following steps.
+Here we remove all UDP connection messages from the monitoring server .
+There it's finished. Well logs !
