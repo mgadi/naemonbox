@@ -28,7 +28,7 @@ In Create a map complete the field as follows :
 + Map icon : std_small
 + Background Map . Select from the pull down menu, the map you just downloaded on the Linux server MAP_Name.png .
 
- Adding map elements
+ Adding elements to map 
  =========
  
  Now that we have our map , we have to add elements to our map .
@@ -53,3 +53,6 @@ A window opens the Create Object. In the host_name field, select the server name
 You can unlock the object added , while clicking , support and move the object. To enable this feature , go to the menu Edit Map , Select Lock / Unlock All. Go to the Edit Map manu / Add icon / Service
 
 A window opens **Create Object**. In the host_name field, select the server name , then in the service_description field, select the service name and confirm your choice by clicking on the "Save" button. The mouse pointer changes to a + sign , click on the server to modify.
+
+Modify Object
+ =========
