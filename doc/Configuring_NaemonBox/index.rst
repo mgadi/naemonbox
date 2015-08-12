@@ -23,9 +23,9 @@ Steps
 
 There are several steps you need to follow in order to monitor a new Windows machine:
 
-• Install a monitoring agent on the Windows machine
-• Create new host and service definitions for monitoring the Windows machine
-• Restart the Naemon Service
++ Install a monitoring agent on the Windows machine
++ Create new host and service definitions for monitoring the Windows machine
++ Restart the Naemon Service
 
 Windows Agent Installation
 =========
@@ -49,70 +49,70 @@ Add a command
 *check_nt_uptime* 
 
 We will add a "command / plugin " check_nt_uptime that will be used by the system start service we will create for our "host" .
-• Config Tool Menu / Object Configuration / Commands
-• Enter the name of the command check_nt_uptime
-• Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword p - 12489
-• Save and click on apply 
++ Config Tool Menu / Object Configuration / Commands
++ Enter the name of the command check_nt_uptime
++ Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword p - 12489
++ Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 *check_nt_cpu*
 
 We will add a "command / plugin " check_nt_cpu that will be used by the cpu use service we will create for our "host" .
-• Config Tool Menu / Object Configuration / Commands
-• Enter the name of the command check_nt_cpu
-• Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v CPULOAD -s NsclientPassword -p 12489
-• Save and click on apply 
++ Config Tool Menu / Object Configuration / Commands
++ Enter the name of the command check_nt_cpu
++ Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v CPULOAD -s NsclientPassword -p 12489
++ Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 *check_mysql*
 
 We will add a "command / plugin " check_mysql that will be used by mysql service we will create for our "host" .
-• Config Tool Menu / Object Configuration / Commands
-• Enter the name of the command check_mysql
-• Enter the following command line $USER1$/check_mysql -H $HOSTADDRESS$ -u user -p Password
-• Save and click on apply 
++ Config Tool Menu / Object Configuration / Commands
++ Enter the name of the command check_mysql
++ Enter the following command line $USER1$/check_mysql -H $HOSTADDRESS$ -u user -p Password
++ Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 *check_local_load*
 
 We will add a "command / plugin " check_local_load that will be used by Current Load service we will create for our "host" .
-• Config Tool Menu / Object Configuration / Commands
-• Enter the name of the command check_local_load
-• Enter the following command line $USER1$/check_load -H $HOSTADDRESS$ -w 5.0,4.0,3.0 -c 10.0,6.0,4.0
-• Save and click on apply 
++ Config Tool Menu / Object Configuration / Commands
++ Enter the name of the command check_local_load
++ Enter the following command line $USER1$/check_load -H $HOSTADDRESS$ -w 5.0,4.0,3.0 -c 10.0,6.0,4.0
++ Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 *check_local_procs*
 
 We will add a "command / plugin " check_local_procs that will be used by Total Processes service we will create for our "host" .
-• Config Tool Menu / Object Configuration / Commands
-• Enter the name of the command check_local_load
-• Enter the following command line $USER1$/check_procs -w 250 -c 400 -s RSZDT
-• Save and click on apply 
++ Config Tool Menu / Object Configuration / Commands
++ Enter the name of the command check_local_load
++ Enter the following command line $USER1$/check_procs -w 250 -c 400 -s RSZDT
++ Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 *check_local_users*
 
 We will add a "command / plugin " check_local_users that will be used by Current users service we will create for our "host" .
-• Config Tool Menu / Object Configuration / Commands
-• Enter the name of the command check_local_users
-• Enter the following command line $USER1$/check_users -w 20 -c 50
-• Save and click on apply 
++ Config Tool Menu / Object Configuration / Commands
++ Enter the name of the command check_local_users
++ Enter the following command line $USER1$/check_users -w 20 -c 50
++ Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 *check_local_swap*
 
 We will add a "command / plugin " check_local_swap that will be used by swap usage service we will create for our "host" .
-• Config Tool Menu / Object Configuration / Commands
-• Enter the name of the command check_local_swap
-• Enter the following command line $USER1$/check_procs -w 20 -c 10 
-• Save and click on apply 
++ Config Tool Menu / Object Configuration / Commands
++ Enter the name of the command check_local_swap
++ Enter the following command line $USER1$/check_procs -w 20 -c 10 
++ Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
@@ -124,11 +124,11 @@ We will add a service "system start" to find out how long the system is started,
 **System Start**
 
 We will go through the Naemon Setup menu Config Tool > Object settings > Services.
-• Completing the "system start" Service Description
-• Enter the host name S34XXXXXXX
-• Choose Systeme_Start service model
-• Add a contact group Supervisors
-• Save and click apply
++ Completing the "system start" Service Description
++ Enter the host name S34XXXXXXX
++ Choose Systeme_Start service model
++ Add a contact group Supervisors
++ Save and click apply
 
 The service is now present in Naemon configuration.
 
@@ -136,11 +136,11 @@ The service is now present in Naemon configuration.
 To know the CPU load
 
 We will go through the Naemon Setup menu Config Tool > Object settings > Services.
-• Completing the "cpu_use" Service Description
-• Enter the host name S34XXXXXXX
-• Choose Win-Cpu_Use service model
-• Add a contact group Supervisors
-• Save and click apply
++ Completing the "cpu_use" Service Description
++ Enter the host name S34XXXXXXX
++ Choose Win-Cpu_Use service model
++ Add a contact group Supervisors
++ Save and click apply
 
 The service is now present in Naemon configuration.
 
@@ -148,11 +148,11 @@ The service is now present in Naemon configuration.
 To know the local load
 
 We will go through the Naemon Setup menu Config Tool > Object settings > Services.
-• Completing the "local_load" Service Description
-• Enter the host name S34XXXXXXX
-• Choose generic-service service model
-• Add a contact group Supervisors
-• Save and click apply
++ Completing the "local_load" Service Description
++ Enter the host name S34XXXXXXX
++ Choose generic-service service model
++ Add a contact group Supervisors
++ Save and click apply
 
 The service is now present in Naemon configuration.
 
@@ -160,11 +160,11 @@ The service is now present in Naemon configuration.
 To know the numbers of users connected
 
 We will go through the Naemon Setup menu Config Tool > Object settings > Services.
-• Completing the "Current_Users" Service Description
-• Enter the host name S34XXXXXXX
-• Choose generic-service service model
-• Add a contact group Supervisors
-• Save and click apply
++ Completing the "Current_Users" Service Description
++ Enter the host name S34XXXXXXX
++ Choose generic-service service model
++ Add a contact group Supervisors
++ Save and click apply
 
 The service is now present in Naemon configuration.
 
@@ -177,8 +177,9 @@ To check a service on the server, take control of the server and start a NET STA
 
 To monitor the McAfee status services , we create a template *TMP-McAfee_Services* that each host will be associated to McAfee_Service
 Setting the Service Template : *TMP-McAfee_Services*
-• Name: *TMP-McAfee_Services*
-• Service Description : McAfee_Services
-• Service Model used : generic Service
-• Command verification : check_nt_services
-• Arguments: 'McAfee Framework Service!McShield McAfee!McAfee Task Manager!McAfee Validation Trust Protection Service'
+
++ Name: *TMP-McAfee_Services*
++ Service Description : McAfee_Services
++ Service Model used : generic Service
++ Command verification : check_nt_services
++ Arguments: 'McAfee Framework Service!McShield McAfee!McAfee Task Manager!McAfee Validation Trust Protection Service'
