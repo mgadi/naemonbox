@@ -7,4 +7,4 @@ Nagvis is the most advanced mapping module. It is both flexible, scalable and co
 Create a map
 =========
 
-To create or edit maps you need Visio diagram as design software . To load the cards you need a tunnel boring machine ( Ex. Bitvise TBM ) . This tool is an SSH client , SFTP and exchange files between machines in a secure manner as in Windows Explorer.
+To create or edit maps you need Visio diagram as design software . To upload file you need to connect securely to the shared resources  on the server ( Ex. Bitvise TBM ) . This tool is an SSH client , SFTP and share files between machines in a secure manner as in Windows Explorer.
