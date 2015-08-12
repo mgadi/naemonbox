@@ -160,6 +160,7 @@ The service is now present in Naemon configuration.
 To know the numbers of users connected
 
 We will go through the Naemon Setup menu Config Tool > Object settings > Services.
+
 + Completing the "Current_Users" Service Description
 + Enter the host name S34XXXXXXX
 + Choose generic-service service model
