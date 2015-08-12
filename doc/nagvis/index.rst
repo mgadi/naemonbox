@@ -28,7 +28,7 @@ In Create a map complete the field as follows :
 + Map icon : std_small
 + Background Map . Select from the pull down menu, the map you just downloaded on the Linux server MAP_Name.png .
 
- Adding elements to map 
+Adding elements to map 
 =========
  
  Now that we have our map , we have to add elements to our map .
