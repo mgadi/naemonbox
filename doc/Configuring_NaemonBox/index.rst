@@ -1,6 +1,6 @@
-==============
-Configuring NaemonBox
-==============
+======================
+Configuring Overview
+======================
 
 Introduction
 =========
