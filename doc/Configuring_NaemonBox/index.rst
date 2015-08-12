@@ -243,5 +243,59 @@ View diff of changed files compares files
 + Check your configuration checks changes if there is no error
 + Reload your monitoring core recover Naemon .
 
-access management , authentication and authorization
+access , authentication and authorization management
 =========
+
+
+Create a host
+=========
+
++ Click on the Config Tool menu/Object Configuration/Contact
++ Click Create a new Contact
+
+Fill the fields according to your criteria (full name , Alias ​​/ Login , generic contact, Email, Allow can_submit _commands )
+
+User Configuration
+=========
+
++ Click on the Setup menu Tool/User Configuration
++ Select the account in the username field
++ Create a password and confirm, then click "SAVE"
+
+ Editing the cgi.cfg file
+By default, a contact will be entitled to access objects which it is associated , make change according to your needs :
+
++ show_context_help=0
++ use_authentication=1
++ use_ssl_authentication=0
++ default_user_name=nagiosadmin
++ authorized_for_system_information=nagiosadmin,hotline,
++ authorized_contactgroup_for_system_information=
++ authorized_for_configuration_information=nagiosadmin
++ authorized_contactgroup_for_configuration_information=
++ authorized_for_system_commands=nagiosadmin
++ authorized_contactgroup_for_system_commands=
++ authorized_for_all_services=nagiosadmin,hotline
++ authorized_contactgroup_for_all_services=
++ authorized_for_all_hosts=nagiosadmin,hotline
++ authorized_contactgroup_for_all_hosts=
++ authorized_for_all_service_commands=nagiosadmin
++ authorized_contactgroup_for_all_service_commands=
++ authorized_for_all_host_commands=nagiosadmin
++ authorized_contactgroup_for_all_host_commands=
++ authorized_for_read_only=
++ authorized_contactgroup_for_read_only=
++ refresh_rate=90
++ escape_html_tags=1
++ action_url_target=_blank
++ notes_url_target=_blank
++ lock_author_names=1
++ host_unreachable_sound=../media/critical.wav
++ host_down_sound=../media/critical.wav
++ service_critical_sound=../media/critical.wav
++ service_warning_sound=../media/warning.wav
++ service_unknown_sound=../media/unknown.wav
+
+
+
+
