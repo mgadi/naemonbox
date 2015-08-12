@@ -1,5 +1,5 @@
 ======================
-Configuring Overview
+Naemon Configuring Overview
 ======================
 
 Introduction
