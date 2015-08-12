@@ -66,3 +66,13 @@ Authentication / Authorization
 =========
 
 Account management and access go through two modules:
+
+Managing Users :
+=========
+
+In the Personal menu / Manage Users menu, we can:
+
+• Create a user with password initialization .
+• Assign a role to a user
+• Delete user
+• Change password
