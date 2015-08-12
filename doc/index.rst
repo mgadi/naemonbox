@@ -8,3 +8,4 @@ Welcome to Naemonbox's documentation!
   installation_guide/index
   user_guide/index
   Configuring_NaemonBox/index
+  nagvis/index
