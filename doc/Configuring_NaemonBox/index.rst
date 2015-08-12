@@ -202,4 +202,20 @@ This service uses the command check_nt_services
 + Command name : check_nt_services
 + Command line: $USER1$/check_nt -H $HOSTADDRESS$ -v SERVICESTATE -s NsclientPassword -p 12489 -d SHOWALL -l $ARG1$,$ARG2$,$ARG3$,$ARG4$
 
-Macro $ARG1$ , $ARG2$ , $ARG3$ ... match the arguments placed in the command. ex: "McAfee Framework Service!McShield McAfee!McAfee Task Manager!McAfee Validation Trust Protection Service'
+Macro $ARG1$ , $ARG2$ , $ARG3$ ... match the arguments placed in the command. eg: "McAfee Framework Service!McShield McAfee!McAfee Task Manager!McAfee Validation Trust Protection Service'
+
+Service : traffic ( naemon )
+To know the traffic up and down from the NIC
+
++ In the Config Tool / Services menu.
++ Completing the description (eg traffic )
++ Choose a service model (eg generice-Service )
++ Select the check command : check_traffic
++ Arguments : eth0!80!90!1
++ Save and click on apply
+
+The service is now present in Naemon configuration, we need to export it to apply config changes
+
+Export Naemon Configuration Files
+Menu Config Tool/Object settings and then click Apply to save your change to disk, check your configuration changes, reload your monitoring core
+
