@@ -36,3 +36,82 @@ Configuration
 =========
 
 Now it is time to create some configuration object definitions in order to monitor a new Windows machine. We will start by creating a basic host group for all Windows machines for one site.
+
+Add an hostgroup
+================
+For editing , we will go through the Naemon Setup menu Tool > Object settings > Hostgroup.
+You can create or clone. Make changes and click on Apply.
+
+Add a command
+================
+**Configuration**
+
+*check_nt_uptime* 
+
+We will add a "command / plugin " check_nt_uptime that will be used by the system start service we will create for our "host" .
+• Config Tool Menu / Object Configuration / Commands
+• Enter the name of the command check_nt_uptime
+• Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword p - 12489
+• Save and click on apply 
+
+The command is now present in Naemon configuration. We can now associate it to a service.
+
+*check_nt_cpu*
+
+We will add a "command / plugin " check_nt_cpu that will be used by the cpu use service we will create for our "host" .
+• Config Tool Menu / Object Configuration / Commands
+• Enter the name of the command check_nt_cpu
+• Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v CPULOAD -s NsclientPassword -p 12489
+• Save and click on apply 
+
+The command is now present in Naemon configuration. We can now associate it to a service.
+
+*check_mysql*
+
+We will add a "command / plugin " check_mysql that will be used by mysql service we will create for our "host" .
+• Config Tool Menu / Object Configuration / Commands
+• Enter the name of the command check_mysql
+• Enter the following command line $USER1$/check_mysql -H $HOSTADDRESS$ -u user -p Password
+• Save and click on apply 
+
+The command is now present in Naemon configuration. We can now associate it to a service.
+
+*check_local_load*
+
+We will add a "command / plugin " check_local_load that will be used by Current Load service we will create for our "host" .
+• Config Tool Menu / Object Configuration / Commands
+• Enter the name of the command check_local_load
+• Enter the following command line $USER1$/check_load -H $HOSTADDRESS$ -w 5.0,4.0,3.0 -c 10.0,6.0,4.0
+• Save and click on apply 
+
+The command is now present in Naemon configuration. We can now associate it to a service.
+
+*check_local_procs*
+
+We will add a "command / plugin " check_local_procs that will be used by Total Processes service we will create for our "host" .
+• Config Tool Menu / Object Configuration / Commands
+• Enter the name of the command check_local_load
+• Enter the following command line $USER1$/check_procs -w 250 -c 400 -s RSZDT
+• Save and click on apply 
+
+The command is now present in Naemon configuration. We can now associate it to a service.
+
+*check_local_users*
+
+We will add a "command / plugin " check_local_users that will be used by Current users service we will create for our "host" .
+• Config Tool Menu / Object Configuration / Commands
+• Enter the name of the command check_local_users
+• Enter the following command line $USER1$/check_users -w 20 -c 50
+• Save and click on apply 
+
+The command is now present in Naemon configuration. We can now associate it to a service.
+
+*check_local_swap*
+
+We will add a "command / plugin " check_local_swap that will be used by swap usage service we will create for our "host" .
+• Config Tool Menu / Object Configuration / Commands
+• Enter the name of the command check_local_swap
+• Enter the following command line $USER1$/check_procs -w 20 -c 10 
+• Save and click on apply 
+
+The command is now present in Naemon configuration. We can now associate it to a service.
