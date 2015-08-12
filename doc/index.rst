@@ -9,4 +9,4 @@ Welcome to Naemonbox's documentation!
   user_guide/index
   Configuring_NaemonBox/index
   nagvis/index
-  cacti-syslog/index
+  cacti_syslog/index
