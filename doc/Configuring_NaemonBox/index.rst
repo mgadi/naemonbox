@@ -52,7 +52,7 @@ We will add a "command / plugin " check_nt_uptime that will be used by the syste
 
 + Config Tool Menu / Object Configuration / Commands
 + Enter the name of the command check_nt_uptime
-+ Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword p - 12489
++ Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
 + Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
@@ -194,3 +194,12 @@ Setting the Service Template : *TMP-McAfee_Services*
 + Service Model used : generic Service
 + Command verification : check_nt_services
 + Arguments: 'McAfee Framework Service!McShield McAfee!McAfee Task Manager!McAfee Validation Trust Protection Service'
+
+*McAfee_Service* Definition
+
+This service uses the command check_nt_services
+
++ Command name : check_nt_services
++ Command line: $USER1$/check_nt -H $HOSTADDRESS$ -v SERVICESTATE -s NsclientPassword -p 12489 -d SHOWALL -l $ARG1$,$ARG2$,$ARG3$,$ARG4$
+
+Macro $ARG1$ , $ARG2$ , $ARG3$ ... match the arguments placed in the command. ex: "McAfee Framework Service!McShield McAfee!McAfee Task Manager!McAfee Validation Trust Protection Service'
