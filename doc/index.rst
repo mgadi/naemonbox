@@ -10,3 +10,4 @@ Welcome to Naemonbox's documentation!
   Configuring_NaemonBox/index
   nagvis/index
   cacti_syslog/index
+  fusioninventory/index
