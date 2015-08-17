@@ -308,8 +308,3 @@ By default, a contact will be entitled to access objects which it is associated 
 + service_critical_sound=../media/critical.wav
 + service_warning_sound=../media/warning.wav
 + service_unknown_sound=../media/unknown.wav
-
-
-
-
->>>>>>> mgmonitoring/master
