@@ -30,7 +30,7 @@ Steps
 
 There are several steps you need to follow in order to monitor a new Windows machine:
 
-<<<<<<< HEAD
+
 • Install a monitoring agent on the Windows machine
 • Create new host and service definitions for monitoring the Windows machine
 • Restart the Naemon Service
@@ -38,7 +38,7 @@ There are several steps you need to follow in order to monitor a new Windows mac
 + Install a monitoring agent on the Windows machine
 + Create new host and service definitions for monitoring the Windows machine
 + Restart the Naemon Service
->>>>>>> mgmonitoring/master
+
 
 Windows Agent Installation
 =========
@@ -49,7 +49,7 @@ Configuration
 =========
 
 Now it is time to create some configuration object definitions in order to monitor a new Windows machine. We will start by creating a basic host group for all Windows machines for one site.
-<<<<<<< HEAD
+
 =======
 
 Add an hostgroup
