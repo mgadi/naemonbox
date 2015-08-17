@@ -6,7 +6,6 @@ Naemon Configuring Overview
 .. image:: /images/naemonbox-naemon-login.png
 
 
->>>>>>> mgmonitoring/master
 Introduction
 =========
 
