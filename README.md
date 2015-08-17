@@ -7,6 +7,7 @@ Naemonbox - monitoring framework
 NAEMONBOX is based on Debian. This software provide a quick and easy installation wich includes the most-used tools in the Nagios/Naemon community.
 Having the Nagios/Naemon tools already installed and configured for you, will bring you more than you expect ...
 
+![naemonbox-webui](https://cloud.githubusercontent.com/assets/4088423/8827638/21e5b4da-308e-11e5-817e-47c6001ecf20.PNG)
 ### Requirements ###
 ####openvz VPS ONLY####
 To use NaemonBox on openvz VPS, first you need to do as root :
