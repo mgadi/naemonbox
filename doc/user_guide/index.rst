@@ -14,7 +14,7 @@ I recommend you read the product documents:
     * `Weathermaps <http://network-weathermap.com/docs>`_.
     * `Nagvis <http://www.nagvis.org/doc>`_.
     * `Glpi <http://www.glpi-project.org/spip.php?rubrique18>`_.
-    * `Fusion Inventory <http://www.fusioninventory.org/documentation>`_.
+    * `Fusion Inventory <http://fusioninventory.org/documentation/documentation.html>`_.
     * `SNMPTT <http://snmptt.sourceforge.net/docs/snmptt.shtml>`_.
     * `Mediawiki <http://www.mediawiki.org/wiki/Documentation>`_.
     * `Psdash <https://github.com/Jahaja/psdash>`_.
