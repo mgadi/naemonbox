@@ -54,8 +54,11 @@ A host group definition is used to group one or more hosts together for simplify
 Add an hostgroup
 ================
 For editing , go through 
+
 1. the Naemon Setup menu **Config Tool** > **Object settings** > **Hostgroups.**
+
 2. **create** or **clone.** 
+
 3. Make changes and click on **Apply.**
 
 Add a command
