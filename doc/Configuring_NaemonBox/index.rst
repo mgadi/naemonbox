@@ -45,10 +45,16 @@ Now it is time to create some configuration object definitions in order to monit
 
 =======
 
+===========
+Host Group Definition
+===========
+
+A host group definition is used to group one or more hosts together for simplifying configuration.
+
 Add an hostgroup
 ================
-For editing , we will go through the Naemon Setup menu Config Tool > Object settings > Hostgroups.
-You can create or clone. Make changes and click on Apply.
+For editing , we will go through the Naemon Setup menu **Config Tool** > **Object settings** > **Hostgroups.**
+You can **create** or **clone.** Make changes and click on **Apply.**
 
 Add a command
 ================
