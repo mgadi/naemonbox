@@ -83,11 +83,13 @@ Add a command
 **check_nt_uptime**
 
 We will add a "command / plugin " check_nt_uptime that will be used by the system start service we will create for our "host" .
+For editing , go through
 
-+ **Config Tool Menu** ==> **Object Configuration** ==> **Commands**
-+ Enter the name of the command **check_nt_uptime**
-+ Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
-+ Save and click on apply 
+1. **Config Tool Menu** ==> **Object Configuration** ==> **Commands**
+
+2. Enter the name of the command **check_nt_uptime**. Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
+
+4. Save and click on **Apply**.
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
