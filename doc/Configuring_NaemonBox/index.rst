@@ -61,16 +61,31 @@ For editing , go through
 
 3. Make changes and click on **Apply.**
 
+===========
+Command Definition
+===========
+
+A command define the command line that uses a script or an application to perform an action . You can run this command by specifying arguments. 
+
+There are three types of commands:
+
+*   Audit controls are used by the schedulers to check the status of a host or service .
+
+*   Notification commands are used by the schedulers to alert contacts (via mail, SMS ... ) .
+
+*   Various commands are used by add-ons ( to perform certain actions ) by the scheduler for data processing ...
+
+
 Add a command
 ================
 **Configuration**
 
-*check_nt_uptime* 
+**check_nt_uptime**
 
 We will add a "command / plugin " check_nt_uptime that will be used by the system start service we will create for our "host" .
 
-+ Config Tool Menu / Object Configuration / Commands
-+ Enter the name of the command check_nt_uptime
++ **Config Tool Menu** ==> **Object Configuration** ==> **Commands**
++ Enter the name of the command **check_nt_uptime**
 + Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
 + Save and click on apply 
 
