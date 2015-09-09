@@ -32,11 +32,6 @@ There are several steps you need to follow in order to monitor a new Windows mac
 • Install a monitoring agent on the Windows machine
 • Create new host and service definitions for monitoring the Windows machine
 • Restart the Naemon Service
-=======
-+ Install a monitoring agent on the Windows machine
-+ Create new host and service definitions for monitoring the Windows machine
-+ Restart the Naemon Service
-
 
 Windows Agent Installation
 =========
