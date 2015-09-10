@@ -46,10 +46,10 @@ Naemon recommends using NSClient ++. These instructions allow a NSClient basic i
  * "Check "Enable nsclient server (check_nt"
  *  "Enable NSCA client (check_nrpe)"
  *  "Enable Web server".
- NSClient++ should be installed as a service and start automatic.
-This should be enough to start with some basic Windows monitoring.
 
 .. image:: /images/nsclient-installation.png
+
+NSClient++ should be installed and set up to start automatically. This should be enough to start with some basic Windows monitoring.
 
 Configuration
 =========
