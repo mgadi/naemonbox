@@ -44,7 +44,7 @@ Naemon recommends using NSClient ++. These instructions allow a NSClient basic i
 3. Enter all hosts that are allowed to connect to NSClient++, separate multiple IP's with ",". Make sure to check the following:
  *  Check **Enable common check plugins**
  *  Check **Enable nsclient server (check_nt)**
- *  Enable **NSCA client (check_nrpe)"
+ *  Enable **NSCA client (check_nrpe)**
  * **Enable Web server**
 
 .. image:: /images/nsclient-installation.png
