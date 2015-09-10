@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 ======================
 Naemon Configuring Overview
 ======================
@@ -7,7 +6,6 @@ Naemon Configuring Overview
 .. image:: /images/naemonbox-naemon-login.png
 
 
->>>>>>> mgmonitoring/master
 Introduction
 =========
 
@@ -20,6 +18,7 @@ This document describes how to monitor local and Windows machines attributes, su
 Overview
 =========
 
+.. image:: /images/monitoring-windows.png
 Monitoring services or attributes of a Windows machine requires the installation of an agent. This agent acts as a proxy between the Nagios plugin and the actual service or attribute of the Windows machine to be monitored . Without installing an agent on the Windows machine, Naemon would be unable to monitor local services or attributes of the Windows machine.
 
 For this example, we will install NSClient ++ on the Windows machine and using the plugin check_nrpe that will communicate with the addon NSClient .
@@ -29,15 +28,10 @@ Steps
 
 There are several steps you need to follow in order to monitor a new Windows machine:
 
-<<<<<<< HEAD
+
 • Install a monitoring agent on the Windows machine
 • Create new host and service definitions for monitoring the Windows machine
 • Restart the Naemon Service
-=======
-+ Install a monitoring agent on the Windows machine
-+ Create new host and service definitions for monitoring the Windows machine
-+ Restart the Naemon Service
->>>>>>> mgmonitoring/master
 
 Windows Agent Installation
 =========
@@ -48,26 +42,54 @@ Configuration
 =========
 
 Now it is time to create some configuration object definitions in order to monitor a new Windows machine. We will start by creating a basic host group for all Windows machines for one site.
-<<<<<<< HEAD
+
 =======
+
+===========
+Host Group Definition
+===========
+
+A host group definition is used to group one or more hosts together for simplifying configuration.
 
 Add an hostgroup
 ================
-For editing , we will go through the Naemon Setup menu Config Tool > Object settings > Hostgroups.
-You can create or clone. Make changes and click on Apply.
+For editing , go through 
+
+1. Naemon Setup menu **Config Tool** ==> **Object settings** ==> **Hostgroups.**
+
+2. **Create** or **Clone.** 
+
+3. Make changes and click on **Apply.**
+
+===========
+Command Definition
+===========
+
+A command define the command line that uses a script or an application to perform an action . You can run this command by specifying arguments. 
+
+There are three types of commands:
+
+*   Audit controls are used by the schedulers to check the status of a host or service .
+
+*   Notification commands are used by the schedulers to alert contacts (via mail, SMS ... ) .
+
+*   Various commands are used by add-ons ( to perform certain actions ) by the scheduler for data processing ...
+
 
 Add a command
 ================
 **Configuration**
 
-*check_nt_uptime* 
+**check_nt_uptime**
 
 We will add a "command / plugin " check_nt_uptime that will be used by the system start service we will create for our "host" .
+For editing , go through
 
-+ Config Tool Menu / Object Configuration / Commands
-+ Enter the name of the command check_nt_uptime
-+ Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
-+ Save and click on apply 
+1. **Config Tool Menu** ==> **Object Configuration** ==> **Commands**
+
+2. Enter the command name **check_nt_uptime**. Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
+
+4. **Save** and click on **Apply**.
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
@@ -309,8 +331,3 @@ By default, a contact will be entitled to access objects which it is associated 
 + service_critical_sound=../media/critical.wav
 + service_warning_sound=../media/warning.wav
 + service_unknown_sound=../media/unknown.wav
-
-
-
-
->>>>>>> mgmonitoring/master
