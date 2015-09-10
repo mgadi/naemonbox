@@ -45,7 +45,7 @@ Naemon recommends using NSClient ++. These instructions allow a NSClient basic i
  *  Check **Enable common check plugins**
  *  Check **Enable nsclient server (check_nt)**
  *  Check **Enable NRPE server (check_nrpe)**
- *  Check **Enable NSCA client **
+ *  Check **Enable NSCA client**
  * Check  **Enable WMI checks**
 
 .. image:: /images/nsclient-install1.png
