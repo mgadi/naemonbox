@@ -113,7 +113,7 @@ We will add a "command / plugin " check_nt_cpu that will be used by the cpu use 
 
 + Config Tool Menu / Object Configuration / Commands
 + Enter the name of the command check_nt_cpu
-+ Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v CPULOAD -s NsclientPassword -p 12489
++ Enter the following command line  $USER1$/check_nt -H $HOSTADDRESS$ -v CPULOAD -s NsclientPassword -p 12489
 + Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
