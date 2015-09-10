@@ -124,7 +124,7 @@ We will add a "command / plugin " check_mysql that will be used by mysql service
 
 + Config Tool Menu / Object Configuration / Commands
 + Enter the name of the command check_mysql
-+ Enter the following command line $USER1$/check_mysql -H $HOSTADDRESS$ -u user -p Password
++ Enter the following command line :    $USER1$/check_mysql -H $HOSTADDRESS$ -u user -p Password
 + Save and click on apply 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
