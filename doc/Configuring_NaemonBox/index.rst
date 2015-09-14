@@ -63,11 +63,11 @@ Now it is time to create some configuration object definitions in order to monit
 Host Group Definition
 ===========
 
-A host group definition is used to group one or more hosts together for simplifying configuration.
+A host group definition is used to group one or more hosts together to simplify configuration.
 
 Add an hostgroup
 ================
-For editing , go through 
+For editing , go through :
 
 1. Naemon Setup menu **Config Tool** ==> **Object settings** ==> **Hostgroups.**
 
