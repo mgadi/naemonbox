@@ -136,5 +136,5 @@ included in the project:
     with a clear title and description against the `develop` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
-license your work under the terms of the [LGPL](LICENSE) (if it
+license your work under the terms of the [GPLv2](LICENSE) (if it
 includes code changes).
