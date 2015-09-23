@@ -51,6 +51,6 @@ Naemonbox is distributed under GNU GPL v2 license, see LICENSE.
 
 ### More info ###
 
-Visit the MG Monitoring homepage at https://blog.mg-monitoring.com/
+Visit NaemonBox homepage at https://naemonbox.com/
 
 Thank's for using Naemonbox !
