@@ -1,0 +1,193 @@
+#!/bin/bash
+#
+##  @Synopsis   Install Script for Naemonbox project
+##  Developped by : Mark GADI aka MG-MONITORING
+###################################################################
+# Naemonbox is developped with GPL Licence 2.0
+#
+# GPL License: http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+# Naemonbox Install Script
+# Usage: bash install.sh
+#
+###################################################################
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+###################################################################
+
+SUCCESS=0
+ERR_FAIL_RESTORE=1
+ERR_FAIL_UPDATE=2
+ERR_FAIL_INSTALL=3
+ERR_CANCEL_INSTALL=4
+ERR_IMPOSSIBLE=-1
+
+# ENVIRONNEMENT
+export myscripts=$(readlink -f $(dirname $0))
+src=$myscripts
+. "$myscripts"/scripts/naemonbox.cfg
+
+
+cadre
+
+function bck {
+    FULLPATH="$(readlink -f "$1")"
+    DST="${2%/}/$(dirname $FULLPATH)"
+    mkdir -p "$DST"
+    cp -r --preserve=all "$FULLPATH" "$DST/$(basename $FULLPATH)"
+}
+
+function rst {
+    [[ ! -d "$LEGACY" ]] && echo >&2 "Rollback failed : Unknown folder $LEGACY" && exit $ERR_FAIL_RESTORE
+    cp -rf "$LEGACY"/* /
+    [[ $? -ne 0 ]] && echo >&2 "Rollback failed" && exit $ERR_FAIL_RESTORE
+}
+
+set -u
+
+
+##############################################################
+printf "$ROSE Get path of current script \n$NORMAL"
+##############################################################
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+echo "Running from $DIR"
+
+
+
+##############################################################
+printf "$ROSE Check rights \n$NORMAL"
+##############################################################
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+##############################################################
+#printf "$ROSE Naemonbox Installation \n$NORMAL"
+##############################################################
+##############################################################
+#printf "$ROSE Adding repositories \n$NORMAL"
+printf "$ROSE Check APT\n$NORMAL"
+##############################################################
+
+CUSTOMAPT=/etc/apt/sources.list
+grep -qri "non-free" $CUSTOMAPT
+if [[ $? -eq 1 ]]
+    then
+        echo -e "$ROUGE You need non-free repository$NORMAL"
+        echo   "We add non-free repository for you"
+        sed -i "s/main contrib/main contrib non-free/g" /etc/apt/sources.list
+    else
+        echo -e "You have non-free repository, nothing to do"
+                    fi
+
+# loads older releases of liblwp-protocol-https-perl libnet-http-perl libwww-perl to fix "Possible precedence issue with control flow operator" with VICommon.pm
+cat << EOF > /etc/apt/preferences.d/preferences
+Package: liblwp-protocol-https-perl
+Pin: release a=oldstable
+Pin-Priority: 700
+
+Package: libnet-http-perl
+Pin: release a=oldstable
+Pin-Priority: 700
+
+Package: libwww-perl
+Pin: release a=oldstable
+Pin-Priority: 700
+
+EOF
+
+cp /etc/apt/sources.list /etc/apt/sources.list.d/wheezy.list
+sed -i 's/jessie/wheezy/g' /etc/apt/sources.list.d/wheezy.list
+
+apt-get update;apt-get upgrade
+##############################################################
+printf "$ROSE Check dependencies \n$NORMAL"
+##############################################################
+
+apt-get update -qq
+for i in lsb-release wget dialog whiptail
+do
+	dpkg -l | grep -q $i
+	if [[ $? -eq 1 ]]
+	then
+		apt-get install $i -y
+	fi
+done
+
+if [[ ! -f /etc/naemonbox/naemonbox.conf ]]
+then
+mkdir /etc/naemonbox/
+touch /etc/naemonbox/from_script
+fi
+
+whiptail --title "Naemonbox Installation" --yesno "Caution : your config files for postfix,mysql,apache,snmp will be overwritten\nDo you want to proceed install of Naemonbox?" 8 78
+YESNO=$?
+
+if [[ $YESNO -eq 0 ]]
+then
+	# Backup folder for legacy config files
+	LEGACY=/etc/naemonbox/.legacy
+	mkdir -p "$LEGACY"
+
+if [[ $? -ne 0 ]]
+	then
+	
+##############################################################
+printf "$ROSE Installation failed \n$NORMAL"
+printf "$ROSE Rolling back have to be done manually !\n$NORMAL"
+printf "$ROSE Check your legacy configuration files => '$LEGACY'\n$NORMAL"
+printf "$ROSE Check install logs => '$log_file'\n$NORMAL"
+##############################################################
+
+else
+service npcd start
+service apache2 restart
+service naemon start
+service snmpd restart
+
+echo -e "\n"
+		whiptail --title "Post-installation" --yesno "Proceed to post-installation?" 8 78
+		YESNO=$?
+		RESULT=1
+		while [ $RESULT -gt 0 ]; do
+			if [[ $YESNO -eq 0 ]]; then
+				echo -e "\n"
+		printf "$ROSE Naemonbox Installation started \n$NORMAL"
+$DIR/naemonbox_all
+				let RESULT=$?
+				if [ $RESULT -gt 0 ]; then
+					echo -e "\n"
+					whiptail --title "Post-installation" --yesno "Post-installation failed, retry ?" 8 78
+					let YESNO=$?
+				fi
+			else
+				exit 0
+			fi
+		done
+	fi
+
+else
+##############################################################
+printf "$ROSE Installation cancelled \n$NORMAL"
+##############################################################
+	exit $ERR_CANCEL_INSTALL
+fi
+
+# Security : we shouldn't be able to exit here
+exit $ERR_IMPOSSIBLE
+

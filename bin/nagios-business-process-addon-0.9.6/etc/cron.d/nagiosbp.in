@@ -1,0 +1,1 @@
+*/10 * * * * @apache_user@ @bindir@/nagios_bp_session_timeout 2>&1 | logger -t nagios_bp_session_timeout

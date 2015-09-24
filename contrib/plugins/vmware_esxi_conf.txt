@@ -1,0 +1,6 @@
+192.168.1.182 root secretpassword
+192.168.1.127 root secretpassword
+192.168.1.145 root secretpassword
+192.168.1.147 root secretpassword
+192.168.1.149 root secretpassword
+192.168.1.189 root secretpassword

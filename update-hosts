@@ -1,0 +1,55 @@
+#!/bin/bash
+#
+##  @Synoppsis   This is a simple script for updating the Central Poller hosts file
+##  Developped by : Mark GADI aka MG-MONITORING
+###################################################################
+server=`hostname`
+fqdnserver=`hostname -f`
+loip=`ifconfig lo 2>/dev/null | grep "inet ad" | cut -f2 -d: | awk '{print $1}'`
+hostnameip=`hostname -i`
+
+
+echo # Drop down a line before we start for readability
+echo "update-hosts.sh By Mark GADI (contact@mg-monitoring.fr)"
+echo "ENJOY!"; echo;
+
+# Check that we're in a BASH shell
+if test -z "$BASH" ; then
+  echo "update-hosts.sh must be run in the BASH shell... Aborting."; echo;
+  exit 192
+fi
+
+# Check for root user
+if [ $(whoami) != "root" ]; then
+  echo "update-hosts.sh must be run as root... Aborting."; echo;
+  exit 192
+fi
+# Sanity checks:
+echo "Checking that all required software is installed."; echo;
+type -P wget &>/dev/null || { echo "Error: update-hosts.sh requires the program wget... Aborting."; echo; exit 192; }
+type -P sed &>/dev/null  || { echo "Error: update-hosts.sh requires the program sed... Aborting."; echo;exit 192; }
+type -P date &>/dev/null || { echo "Error: update-hosts.sh requires the program date... Aborting."; echo; exit 192; }
+
+# Back up host file:
+echo "Creating a backup of /etc/hosts in the file /etc/hosts.original"; echo;
+cat /etc/hosts > /etc/hosts.original
+
+# Format new hosts file in a temp file
+echo "Formatting... "; echo;
+echo "127.0.1.1       localhost">temp_hosts
+echo "$loip       $server       $fqdnserver">>temp_hosts
+echo "
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters">>temp_hosts
+
+
+# Update new hosts file
+echo "Updating... "; echo;
+mv temp_hosts /etc/hosts
+
+# Exit clean
+echo "update-hosts.sh update complete."; echo;
+exit 0
+

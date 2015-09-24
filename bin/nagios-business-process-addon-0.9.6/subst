@@ -1,0 +1,71 @@
+#!/usr/bin/perl -w
+
+my ${exec_prefix};
+my ${prefix};
+my ${datarootdir};
+my ${nagetc};
+#my ${cgidir};
+#my ${langdir};
+
+${prefix}="/usr/local/nagiosbp";
+${exec_prefix}="${prefix}";
+${nagetc}="/etc/naemon";
+#${cgidir}="@cgidir@";
+#${langdir}="@langdir@";
+
+while ($f = shift @ARGV) {
+
+	if (-x "/bin/mktemp") { 
+		$TEMP = `/bin/mktemp $f.$$.XXXXXX`;
+		die 'Cannot make temporary file $TEMP' if($?);
+		chomp $TEMP;
+	} else {
+		$XXXXXX = rand;
+		$TEMP = "$f.$$.$XXXXXX";
+	}
+
+	open(IN,"<$f.in");
+	open(OUT,">$TEMP") || die 'Cannot make temporary file $TEMP';
+
+	while (<IN>) {
+		s|\@PERL\@|/usr/bin/perl|g;
+		s|\@nagiosbp_user\@|naemon|g;
+		s|\@nagiosbp_grp\@|naemon|g;
+		# s|\@lockfile\@|@lockfile@|g;
+		s|\@libexecdir\@|${exec_prefix}/libexec|g; # put all --with-vars before directories
+		s|\@localstatedir\@|${prefix}/var|g;
+		s|\@libdir\@|${exec_prefix}/lib|g;
+		s|\@sysconfdir\@|${prefix}/etc|g;
+		# s|\@TMPDIR\@|@TMPDIR@|g;
+		# s|\@CHECKRESULTDIR\@|@CHECKRESULTDIR@|g;
+		s|\@datarootdir\@|${prefix}/share|g;
+		s|\@datadir\@|${prefix}/share|g;
+		#s|\@cgidir\@|@cgidir@|g;
+		s|\@sbindir\@|${exec_prefix}/sbin|g;
+		s|\@bindir\@|${exec_prefix}/bin|g;
+		s|\@htmurl\@|/nagiosbp|g;
+		s|\@naghtmurl\@|/naeomn|g;
+		s|\@nagcgiurl\@|/naeomn/cgi-bin|g;
+		s|\@cgiurl\@|/nagiosbp/cgi-bin|g;
+		s|\@nagetc\@|/etc/naemon|g;
+		s|\@apache_user\@|www-data|g;
+		s|\@CRON_D_DIR\@|/etc/cron.d|g;
+		# s|\@langdir\@|@langdir@|g;
+		# s|\@MAIL_PROG\@|@MAIL_PROG@|g;
+		# s|\@VERSION\@|@VERSION@|g;
+		s|\@apache_authname\@|Naemon Monitoring|g;
+		s|\$\{exec_prefix\}|${prefix}|g; # must be next to last
+		s|\$\{prefix\}|/usr/local/nagiosbp|g; # must be last
+		print OUT $_;
+	}
+
+	close IN;
+	close OUT;
+
+	if ((! -e $f) || (`diff $f $TEMP`)) {
+		`mv $TEMP $f`;
+	} else {
+	         unlink $TEMP;
+	}
+
+}

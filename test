@@ -1,0 +1,130 @@
+#! /bin/bash
+# This file is part of NagiosBox
+
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Library General Public
+# License as published by the Free Software Foundation; version 2
+# of the License.
+
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Library General Public License for more details.
+
+# You should have received a copy of the GNU Library General Public License
+# along with this library; see the file COPYING.LIB.  If not, write to
+# the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA 02110-1301, USA.
+#
+### BEGIN INIT INFO
+# Provides: NagiosBox
+# Required-Start: $local_fs $network
+# Required-Stop: $local_fs $remote_fs
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: NagiosBox Server
+# Description: Solution integree de gestion de parc
+### END INIT INFO
+
+rouge="\033[31m"
+vert="\033[32m"
+jaune="\033[33m"
+bleu="\033[34m"
+magenta="\033[35m"
+defaut="\033[00m"
+task=""
+nocolor=""
+
+ printf "$magenta+------------------------------------------------------+\n$defaut"
+        printf "NAEMONBOX STATUS :\n"
+        printf "$magenta+------------------------------------------------------+\n$defaut"
+        NaemonBox_HOSTNAME=`hostname`
+        NaemonBox_IP=`sudo ifconfig eth0 2>/dev/null | grep "inet ad" | cut -f2 -d: | awk '{print $1}'`
+        NaemonBox_SUBNET=`sudo ifconfig eth0 2>/dev/null | grep "Masque" | cut -f4 -d: | awk '{print $1}'`
+        NaemonBox_GATEWAY=`sudo route | grep eth0 | grep default | awk '{print $2}'`
+        NaemonBox_SUFFIX_DNS=`sudo cat /etc/resolv.conf | grep "search" | awk '{print $2}'`
+        NbDNSServers=`sudo cat /etc/resolv.conf | grep nameserver | wc -l`
+        if [ "${NbDNSServers}" = "2" ]; then
+          NaemonBox_DNS2=`sudo cat /etc/resolv.conf | grep "nameserver" | tail -1 | awk '{print $2}'`
+          NaemonBox_DNS1=`sudo cat /etc/resolv.conf | grep "nameserver" | grep -v $NagiosBox_DNS2 | awk '{print $2}'`
+        else
+          NaemonBox_DNS1=`sudo cat /etc/resolv.conf | grep "nameserver" | awk '{print $2}'`
+          NaemonBox_DNS2=""
+        fi
+        printf "$defaut"
+        NaemonBox_NETWORK_MODE=`grep dhcp /etc/network/interfaces | grep eth0 | wc -l`
+        if [ "${NaemonBox_NETWORK_MODE}" = "1" ]; then
+          printf "Mode : DHCP\n"
+          printf "Hostname : $NaemonBox_HOSTNAME     IP : $NaemonBox_IP\n$defaut"
+          printf "$magenta+------------------------------------------------------+\n$defaut"
+          printf "Enjoy your Monitoring platform\n"
+          printf "  --> $NaemonBox_HOSTNAME \n"
+        else
+          printf "Mode : STATIC\n"
+          printf "Hostname : $NaemonBox_HOSTNAME     IP : $NaemonBox_IP\n$defaut"
+	  printf "$magenta+------------------------------------------------------+\n$defaut"
+	  printf "Enjoy your Monitoring platform\n"
+          printf "  --> $NaemonBox_HOSTNAME \n"
+
+          printf "$magenta+------------------------------------------------------+\n$defaut"
+
+        fi
+
+
+        sudo /etc/init.d/mysql status >/dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            printf "MYSQL      Status :$vert OK (`pgrep mysqld -x -d " "`)\n$defaut"
+        else
+            printf "MYSQL      Status :$rouge KO\n$defaut"
+        fi
+        sudo /etc/init.d/apache2 status >/dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            printf "APACHE     Status :$vert OK (`pgrep apache2 -x -d " "`)\n$defaut"
+        else
+            printf "APACHE     Status :$rouge KO\n$defaut"
+        fi
+        NAEMON_PID=`pgrep naemon -x -d " "`
+        if [ "1${NAEMON_PID}" != "1" ]; then
+            printf "NAEMON     Status :$vert OK (`pgrep naemon -x -d " "`)\n$defaut"
+        else
+            printf "NAEMON     Status :$rouge KO\n$defaut"
+        fi
+	PNP4NAGIOS_PID=`pgrep npcd -x -d " "`
+	if [ "1${PNP4NAGIOS_PID}" != "1" ]; then
+            printf "PNP4NAGIOS Status :$vert OK (`pgrep npcd -x -d " "`)\n$defaut"
+	else
+            printf "PNP4NAGIOS Status :$rouge KO\n$defaut"
+        fi
+	SYSLOG_PID=`pgrep rsyslogd -x -d " "`
+        if [ "1${SYSLOG_PID}" != "1" ]; then
+            printf "RSYSLOG    Status :$vert OK (`pgrep rsyslogd -x -d " "`)\n$defaut"
+        else
+            printf "RSYSLOG    Status :$rouge KO\n$defaut"
+	fi
+	SNMPD_PID=`pgrep snmpd -x -d " "`
+        if [ "1${SNMPD_PID}" != "1" ]; then
+            printf "SNMPD      Status :$vert OK (`pgrep snmpd -x -d " "`)\n$defaut"
+        else
+            printf "SNMPD      Status :$rouge KO\n$defaut"
+        fi
+	SNMPTRAPD_PID=`pgrep snmptrapd -x -d " "`
+        if [ "1${SNMPTRAPD_PID}" != "1" ]; then
+            printf "SNMPTRAPD  Status :$vert OK (`pgrep snmptrapd -x -d " "`)\n$defaut"
+        else
+            printf "SNMPTRAPD  Status :$rouge KO\n$defaut"
+        fi
+        sudo /etc/init.d/nrpe status >/dev/null 2>&1
+        NRPE_PID=`pgrep nrpe -x -d " "`
+        if [ "1${NRPE_PID}" != "1" ]; then
+            printf "NRPE       Status :$vert OK ($NRPE_PID)\n$defaut"
+        else
+            printf "NRPE       Status :$rouge KO\n$defaut"
+        fi
+        NSCA_PID=`pgrep nsca -x -d " "`
+        if [ "1${NSCA_PID}" != "1" ]; then
+            printf "NSCA       Status :$vert OK ($NSCA_PID)\n$defaut"
+        else
+            printf "NSCA       Status :$rouge KO\n$defaut"
+        fi
+        printf "$magenta+------------------------------------------------------+\n$defaut"
+

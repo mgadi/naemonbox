@@ -1,0 +1,96 @@
+#! /bin/sh -e
+### BEGIN INIT INFO
+# Provides:          NSCA
+# Required-Start:
+# Required-Stop:
+# X-Stop-After:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: NSCA 
+# Description:       NSCA 
+### END INIT INFO
+#!/bin/sh
+
+# simple debian init script for nsca
+# by sean finney <seanius@debian.org>
+
+DAEMON=/usr/bin/nsca
+NAME=nsca
+DESC="Nagios Service Check Acceptor"
+CONF=/etc/naemon/nsca.cfg
+OPTS="--daemon -c $CONF"
+PIDFILE="/var/run/nsca.pid"
+
+###
+
+# obviously if the daemon doesn't exist we should stop now
+if [ ! -x $DAEMON ]; then
+        exit 0
+fi
+
+# grab an arbitrary config setting from nsca.cfg
+get_config(){
+        grep "^[[:space:]]*$1=" $CONF 2>/dev/null | tail | cut -d= -f2-
+}
+
+# if the pid_file is specified in the configuration file, nsca will
+# take care of the pid handling for us.  if it isn't we should continue
+# as we have before
+PIDFILE=`get_config pid_file`
+# if pidfile isn't set
+if [ -z "$PIDFILE" ];  then
+        # then this is the default PIDFILE
+        PIDFILE="/var/run/nsca.pid"
+        # run nsca in the foreground, and have s-s-d fork it for us
+        OPTS="-f $OPTS"
+        # and then this is how we call SSD
+        SSD_STARTOPTS="--background --pidfile $PIDFILE --make-pidfile"
+        SSD_STOPOPTS="--pidfile $PIDFILE"
+else
+        # but if pid_file is set, we don't have to do anything
+        SSD_STARTOPTS="--pidfile $PIDFILE"
+        SSD_STOPOPTS="--pidfile $PIDFILE"
+fi
+
+SSD_START="/sbin/start-stop-daemon -S $SSD_STARTOPTS --exec $DAEMON"
+SSD_STOP="/sbin/start-stop-daemon -K $SSD_STOPOPTS --exec $DAEMON"
+
+die(){
+        echo $@
+        exit 1
+}
+
+case "$1" in
+start)
+        echo -n "Starting $DESC: "
+        if [ ! -d "/var/run/nagios" ]; then
+                mkdir -p /var/run/nagios || die "ERROR: couldn't create /var/run/nagios"
+        fi
+        $SSD_START -- $OPTS || die "ERROR: could not start $NAME."
+        echo "$NAME."
+;;
+stop)
+        echo -n "Stopping $DESC: "
+        $SSD_STOP -- $OPTS || die "ERROR: could not stop $NAME."
+        rm -f $PIDFILE
+        echo "$NAME."
+;;
+reload|force-reload)
+        echo -n "Reloading $DESC: "
+        $SSD_STOP --signal HUP -- $OPTS || die "ERROR: could not reload $NAME."
+        echo "$NAME."
+;;
+restart)
+        $0 stop
+        $0 start
+;;
+status)
+        NSCAID=`ps -ef | grep nsca | grep -v grep | awk '{print $2}'`
+        if [ "$NSCAID" == "" ]; then
+          echo "NSCA is not running."
+          exit
+        fi
+        echo "NSCA ID = $NSCAID"
+;;
+esac
+

@@ -1,0 +1,34 @@
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-1.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-1.o
+build/temp.linux-x86_64-2.7/conftest-1.c: In function ‘main’:
+build/temp.linux-x86_64-2.7/conftest-1.c:10:19: attention : variable ‘ret’ set but not used [-Wunused-but-set-variable]
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-2.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-2.o
+build/temp.linux-x86_64-2.7/conftest-2.c:5:39: erreur fatale: net/if_dl.h : Aucun fichier ou dossier de ce type
+compilation terminée.
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-3.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-3.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-4.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-4.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-5.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-5.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-6.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-6.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-7.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-7.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-8.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-8.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-9.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-9.o
+In file included from build/temp.linux-x86_64-2.7/conftest-9.c:5:0:
+/usr/include/netrose/rose.h:74:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:76:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:83:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:85:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:92:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:95:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:95:28: erreur: ‘AX25_MAX_DIGIS’ undeclared here (not in a function)
+/usr/include/netrose/rose.h:107:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:109:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:110:3: erreur: unknown type name ‘ax25_address’
+/usr/include/netrose/rose.h:113:3: erreur: unknown type name ‘ax25_address’
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-10.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-10.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-11.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-11.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-12.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-12.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-13.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-13.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-14.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-14.o
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DHAVE_GETIFADDRS=1 -DHAVE_GETNAMEINFO=1 -DHAVE_NETASH_ASH_H=1 -DHAVE_NETATALK_AT_H=1 -DHAVE_NETAX25_AX25_H=1 -DHAVE_NETECONET_EC_H=1 -DHAVE_NETIPX_IPX_H=1 -DHAVE_NETPACKET_PACKET_H=1 -DHAVE_LINUX_IRDA_H=1 -DHAVE_LINUX_ATM_H=1 -DHAVE_LINUX_LLC_H=1 -DHAVE_LINUX_TIPC_H=1 -DHAVE_LINUX_DN_H=1 -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-15.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-15.o
+build/temp.linux-x86_64-2.7/conftest-15.c: In function ‘main’:
+build/temp.linux-x86_64-2.7/conftest-15.c:8:17: erreur: ‘struct sockaddr’ has no member named ‘sa_len’
+build/temp.linux-x86_64-2.7/conftest-15.c:7:31: attention : variable ‘sa’ set but not used [-Wunused-but-set-variable]

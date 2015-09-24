@@ -1,0 +1,40 @@
+[ENGLISH] To resolve Time difference on VPS OpenVZ. You should configure your container to have the same time zone as the HN. Do as root (According to the time zone):
+[FRANCAIS] Pour résoudre la différence d'heure sur VPS OpenVZ. Vous devez configurer votre container pour avoir le même fuseau horaire que le Noeud Matériel. 
+Lancez les commandes suivantes, en root (en fonction du fuseau horaire):
+
+cd /etc/
+rm localtime
+ln -s /usr/share/zoneinfo/Europe/Paris ./localtime 
+
+---------------------------------------------------------------------------------------------------
+FRANCAIS :
+----------
+
+Pour installer NaemonBox :
+	
+	Lancer les commandes suivantes (en root):
+	wget https://github.com/mgadi/naemonbox/releases/download/NumVer/naemonbox-NumVer.tar.gz
+	cd naemonbox
+	bash install
+
+---------------------------------------------------------------------------------------------------
+ENGLISH :
+---------
+
+For install :
+
+	Launch (as root)
+	wget https://github.com/mgadi/naemonbox/releases/download/NumVer/naemonbox-NumVer.tar.gz
+	cd naemonbox
+	./install
+
+
+---------------------------------------------------------------------------------------------------
+
+For more information :
+
+- visit NaemonBox Website https://naemonbox.com
+- visit NaemonBox forge   https://github.com/mgadi/naemonbox
+
+Thanks for using NaemonBox.
+

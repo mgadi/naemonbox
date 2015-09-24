@@ -1,0 +1,490 @@
+#!/bin/bash
+#
+##  @Synoppsis   Install Script for Naemonbox project
+##  Developped by : Mark GADI aka MG-MONITORING
+###################################################################
+# Naemonbox is developped with GPL Licence 2.0
+#
+# GPL License: http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+# Naemonbox Install Script
+# Usage: bash install.sh
+#
+###################################################################
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+###################################################################
+
+# ENVIRONNEMENT
+export myscripts=$(readlink -f $(dirname $0))
+src=$myscripts
+. "$myscripts"/scripts/naemonbox.cfg
+
+## Script Dir ###############################################################################
+# http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  dir="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+
+dir="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+bindir="$dir/bin"
+
+###################################
+# BEGIN
+# Function: installation
+###################################
+
+installation() {
+touch $log_file
+echo "Installation started on "`date` | tee -a $log_file
+
+# Prerequisite
+printf "$line"
+echo "Install MySQL specific packages and settings          " | tee -a $log_file
+printf "$line"
+
+dbpass="$1" echo -e "\n--- Install MySQL specific packages and settings ---\n"
+        [ -n "$dbpass" ] || read -s -p "Enter MySQL root password: " dbpass
+
+echo -e "\n--- Install MySQL specific packages and settings ---\n"
+
+echo "libssl1.0.0 libssl1.0.0/restart-services    string" | debconf-set-selections
+echo "libssl1.0.0:amd64 libssl1.0.0/restart-services    string" | debconf-set-selections 
+echo "rsyslog-mysql   rsyslog-mysql/dbconfig-install  boolean false" | debconf-set-selections
+echo "rsyslog-mysql   rsyslog-mysql/mysql/app-pass    password $dbpass" | debconf-set-selections
+echo "rsyslog-mysql   rsyslog-mysql/app-password-confirm      password $dbpass" | debconf-set-selections
+echo "rsyslog-mysql   rsyslog-mysql/password-confirm  password $dbpass" | debconf-set-selections
+echo "rsyslog-mysql   rsyslog-mysql/mysql/admin-pass  password $dbpass" | debconf-set-selections
+echo "rsyslog-mysql   rsyslog-mysql/remote/port       string " | debconf-set-selections
+echo "ntop    ntop/admin_password     password $dbpass" | debconf-set-selections
+echo "ntop    ntop/admin_password_again       password $dbpass" | debconf-set-selections
+echo "ntop    ntop/interfaces string eth0" | debconf-set-selections
+echo "backup-manager  backup-manager/directories  string  /etc /home" | debconf-set-selections
+echo "backup-manager  backup-manager/backup-repository string /var/archives" | debconf-set-selections
+echo "postfix postfix/main_mailer_type        select Internet Site" | debconf-set-selections
+echo "postfix postfix/mailname string /etc/mailname" | debconf-set-selections
+echo "mysql-server mysql-server/root_password password $dbpass" | debconf-set-selections
+echo "mysql-server mysql-server/root_password_again password $dbpass" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/app-password-confirm password $dbpass" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/admin-pass password $dbpass" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/app-pass password $dbpass" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
+
+debconf-apt-progress \
+ --logfile /var/log/naemonbox-update.log \
+ -- \
+ apt-get -o Dpkg::Options::="--force-confold" \
+ -y install \
+ $APTPKGS
+ln -s /usr/bin/mail /bin/mail
+
+# environment config
+echo "syn on" > ~/.vimrc
+echo 'GRUB_BACKGROUND="/usr/share/images/grub/Lake_mapourika_NZ.tga"' >> /etc/default/grub
+update-grub
+cp $dir/contrib/.bashrc /root/
+cp $dir/contrib/motd.sh /etc/profile.d/
+$dir/update-hosts | tee -a $log_file
+mkdir /root/mibs_removed
+mv /usr/share/mibs/ietf/IPATM-IPMC-MIB /root/mibs_removed/
+mv /usr/share/mibs/ietf/SNMPv2-PDU /root/mibs_removed/ 
+mv /usr/share/mibs/ietf/IPSEC-SPD-MIB /root/mibs_removed/
+mv /usr/share/mibs/iana/IANA-IPPM-METRICS-REGISTRY-MIB /root/mibs_removed/
+cp $bindir/default/snmptrapd /etc/default/
+cp $dir/snmp/* /etc/snmp/
+cp $bindir/init.d/snmptrapd  /etc/init.d/
+update-rc.d -f snmptrapd remove
+update-rc.d snmptrapd defaults
+
+# first updatedb
+/usr/bin/updatedb
+
+# Install Naemon Core
+printf "$line"
+echo "Install Naemon Core                                 " | tee -a $log_file
+printf "$line"
+
+DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
+cd $bindir
+dpkg -i naemon/libnaemon_1.0.3_debian8_amd64.deb  | tee -a $log_file
+dpkg -i naemon/naemon*.deb | tee -a $log_file
+cp $dir/contrib/plugins/* /usr/lib/nagios/plugins/
+mkdir /var/lib/naemon/centplugins/
+
+printf "$line"
+echo "Install Addon PNP4Nagios                            "| tee -a $log_file
+printf "$line"
+$tar pnp4nagios-$pnp4nagios_version.tar.gz
+cd pnp4nagios-$pnp4nagios_version/
+./configure --with-nagios-user=naemon --with-nagios-group=naemon | tee -a $log_file
+make all | tee -a $log_file
+make install | tee -a $log_file
+make install-webconf | tee -a $log_file
+make install-config | tee -a $log_file
+make install-init | tee -a $log_file
+update-rc.d npcd defaults
+rm /usr/local/pnp4nagios/share/install.php
+# patch Eric Coquard 29/11/2014
+rm -r $bindir/pnp4nagios-$pnp4nagios_version/
+rm /etc/naemon/conf.d/printer.cfg /etc/naemon/conf.d/switch.cfg /etc/naemon/conf.d/windows.cfg
+cd $dir
+cp contrib/naemon/*.cfg /etc/naemon/ | tee -a $log_file
+cp -r contrib/naemon/conf.d/*.cfg /etc/naemon/conf.d/ | tee -a $log_file
+cp -r contrib/naemon/conf.d/templates/*.cfg /etc/naemon/conf.d/templates/ | tee -a $log_fil
+cp -r contrib/logos /usr/share/naemon/themes/themes-available/Classic/images/ | tee -a $log_file
+cp -r contrib/eventhandlers/ /usr/lib/nagios/plugins/ | tee -a $log_file
+cp $bindir/webconf/* /etc/apache2/conf-available/ | tee -a $log_file
+a2enconf pnp4nagios
+cp $bindir/wkhtmltopdf-amd64  /usr/share/naemon/script/wkhtmltopdf | tee -a $log_file
+chmod +x /usr/share/naemon/script/wkhtmltopdf
+chmod 664 /etc/naemon/cgi.cfg 
+chmod 664 /etc/naemon/conf.d/*.cfg
+chmod 664 /etc/naemon/conf.d/templates/*.cfg
+chown -R naemon:naemon /etc/naemon/*.cfg | tee -a $log_file
+chown -R naemon:naemon /etc/naemon/conf.d/*.cfg | tee -a $log_file
+
+echo '$USER2$=public' >> /etc/naemon/resource.cfg
+cp /usr/share/naemon/root/favicon.ico /var/www/
+echo "add_section('name' => 'Nagvis');">>/usr/share/naemon/menu.conf
+echo "  add_link('name' => 'Map',          'href' => '/nagvis');">>/usr/share/naemon/menu.conf
+
+
+#Compile NRPE 
+cd $bindir
+printf "$line"
+echo "Compile NRPE on Naemonbox server             " | tee -a $log_file
+printf "$line"
+$apt install xinetd openssl libssl-dev
+$tar nrpe-$nrpe_version.tar.gz
+cd nrpe-$nrpe_version
+if [ "1${check_x64}" != "1" ]; then
+		./configure --with-ssl=/usr/bin/openssl --with-ssl-lib=/usr/lib/x86_64-linux-gnu --enable-command-args --enable-ssl --with-nrpe-user=naemon --with-nrpe-group=naemon --with-nagios-user=naemon --with-nagios-group=naemon --bindir=/usr/bin --sysconfdir=/etc/naemon --libexecdir=/usr/lib/nagios/plugins/
+	else
+		./configure --with-ssl=/usr/bin/openssl --with-ssl-lib=/usr/lib --enable-command-args --enable-ssl --with-nrpe-user=naemon --with-nrpe-group=naemon --with-nagios-user=naemon --with-nagios-group=naemon --bindir=/usr/bin --sysconfdir=/etc/naemon --libexecdir=/usr/lib/nagios/plugins/
+	fi
+make all
+make install-plugin && make install-daemon && make install-daemon-config && make install-xinetd
+cp $bindir/init.d/nrpe /etc/init.d/
+update-rc.d nrpe defaults
+sed -i "s/only_from       = 127.0.0.1/only_from       = 127.0.0.1 $ip/g" /etc/xinetd.d/nrpe
+sed -i "s/allowed_hosts=127.0.0.1/allowed_hosts=127.0.0.1,$ip/g" /etc/naemon/nrpe.cfg
+rm -r $bindir/nrpe-$nrpe_version
+NRPE_PID=`pgrep nrpe -x -d " "`
+if [ "1${NRPE_PID}" != "1" ]; then
+    printf "NRPE ...... :$vert OK ($NRPE_PID)\n$defaut"
+else
+    printf "NRPE ...... :$rouge KO\n$defaut"
+fi
+
+# Compile NSCA 
+cd $bindir
+printf "$line"
+echo "Compile NSCA on Naemonbox server             " | tee -a $log_file
+printf "$line"
+$tar nsca-$nsca_version.tar.gz
+cd nsca-$nsca_version
+./configure --with-nsca-user=naemon --with-nsca-grp=naemon --bindir=/usr/bin --sysconfdir=/etc/naemon --libexecdir=/usr/lib/nagios/plugins/
+make all
+cp src/nsca /usr/bin/
+cp src/send_nsca /usr/lib/nagios/plugins/
+cp sample-config/nsca.cfg /etc/naemon/
+cp $bindir/init.d/nsca /etc/init.d/
+chmod +x /etc/init.d/nsca
+update-rc.d nsca defaults
+rm -r $bindir/nsca-$nsca_version
+NSCA_PID=`pgrep nsca -x -d " "`
+if [ "1${NSCA_PID}" != "1" ]; then
+    printf "NSCA ...... :$vert OK ($NSCA_PID)\n$defaut"
+else
+    printf "NSCA ...... :$rouge KO\n$defaut"
+fi
+
+# wmi installation for x64 
+# Prerequisite
+cd $bindir
+$tar wmi.tar.gz
+cp wmi/wmic /usr/bin/ | tee -a $log_file
+cp -r wmi/check_wmi_plus.* /usr/lib/nagios/plugins/ | tee -a $log_file
+rm -r wmi
+# patch Eric Coquard 06/12/2014 # replace localhost for hostname
+mv /etc/naemon/conf.d/localhost.cfg /etc/naemon/conf.d/$server.cfg
+sed -i "s/localhost/$server/g" /etc/naemon/conf.d/$server.cfg
+}
+
+# Function: Verify Naemon config files
+check() {
+printf "$line"
+echo "Check Naemon configuration                          " | tee -a $log_file
+printf "$line"
+/usr/bin/naemon -v /etc/naemon/naemon.cfg | tee -a $log_file
+}
+
+# Function: Start Naemon
+start() {
+printf "$line"
+echo "Starting Naemon                                     "| tee -a $log_file
+printf "$line"
+systemctl reload apache2.service
+systemctl restart xinetd.service
+systemctl start nrpe
+systemctl start nsca
+systemctl start npcd
+systemctl restart naemon
+systemctl restart snmpd 
+systemctl restart snmptrapd
+}
+installation
+check
+start
+
+# Function: installation_homepage
+installation_homepage(){
+printf "$line"
+echo "Install Naemonbox Homepage                          " | tee -a $log_file
+printf "$line"
+rm -r /var/www/html
+cd $bindir
+$tar html.tgz
+mv html /var/www
+mysqladmin -u root -p"$dbpass" create webui
+mysql -u root -p"$dbpass" webui < /var/www/html/webui.sql
+sed -i "s/"secret"/"$dbpass"/g" /var/www/html/config.php
+cd
+cd -
+cat << EOF > /var/www/index.html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="refresh" content="0; url=html/index.php" />
+</head>
+</html>
+EOF
+systemctl reload apache2
+}
+installation_homepage
+
+# Function: installation_nagvis
+installation_nagvis() {
+
+# Prerequisites
+printf "$line"
+echo "Start Nagvis Installation                           " | tee -a $log_file
+printf "$line"
+cd $bindir 
+$tar nagvis-$nagvis_version.tar.gz 
+cd nagvis-$nagvis_version
+
+./install.sh -n /etc/naemon -p /usr/local/nagvis -l "unix:/var/cache/naemon/live" -b mklivestatus -u www-data -g www-data -w /etc/apache2/conf.d -i mklivestatus -a y -o -q
+
+# create a default map
+cp $dir/contrib/nagvis/nagvis.ini.php /usr/local/nagvis/etc/
+cp $dir/contrib/nagvis/monitoring.png /usr/local/nagvis/share/userfiles/images/maps 
+cp $dir/contrib/nagvis/monitoring.cfg /usr/local/nagvis/etc/maps
+chmod 664 /usr/local/nagvis/share/userfiles/images/maps/monitoring.png
+chown www-data:www-data  /usr/local/nagvis/share/userfiles/images/maps/monitoring.png
+chmod 664 /usr/local/nagvis/etc/maps/monitoring.cfg
+chown www-data:www-data /usr/local/nagvis/etc/maps/monitoring.cfg
+rm -r $bindir/nagvis-$nagvis_version
+cp $dir/contrib/apache/apache2.conf /etc/apache2/apache2.conf 
+# patch Eric Coquard 06/12/2014
+# replace localhost for hostname
+sed -i "s/localhost/$server/g" /usr/local/nagvis/etc/maps/monitoring.cfg
+a2enconf nagvis
+systemctl reload apache2
+}
+installation_nagvis
+
+# Function: installation_glpi
+installation_glpi(){
+# Prerequisite
+printf "$line"
+echo "Install common libs and Configure GLPI              " | tee -a $log_file
+printf "$line"
+
+cd $bindir
+$tar glpi.tar.gz
+mv glpi /var/www/
+sed -i "s/http:\/\/192.168.0.44\/glpi/http:\/\/$ip\/glpi/g" /var/www/glpi/glpi.sql
+mysqladmin -u root -p"$dbpass" create glpi
+mysql -u root -p"$dbpass" glpi < /var/www/glpi/glpi.sql
+chown -R www-data:www-data /var/www/glpi/
+sed -i "s/#server = http:\/\/server.domain.com\/glpi/server = http:\/\/$ip\/glpi/g" /etc/fusioninventory/agent.cfg
+sed -i "s/http:\/\/192.168.0.19\/naemon/http:\/\/$ip\/naemon/g" /var/www/glpi/plugins/webservices/scripts/glpi7a.php
+# patch Eric Coquard 29/11/2014
+sed -i "s/var \$dbpassword= 'secret';/var \$dbpassword= '$dbpass';/g" /var/www/glpi/config/config_db.php
+a2enconf glpi
+systemctl reload apache2 | tee -a $log_file
+fusioninventory-agent --debug --debug
+# testing automated ticket from naemon with GLPI
+snmptrap -v2c -c public 127.0.0.1 '' .1.3.6.1.6.3.1.1.5.5 ifIndex i 2 ifadminStatus i 1 ifOperStatus i 1
+# clean naemon critical alarm
+snmptrap -v2c -c public 127.0.0.1 '' .1.3.6.1.6.3.1.1.5.5 ifIndex i 2 ifadminStatus i 1 ifOperStatus i 1
+}
+installation_glpi
+
+#Function: installation_cacti with rsyslog
+installation_cacti-rsyslog(){
+
+printf "$line"
+echo "Start Cacti and Rsyslog Installation                              " | tee -a $log_file
+printf "$line"
+
+cd $bindir
+$tar cacti.tar.gz
+mv cacti/ /var/www/
+useradd cacti -d /var/www/cacti/ -s /bin/false
+
+#create cacti and syslog databases
+mysqladmin -u root -p"$dbpass" create cacti
+mysql -u root -p"$dbpass" cacti </var/www/cacti/cacti-backup.sql
+mysqladmin -u root -p"$dbpass" create syslog
+mysql -u root -p"$dbpass" syslog </var/www/cacti/syslog.sql
+mysql -u root -p"$dbpass" < $dir/sql/20750.tmp.sql
+mysql -u root -p"$dbpass" < $dir/sql/20751.tmp.sql
+cp $dir/etc/rsyslog.conf /etc/
+chown -R cacti:www-data /var/www/cacti/
+cp $dir/sql/mysql.conf /etc/rsyslog.d/
+
+# create cacti crontab
+cp $dir/cron.d/cacti /etc/cron.d/
+a2enconf cacti
+systemctl restart rsyslog 
+systemctl restart mysql 
+systemctl reload apache2
+
+} 
+installation_cacti-rsyslog
+
+# Function: installation_webmin
+installation_webmin(){
+
+printf "$line"
+echo "Start Webmin Installation                              " | tee -a $log_file
+printf "$line"
+
+# Required Packages 
+dpkg -i webmin_$webmin_version.deb
+}
+installation_webmin
+
+# Function: installation_mediawiki
+installation_mediawiki(){
+
+printf "$line"
+echo "Start Mediawiki Installation                        " | tee -a $log_file
+printf "$line"
+
+cd $bindir 
+$tar wiki.tar.gz
+mv wiki/ /var/www/
+chown -R www-data:www-data /var/www/wiki
+mysqladmin -u root -p"$dbpass" create wiki
+mysql -u root -p"$dbpass" wiki < /var/www/wiki/wiki.sql
+sed -i "s/http:\/\/192.168.0.19/http:\/\/$ip/g" /var/www/wiki/LocalSettings.php
+sed -i "s/apache@192.168.0.19/apache@$ip/g" /var/www/wiki/LocalSettings.php
+sed -i "s/"secret"/"$dbpass"/g" /var/www/wiki/LocalSettings.php
+a2enconf wiki
+systemctl reload apache2 
+}
+installation_mediawiki
+
+# Function: installation 
+installation_psdash(){
+printf "$line"
+echo "Start PSDASH Installation                        " | tee -a $log_file
+printf "$line"
+$apt install build-essential python-dev curl python-setuptools
+cd $bindir/psdash
+
+cd netifaces-$netifaces_version
+$python
+cd ..
+cd pyzmq-$pyzmq_version
+$python
+cd ..
+cd msgpack-python-$msgpackpython_version
+$python
+cd ..
+cd gevent-$gevent_version
+$python
+cd ..
+cd greenlet-$greenlet_version
+$python
+cd ..
+cd zerorpc-$zerorpc_version
+$python
+cd ..
+cd glob2-$glob2_version
+$python
+cd ..
+cd psutil-$psutil_version
+$python
+cd ..
+cd Werkzeug-$Werkzeug_version
+$python
+cd ..
+cd Jinja2-$Jinja2_version
+$python
+cd ..
+cd itsdangerous-$itsdangerous_version
+$python
+cd ..
+cd Flask-$Flask_version
+$python
+cd ..
+cd psdash-$psdash_version
+$python
+cd $bindir
+cp $bindir/init.d/psdash /etc/init.d/psdash
+cp $bindir/psdash/lib1/* /usr/lib/python2.7/
+cp $bindir/psdash/lib2/* /usr/local/lib/python2.7/dist-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/
+update-rc.d psdash defaults
+systemctl start psdash
+}
+installation_psdash
+
+# Function: installation backup-manager
+installation_backup(){
+
+$apt install backup-manager
+cat << EOF > /etc/backup-manager.sh && chmod 700 /etc/backup-manager.sh
+#!/bin/sh
+test -x /usr/sbin/backup-manager || exit 0
+/usr/sbin/backup-manager
+EOF
+cp /etc/backup-manager.conf /etc/backup-manager.conf.original
+cp $dir/contrib/backup-manager.conf /etc/
+sed -i "s/"secret"/"$dbpass"/g" /etc/backup-manager.conf
+$dir/test
+
+echo "Go to URL: http://$ip/"
+}
+installation_backup
+
+installation_vmware-pack (){
+cd $bindir
+echo ubuntu > /etc/temp-release
+$tar VMware-vSphere-Perl-SDK-$vmware_vsphere_version.tar.gz
+cd vmware-vsphere-cli-distrib/
+./vmware-install.pl --default EULA_AGREED=yes
+rm /etc/temp-release
+cd ..
+rm -r vmware-vsphere-cli-distrib/
+#sed -i "s/return defined $user_agent/return (defined $user_agent/g" /usr/share/perl/5.20/VMware/VICommon.pm
+#sed -i "s/user_agent->cookie_jar->as_string ne '';/user_agent->cookie_jar->as_string ne '');/g" /usr/share/perl/5.20/VMware/VICommon.pm
+cp $dir/contrib/VICommon.pm /usr/share/perl/5.20/VMware/
+}
+installation_vmware-pack
+
+

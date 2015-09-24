@@ -1,0 +1,93 @@
+#! /bin/sh -e
+### BEGIN INIT INFO
+# Provides:          PSDASH
+# Required-Start:
+# Required-Stop:
+# X-Stop-After:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: PSDASH
+# Description:       PSDASH
+### END INIT INFO
+#!/bin/bash
+#
+# This script is for a Debian-based operating system.
+# You might need to adjust it for your OS and needs.
+ 
+# Source function library.
+#test -f /etc/init.d/functions   && . /etc/init.d/functions
+#test -f /lib/lsb/init-functions && . /lib/lsb/init-functions
+ 
+set -e
+ 
+NAME="psdash"
+DAEMON="/usr/local/bin/psdash"
+LOGS_PATH="/var/log/**/*.log"
+BIND_HOST="0.0.0.0"
+PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin"
+LOGFILE="/var/log/$NAME.log"
+PIDFILE="/var/run/$NAME.pid"
+ 
+start() {
+    echo -n "Starting: "
+ 
+    start-stop-daemon --start -m --oknodo --pidfile $PIDFILE --exec $DAEMON -- --log "$LOGS_PATH" --bind "$BIND_HOST" >> $LOGFILE 2>&1 &
+#start-stop-daemon --start -m --oknodo --pidfile $PIDFILE --exec $DAEMON -- --log "$LOGS_PATH" --bind "$BIND_HOST" >> $LOGFILE 2>&1 & 
+    echo "$NAME."
+    return
+}
+ 
+stop() {
+    echo -n "Shutting down: "
+ 
+    start-stop-daemon --stop --pidfile $PIDFILE
+ 
+    echo "$NAME."
+    return
+}
+ 
+status() {
+    PID=`cat $PIDFILE 2>/dev/null` || true
+ 
+    if [ ! -f $PIDFILE ] || [ -z "${PID}" ]
+    then
+        echo "${NAME} is not running"
+        return 3
+    fi
+ 
+    if ps "${PID}" >/dev/null 2>&1
+    then
+        echo "${NAME} is running"
+        return 0
+    else
+        echo "${NAME} is NOT running"
+        return 1
+    fi
+}
+ 
+case "$1" in
+    start)
+        status > /dev/null && status && exit 0 || true
+ 
+        start
+        sleep 1
+        status
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status
+        ;;
+    restart)
+        stop || true
+        sleep 1
+        start
+        ;;
+ 
+    *)
+        echo "Usage: {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
+exit $?

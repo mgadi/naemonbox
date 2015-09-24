@@ -1,0 +1,50 @@
+#! /bin/sh -e
+### BEGIN INIT INFO
+# Provides:          NRPE
+# Required-Start:
+# Required-Stop:
+# X-Stop-After:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: NRPE
+# Description:       NRPE
+### END INIT INFO
+#!/bin/sh
+#
+#
+#
+# NRPE init script
+set -e
+
+. /lib/lsb/init-functions
+
+NRPE_BIN=/usr/bin/nrpe
+NRPE_CONF=/etc/naemon/nrpe.cfg
+if [ ! -x $NRPE_BIN ]; then
+  echo Please set executable bit
+  exit 0
+fi
+if [ ! -f $NRPE_CONF ]; then
+  echo Configuration file not found
+  exit 0
+fi
+case $1 in
+  'start')
+  cmdtext=starting
+  echo "Starting NRPE"
+  $NRPE_BIN -n -c $NRPE_CONF -d
+;;
+ 'stop')
+ cmdtext='stopping'
+ echo "Stopping NRPE"
+ skill nrpe
+;;
+  'status')
+  cmdtext=status
+  STATUS_NRPE=`/usr/lib/nagios/plugins/check_nrpe -H 127.0.0.1`
+  echo "NRPE Status : $STATUS_NRPE"
+;;
+esac
+exit 0
+# End of nrpe script
+

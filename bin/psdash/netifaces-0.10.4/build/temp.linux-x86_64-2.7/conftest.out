@@ -1,0 +1,6 @@
+creating build/temp.linux-x86_64-2.7/build
+creating build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c build/temp.linux-x86_64-2.7/conftest-0.c -o build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-0.o
+build/temp.linux-x86_64-2.7/conftest-0.c: In function ‘main’:
+build/temp.linux-x86_64-2.7/conftest-0.c:7:19: attention : variable ‘ret’ set but not used [-Wunused-but-set-variable]
+gcc -pthread build/temp.linux-x86_64-2.7/build/temp.linux-x86_64-2.7/conftest-0.o -o build/temp.linux-x86_64-2.7/conftest
