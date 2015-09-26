@@ -13,7 +13,13 @@ Contents:
 
  01_introduction/index
  02_installation_guide/index
+ 03_user_guide/index
+ 04_Configuring_NaemonBox/index
+ 05_nagvis/index
+ 06_cacti_syslog/index
+ 07_fusioninventory/index
 
+ 
 Indices and tables
 ==================
 

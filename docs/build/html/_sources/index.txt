@@ -1,9 +1,9 @@
-.. NaemonBox Manual documentation master file, created by
+.. NaemonBox documentation master file, created by
    sphinx-quickstart on Sat Sep 26 09:35:03 2015.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to NaemonBox Manual's documentation!
+Welcome to NaemonBox's documentation!
 ============================================
 
 Contents:
@@ -11,8 +11,15 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+ 01_introduction/index
+ 02_installation_guide/index
+ 03_user_guide/index
+ 04_Configuring_NaemonBox/index
+ 05_nagvis/index
+ 06_cacti_syslog/index
+ 07_fusioninventory/index
 
-
+ 
 Indices and tables
 ==================
 
