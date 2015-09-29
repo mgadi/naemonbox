@@ -75,7 +75,7 @@ For editing , go through :
 
 3. Make changes and click on **Apply.**
 
-.. image:: /images/images/create-hostgroup.png
+.. image:: /images/create-hostgroup.png
 
 ===========
 Command Definition
