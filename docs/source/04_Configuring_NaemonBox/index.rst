@@ -124,7 +124,7 @@ For editing , go through
 
 1. **Config Tool Menu** ==> **Object Configuration** ==> **Commands**
 
-2. **Create**
+2. **Create a new command**
 
 .. image:: /images/create-commands.png
 
