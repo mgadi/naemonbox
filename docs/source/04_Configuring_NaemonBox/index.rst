@@ -129,7 +129,7 @@ For editing , go through
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
-*check_nt_cpu*
+**check_nt_cpu**
 
 We will add a "command / plugin " check_nt_cpu that will be used by the cpu use service we will create for our "host" .
 
@@ -140,7 +140,7 @@ We will add a "command / plugin " check_nt_cpu that will be used by the cpu use 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
-*check_mysql*
+**check_mysql**
 
 We will add a "command / plugin " check_mysql that will be used by mysql service we will create for our "host" .
 
@@ -151,7 +151,7 @@ We will add a "command / plugin " check_mysql that will be used by mysql service
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
-*check_local_load*
+**check_local_load**
 
 We will add a "command / plugin " check_local_load that will be used by Current Load service we will create for our "host" .
 
@@ -162,7 +162,7 @@ We will add a "command / plugin " check_local_load that will be used by Current 
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
-*check_local_procs*
+**check_local_procs**
 
 We will add a "command / plugin " check_local_procs that will be used by Total Processes service we will create for our "host" .
 
@@ -173,7 +173,7 @@ We will add a "command / plugin " check_local_procs that will be used by Total P
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
-*check_local_users*
+**check_local_users**
 
 We will add a "command / plugin " check_local_users that will be used by Current users service we will create for our "host" .
 
@@ -184,7 +184,7 @@ We will add a "command / plugin " check_local_users that will be used by Current
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
-*check_local_swap*
+**check_local_swap**
 
 We will add a "command / plugin " check_local_swap that will be used by swap usage service we will create for our "host" .
 
