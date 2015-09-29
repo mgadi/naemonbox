@@ -75,7 +75,7 @@ For editing , go through :
 
 3. Make changes and click on **Apply.**
 
-.. image:: /images/create-commands.png
+.. image:: /images/images/create-hostgroup.png
 
 ===========
 Command Definition
@@ -96,7 +96,7 @@ Add a command
 ================
 **Configuration**
 
-.. image:: /images/images/create-hostgroup.png
+.. image:: /images/create-commands.png
 
 **check_nt_uptime**
 
