@@ -9,7 +9,7 @@ Naemon Configuring Overview
 Introduction
 =========
 
-This document describes how to monitor local and Windows machines attributes, such as
+This document describes how to monitor local and Windows machines attributes, such as:
  
 • Memory Usage
 • CPU load
