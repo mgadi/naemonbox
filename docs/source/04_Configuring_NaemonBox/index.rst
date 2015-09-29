@@ -134,7 +134,7 @@ For editing , go through
 
 5. Save, click on **Apply**.
 
-.. image:: /images/check_nt_uptime.png
+.. _image:: /images/check_nt_uptime.png
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
