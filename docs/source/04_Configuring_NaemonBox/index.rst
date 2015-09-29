@@ -63,7 +63,7 @@ One of the features of Naemon' object configuration format is that you can creat
    Also, read up on the object tricks that offer shortcuts for otherwise tedious configuration tasks.    
 ..
 
-An explanation of how object inheritance works can be found :ref:`here<link rel="canonical" href="http://www.naemon.org/documentation/usersguide/objectinheritance.html">`.
+An explanation of how object inheritance works can be found :ref:`_here<link rel="canonical" href="http://www.naemon.org/documentation/usersguide/objectinheritance.html">`.
 
 I strongly suggest that you familiarize yourself with object inheritance once you read over the documentation presented below, as it will make the job of creating and maintaining object definitions much easier than it otherwise would be.
 Now it is time to create some configuration object definitions in order to monitor a new Windows machine. We will start by creating a basic host group for all Windows machines for one site.
