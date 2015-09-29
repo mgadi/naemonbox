@@ -65,9 +65,9 @@ One of the features of Naemon' object configuration format is that you can creat
 
 .. Note::
    When creating and/or editing configuration files, keep the following in mind:
-    * Lines that start with a '#' character are taken to be comments and are not processed
-    * Directive names are case-sensitive
-    * Characters that appear after a semicolon (;) in configuration lines are treated as comments and are not processed
+    1. Lines that start with a '#' character are taken to be comments and are not processed
+    2. Directive names are case-sensitive
+    3. Characters that appear after a semicolon (;) in configuration lines are treated as comments and are not processed
 ..
 
 An explanation of how object inheritance works can be found `here`_.
