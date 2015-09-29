@@ -72,8 +72,8 @@ I strongly suggest that you familiarize yourself with object inheritance once yo
 Now it is time to create some configuration object definitions in order to monitor a new Windows machine. We will start by creating a basic host group for all Windows machines for one site.
 
 .. _there: http://www.naemon.org/documentation/usersguide/objectdefinitions.html
-=======
 
+===========
 Host Group Definition
 ===========
 
