@@ -1,5 +1,5 @@
 ## Welcome to the naemonbox project##
-|build-status| |docs|
+|docs|
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=mgadi&url=https://github.com/mgadi/naemonbox&title=badges&language=&tags=github&category=software)
 
 Naemonbox - monitoring framework 
@@ -56,3 +56,8 @@ Naemonbox is distributed under GNU GPL v2 license, see LICENSE.
 Visit NaemonBox homepage at https://naemonbox.com/
 
 Thank's for using Naemonbox !
+
+.. |docs| image:: https://readthedocs.org/projects/docs/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: http://naemonbox.readthedocs.org/en/latest/?badge=latest
