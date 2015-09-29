@@ -133,7 +133,6 @@ For editing , go through
 4. Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
 
 5. Save, click on **Apply**.
-
 .. image:: /images/check_nt_uptime.png
 
 The command is now present in Naemon configuration. We can now associate it to a service.
