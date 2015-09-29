@@ -117,8 +117,6 @@ Add a command
 ================
 **Configuration**
 
-.. image:: /images/create-commands.png
-
 **check_nt_uptime**
 
 We will add a "command / plugin " check_nt_uptime that will be used by the system start service we will create for our "host" .
@@ -127,6 +125,8 @@ For editing , go through
 1. **Config Tool Menu** ==> **Object Configuration** ==> **Commands**
 
 2. **Create**
+
+.. image:: /images/create-commands.png
 
 3. Enter the command name **check_nt_uptime**. 
 
