@@ -46,7 +46,7 @@ Naemon recommends using NSClient ++. These instructions allow a NSClient basic i
  *  Check **Enable nsclient server (check_nt)**
  *  Check **Enable NRPE server (check_nrpe)**
  *  Check **Enable NSCA client**
- * Check  **Enable WMI checks**
+ *  Check  **Enable WMI checks**
 
 .. image:: /images/nsclient-install1.png
 
@@ -101,11 +101,13 @@ For editing , go through
 
 1. **Config Tool Menu** ==> **Object Configuration** ==> **Commands**
 
-2. Enter the command name **check_nt_uptime**. 
+2. **Create**
 
-3. Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
+3. Enter the command name **check_nt_uptime**. 
 
-4. Save, click on **Apply**.
+4. Enter the following command line $USER1$/check_nt -H $HOSTADDRESS$ -v UPTIME -s NsclientPassword -p 12489
+
+5. Save, click on **Apply**.
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
