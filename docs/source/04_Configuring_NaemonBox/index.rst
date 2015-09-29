@@ -1,6 +1,6 @@
 
 ======================
-Naemon Configuration exemple
+Naemon Configuration example
 ======================
 
 .. image:: /images/naemonbox-naemon-login.png
