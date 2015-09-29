@@ -55,11 +55,21 @@ NSClient++ should be installed and set up to start automatically. This should be
 Configuration
 =========
 
+Introduction
+===========
+One of the features of Naemon' object configuration format is that you can create object definitions that inherit properties from other object definitions.
+
+.. Tip:::
+   Also, read up on the object tricks that offer shortcuts for otherwise tedious configuration tasks.    
+..
+
+An explanation of how object inheritance works can be found here.
+
+I strongly suggest that you familiarize yourself with object inheritance once you read over the documentation presented below, as it will make the job of creating and maintaining object definitions much easier than it otherwise would be.
 Now it is time to create some configuration object definitions in order to monitor a new Windows machine. We will start by creating a basic host group for all Windows machines for one site.
 
 =======
 
-===========
 Host Group Definition
 ===========
 
