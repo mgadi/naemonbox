@@ -134,6 +134,8 @@ For editing , go through
 
 5. Save, click on **Apply**.
 
+.. image:: /images/check_nt_uptime.png
+
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 **check_nt_cpu**
@@ -144,6 +146,8 @@ We will add a "command / plugin " check_nt_cpu that will be used by the cpu use 
 + Enter the name of the command check_nt_cpu
 + Enter the following command line  $USER1$/check_nt -H $HOSTADDRESS$ -v CPULOAD -s NsclientPassword -p 12489
 + Save and click on apply 
+
+.. image:: /images/check_nt_cpu.png
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
@@ -156,6 +160,8 @@ We will add a "command / plugin " check_mysql that will be used by mysql service
 + Enter the following command line :    $USER1$/check_mysql -H $HOSTADDRESS$ -u user -p Password
 + Save and click on apply 
 
+.. image:: /images/check_mysql.png
+
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 **check_local_load**
@@ -166,6 +172,8 @@ We will add a "command / plugin " check_local_load that will be used by Current 
 + Enter the name of the command check_local_load
 + Enter the following command line $USER1$/check_load -H $HOSTADDRESS$ -w 5.0,4.0,3.0 -c 10.0,6.0,4.0
 + Save and click on apply 
+
+.. image:: /images/check_local_load.png
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
@@ -178,6 +186,8 @@ We will add a "command / plugin " check_local_procs that will be used by Total P
 + Enter the following command line $USER1$/check_procs -w 250 -c 400 -s RSZDT
 + Save and click on apply 
 
+.. image:: /images/check_local_users.png
+
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 **check_local_users**
@@ -189,6 +199,8 @@ We will add a "command / plugin " check_local_users that will be used by Current
 + Enter the following command line $USER1$/check_users -w 20 -c 50
 + Save and click on apply 
 
+.. image:: /images/check_local_users.png
+
 The command is now present in Naemon configuration. We can now associate it to a service.
 
 **check_local_swap**
@@ -199,6 +211,8 @@ We will add a "command / plugin " check_local_swap that will be used by swap usa
 + Enter the name of the command check_local_swap
 + Enter the following command line $USER1$/check_procs -w 20 -c 10 
 + Save and click on apply 
+
+.. image:: /images/check_local_swap.png
 
 The command is now present in Naemon configuration. We can now associate it to a service.
 
