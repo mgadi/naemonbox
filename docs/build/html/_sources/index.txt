@@ -18,7 +18,6 @@ Contents:
  05_nagvis/index
  06_cacti_syslog/index
  07_fusioninventory/index
-
  
 Indices and tables
 ==================
