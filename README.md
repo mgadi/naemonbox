@@ -61,4 +61,4 @@ Thank's for using Naemonbox !
 .. |docs| image:: https://readthedocs.org/projects/docs/badge/?version=latest
   :alt: Documentation Status
   :scale: 100%
-  :target: http://naemonbox.readthedocs.org/en/latest/?badge=latest
+  :target: https://readthedocs.org/projects/naemonbox/badge/?version=latest
