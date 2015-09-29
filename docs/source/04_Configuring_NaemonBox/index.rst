@@ -67,9 +67,10 @@ An explanation of how object inheritance works can be found `here`_.
 
 .. _here: http://www.naemon.org/documentation/usersguide/objectinheritance.html
 
-I strongly suggest that you familiarize yourself with object inheritance once you read over the documentation presented below, as it will make the job of creating and maintaining object definitions much easier than it otherwise would be.
+I strongly suggest that you familiarize yourself with object inheritance once you read over the documentation presented `there`_, as it will make the job of creating and maintaining object definitions much easier than it otherwise would be.
 Now it is time to create some configuration object definitions in order to monitor a new Windows machine. We will start by creating a basic host group for all Windows machines for one site.
 
+.. _there: http://www.naemon.org/documentation/usersguide/objectdefinitions.html
 =======
 
 Host Group Definition
