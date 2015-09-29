@@ -10,7 +10,7 @@ Introduction
 =========
 
 This document describes how to monitor local and Windows machines attributes, such as
-t
+ 
 • Memory Usage
 • CPU load
 • Disk Usage
