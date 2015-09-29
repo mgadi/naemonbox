@@ -10,7 +10,7 @@ Introduction
 =========
 
 This document describes how to monitor local and Windows machines attributes, such as
-
+t
 • Memory Usage
 • CPU load
 • Disk Usage
@@ -59,7 +59,7 @@ Introduction
 ===========
 One of the features of Naemon' object configuration format is that you can create object definitions that inherit properties from other object definitions.
 
-.. Tip:::
+.. Tip::
    Also, read up on the object tricks that offer shortcuts for otherwise tedious configuration tasks.    
 ..
 
