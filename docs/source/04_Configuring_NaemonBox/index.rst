@@ -324,7 +324,7 @@ Add a host
 We will add a Windows server-based host in our Naemon configuration.
 For editing , go through :
 
-1. Naemon Setup menu **Config Tool** ==> **Object settings** ==> **Hosts.** ==> **Create** or **Clone.** 
+1. Naemon Setup menu **Config Tool** ==> **Object settings** ==> **Hosts.** ==> **Create.** 
 
 .. image:: /images/Creating-hosts.png
 
