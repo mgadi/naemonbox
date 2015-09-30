@@ -312,12 +312,23 @@ The service is now present in Naemon configuration, we need to export it to appl
 Export Naemon Configuration Files
 Menu Config Tool/Object settings and then click Apply to save your change to disk, check your configuration changes, reload your monitoring core
 
+===========
+Host Definition
+===========
+
+A host definition is used to define a physical server, workstation, device, etc. that resides on your network.
+
 Add a host
 =========
 
 We will add a Windows server-based host in our Naemon configuration.
-We will go to the Setup menu Tool/Object settings/Hosts . Clone an existing host or creat a new one. Then, fill the fields :
+For editing , go through :
 
+1. Naemon Setup menu **Config Tool** ==> **Object settings** ==> **Hosts.** ==> **Create** or **Clone.** 
+
+.. image:: /images/Creating-hosts.png
+
+3. Make changes and click on **Apply.**
 + Host name ( "host name") : S34XXXXXXX
 + Host Description ( "Alias" ) : Web Server
 + IP address / DNS : 10.xx.xxx.xxx
