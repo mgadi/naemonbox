@@ -3,7 +3,7 @@
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=mgadi&url=https://github.com/mgadi/naemonbox&title=badges&language=&tags=github&category=software)
 
 .. image:: https://readthedocs.org/projects/docs/badge/?version=latest
- :target: https://readthedocs.org/projects/naemonbox/badge/?version=lates
+ :target: https://readthedocs.org/projects/naemonbox/badge/?version=latest
  :alt: Documentation Status
  :scale: 100%
 
