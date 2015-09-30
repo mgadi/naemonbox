@@ -330,6 +330,7 @@ For editing , go through :
 .. image:: /images/Creating-hosts.png
 
 3. Make changes and click on **Apply.**
+
 + Host name ( "host name") : S34XXXXXXX
 + Host Description ( "Alias" ) : Web Server
 + IP address / DNS : 10.xx.xxx.xxx
