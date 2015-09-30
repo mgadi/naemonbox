@@ -1,7 +1,11 @@
 ## Welcome to the naemonbox project##
 
-|docs|
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=mgadi&url=https://github.com/mgadi/naemonbox&title=badges&language=&tags=github&category=software)
+
+.. image:: https://readthedocs.org/projects/docs/badge/?version=latest
+        :target: https://readthedocs.org/projects/naemonbox/badge/?version=lates
+        :alt: Documentation Status
+        :scale: 100%
 
 Naemonbox - monitoring framework 
 
@@ -58,7 +62,4 @@ Visit NaemonBox homepage at https://naemonbox.com/
 
 Thank's for using Naemonbox !
 
-.. |docs| image:: https://readthedocs.org/projects/docs/badge/?version=latest
-    :alt: Documentation Status
-    :scale: 100%
-    :target: https://readthedocs.org/projects/naemonbox/badge/?version=latest
+
