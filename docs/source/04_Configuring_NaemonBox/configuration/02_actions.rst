@@ -17,4 +17,4 @@ A browser that allows you to navigate to the directory containing Naemon configu
 
 Objects Tree
 =========
-An Objects Browser inside Naemon configuration files located in  **/etc/naemon/conf.d/** folder.
+An Objects Browser inside Naemon configuration files located folder in  **/etc/naemon/conf.d/** folder.
