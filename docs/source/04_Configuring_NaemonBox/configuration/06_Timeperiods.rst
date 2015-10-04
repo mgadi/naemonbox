@@ -21,6 +21,9 @@ Configuration
 
 The configuration of time periods is done in the menu: **Config Tool ==> Object Configuration ==> Timeperiods ==> Create a new timeperiod**.
 
+.. image:: /images/timeperiods.png
+ :scale: 90 %
+ 
 Basic options 
 =============
 
