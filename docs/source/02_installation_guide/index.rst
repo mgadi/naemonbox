@@ -46,7 +46,7 @@ Get the latest tarball here https://github.com/mgadi/naemonbox/releases/latest
 Installing
 =========
 
-When installing from a released tarball, you need to run as root
+A video installation instructions of Naemonbox is avalaible `here <https://youtu.be/WG096n-lzvc?t=94>`_. When installing from a released tarball, you need to run as root. 
 
 ::
 
