@@ -1,5 +1,5 @@
 =============
-Configuration
+Configuration example
 =============
 
 .. toctree::
