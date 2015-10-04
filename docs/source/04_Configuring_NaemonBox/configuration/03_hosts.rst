@@ -5,12 +5,12 @@ Hosts Definition
 
 A host definition is used to define a physical server, workstation, device, etc. that resides on your network.
 
+.. image:: /images/hosts-definition.png
+ :scale: 90 %
+
 Create a host
 =========
 
-.. image:: /images/hosts-definition.png
- :scale: 90 %
- 
 Directive Descriptions
 
 **host_name:**	This directive is used to define a short name used to identify the host. It is used in host group and service definitions to reference this particular host. Hosts can have multiple services (which are monitored) associated with them. When used properly, the $HOSTNAME$ macro will contain this short name.
