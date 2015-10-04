@@ -27,4 +27,4 @@ Configuration example
 
    overview.rst
    windows_agent_installation.rst
-   configuration/index.rst
+

@@ -15,3 +15,6 @@ There are three types of command:
 *       **Miscellaneous** commands are used by the additional modules (to perform certain actions), by the scheduler for data processing, etc.
 
 All the commands can be configured in the menu: **Config Tool ==> Object Configuration ==> Commands ==> Creat a new command**.
+
+.. image:: /images/commands.png
+ :scale: 90 %
