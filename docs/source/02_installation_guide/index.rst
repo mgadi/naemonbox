@@ -24,7 +24,7 @@ Client Operating Systems
    • Linux/Unix: 2.4+ kernel Linux distributions, Solaris 9+ , FreeBSD 6.4+, AIX 5.2/5.3 
 
 
-openvz VPS installation
+Openvz VPS installation
 =======
 To use NaemonBox on openvz VPS, first you need to do as root (according to your timezone, change the third command line below):
 
@@ -43,7 +43,7 @@ Once you have access to your server, either directly or by SSH, you can install 
 
 Get the latest tarball here https://github.com/mgadi/naemonbox/releases/latest
 
-Installing
+Installing Naemonbox
 =========
 
 A video installation instructions of Naemonbox is avalaible `here <https://youtu.be/WG096n-lzvc?t=94>`_. When installing from a released tarball, you need to run as root. 
