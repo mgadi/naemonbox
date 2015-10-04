@@ -4,6 +4,8 @@ Actions
 
 In the Config Tool / Object settings  menu it is possible to perform certain “generic” actions on the various objects.
 
+.. image:: /images/Actions.PNG
+ :scale: 90 %
 
 Create a new Hosts / Services /... / Contactgroups
 =========
@@ -17,4 +19,4 @@ A browser that allows you to navigate to the directory containing Naemon configu
 
 Objects Tree
 =========
-An Objects Browser inside Naemon configuration files located in  **/etc/naemon/conf.d/** folder.
+An Objects Browser inside Naemon configuration files located folder in  **/etc/naemon/conf.d/** folder.

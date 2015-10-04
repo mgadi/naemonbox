@@ -1,5 +1,5 @@
 ======================
-Configuration Naemon  
+Configuring Naemon  
 ======================
 
 .. image:: /images/naemonbox-naemon-login.png
