@@ -18,7 +18,7 @@ Configuration
    10_Apply.rst
    
 =============
-Configuration example
+Configuration by example
 =============
 
 .. toctree::
