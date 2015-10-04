@@ -1,16 +1,4 @@
 =============
-Configuration example
-=============
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-
-   overview.rst
-   windows_agent_installation.rst
-   configuration/index.rst
-
-=============
 Configuration
 =============
 
@@ -28,3 +16,15 @@ Configuration
    08_contact.rst
    09_tools.rst
    10_Apply.rst
+   
+=============
+Configuration example
+=============
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+
+   overview.rst
+   windows_agent_installation.rst
+   configuration/index.rst
