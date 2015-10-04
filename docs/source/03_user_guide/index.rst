@@ -24,7 +24,7 @@ I recommend you read the product documents:
 
 Step two
 =========
-.. image:: /images/naemonbox-naemon-login.png
+.. image:: /images/naemonbox-naemon-login-1.png
  :scale: 50 %
  
 Connect to applications
