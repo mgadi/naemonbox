@@ -8,7 +8,7 @@ A host definition is used to define a physical server, workstation, device, etc.
 Create a host
 =========
 
-.. image:: /images/Creating-hosts.png
+.. image:: /images/hosts-definition.png
  :scale: 90 %
  
 Directive Descriptions
