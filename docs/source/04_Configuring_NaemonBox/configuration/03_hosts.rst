@@ -28,6 +28,8 @@ Directive Descriptions
 
 **new attribute:** A field used to add a new directive wich is filled with the **add new attribute** button.
 
-A descrition of all directives is located here http://www.naemon.org/documentation/usersguide/objectdefinitions.html#host
+A descrition of all directives is located `here`_. 
+
+.. _here: http://www.naemon.org/documentation/usersguide/objectdefinitions.html#host
 
 **apply** Click on apply to save.
