@@ -17,6 +17,15 @@ To add  a contact, simply go to the menu: **Config Tool ==> Object Configuration
  
 To display the matrix of notification of a contact, click on **View contact notifications** next to the **Add** menu).
 
+.. image:: /images/contacts.png
+ :scale: 90 %
+ 
+ .. image:: /images/contacts-new-attributes.png
+ :scale: 90 %
+ 
+ .. image:: /images/contacts-2.png
+ :scale: 90 %
+ 
 *******************
 General information
 *******************
