@@ -54,6 +54,6 @@ Step four
 How to monitor remote devices or services ? Several ways are possibles according to the host type’s.
 
  * Linux host (debian like, Centos…) : install SNMP agent and/or NRPE
- * Windows Host : install snmp and/or nsclient++ or via WMI (Naemonbox is ready for WMI :+1: )
+ * Windows Host : install snmp and/or nsclient++ or via WMI (Naemonbox is ready for WMI)
  * Network Host (switch, router, firewall) : enable SNMP
  * Network services (http, ftp, smtp, pop…) : Many plugins are availables in /usr/lib/nagios/plugins
