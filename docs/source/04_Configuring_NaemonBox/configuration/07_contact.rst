@@ -41,37 +41,37 @@ General information
 * The **host_notification_enable** directive allows us to enable the sending of notifications to the user.
 * The **service_notification_commands** field serves to choose the notification command to a service.
 * The **service_notification_options** field serves to define states for which notifications can be sent out to this contact..
-
+* **minimum_value**: 	This directive is used as the value that the host or service hourly value must equal before notification is sent to this contact.
+* **pager**: 	This directive is used to define a pager number for the contact.
+* **addressx**: 	Address directives are used to define additional "addresses" for the contact.
+* **retain_status_information**: 	This directive is used to determine whether or not status-related information about the contact is retained across program restarts.
+* **retain_nonstatus_information**: 	This directive is used to determine whether or not non-status information about the contact is retained across program restarts.
 
 
 ***********************
-Naemon authentication
+User Configuration
 ***********************
- 
-* The **Reach Naemon Front-end** field serves to authorize the user to access the Naemon web interface.
+You can either edit or create, simply go to the menu: **Config Tool ==> User settings**. 
+
+* The **Usernamed** field serves to select an existing user to change or to create a new user (just type his name) to access the Naemon web interface. 
+* The **Contact Exists**  field let us edit the user settings
 * The **Password** and **Confirm Password** fields contain the user password.
-* The **Default Language** field serves to define the language of the Naemon interface for this user.
-* The **Admin** field defined if this user is the administrator of the supervision platform or not.
-* The **Autologin key** serves to define a connection key for the user. The user will no longer need to enter his / her login and password but will use this key to log in directly. Connection syntax:
+You can now set to yes or no the global authorization functionality when determining what the users have access to. 
+More information on how to setup authentication and configure authorization for the CGIs can be found `here <http://www.naemon.org/documentation/usersguide/cgiauth.html>`_.
+
+
 
   ::
 
       http://[IP_DU_SERVER_CENTRAL]/index.php?autologin=1&useralias=[login_user]&token=[value_autologin]
 
-.. note:: 
-    The Possibility of automatic connection (auto login) should be enabled in the menu: **Administration ==> Options**.
+.. tip:: 
+
+    A sample CGI configuration file (*/etc/naemon/cgi.cfg*) is installed for you.
 
 * The **Authentication Source** field specifies if the connection information comes from an LDAP directory or information stored locally on the server.
 * The **Access list groups** field serves to define an access group to a user (group use for access control (ACL)).
 
 .. note::
 
-     A Administrative user is never concerned by access control even linked to an access group.
-
-**********************
-Additional information
-**********************
-
-* The **Address** fields allow us to specify the data of additional contacts (other e-mails, other telephone numbers, etc.).
-* The **Status** and **Comment** fields serve to enable or disable the contact and to make comments on it.
-
+     The defaut Admin user has all authorisations set to **yes**.
