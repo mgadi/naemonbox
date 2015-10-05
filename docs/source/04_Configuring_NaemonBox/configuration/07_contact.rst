@@ -13,17 +13,21 @@ The contacts in Naemon are used to:
 * Log in to the Naemon web interface: each contact has its own rights of connection to the web interface.
 * Be warned in case of necessity (notification).
 
-To add  a contact, simply go to the menu: **Config Tool ==> Object Configuration ==> Services ==> Create a new contact**.
+To add  a contact, simply go to the menu: **Config Tool ==> Object Configuration ==> Contacts ==> Create a new contact**.
  
-To display the matrix of notification of a contact, click on **View contact notifications** next to the **Add** menu).
+To display the matrix of notification of a contact, click on **View contact notifications** next to the **Add** menu.
 
 .. image:: /images/contacts.png
  :scale: 90 %
+
+To add new attributes, clik on **add new attributes**.
  
- .. image:: /images/contacts-new-attributes.png
+.. image:: /images/contacts-new-attributes.png
  :scale: 90 %
- 
- .. image:: /images/contacts-2.png
+
+**Click on finish**.
+
+.. image:: /images/contacts-2.png
  :scale: 90 %
  
 *******************
