@@ -33,8 +33,8 @@ General information
 * The **alias** field is used to define a longer name or description for the contact.
 * The **use** field allows us to link the contact to a Model of contact.
 * The **can_submit_commands** directive is used to determine whether or not the contact can submit external commands to Naemon from the CGIs. Values: 0 = don't allow contact to submit commands, 1 = allow contact to submit commands. 
-* The **contactgroups** is used to associated the contact to one or more groups of contacts.
 * The **email** field contain the e-mail address of the contact (to send out an alert email to the contact).
+* The **contactgroups** is used to associated the contact to one or more groups of contacts.
 * The **host_notification_commands** field serves to choose the notification command to a host.
 * The **host_notification_options** field serves to define states for which notifications can be sent out to this contact..
 * The **host_notification_period** field serves to choose the time period for which notifications can be sent.
