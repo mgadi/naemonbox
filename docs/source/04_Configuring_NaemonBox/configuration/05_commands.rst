@@ -14,7 +14,7 @@ There are three types of command:
 *       **Notification** commands are used by the schedulers to alert the contacts (via mail, SMS, etc.).
 *       **Miscellaneous** commands are used by the additional modules (to perform certain actions), by the scheduler for data processing, etc.
 
-All the commands can be configured in the menu: **Config Tool ==> Object Configuration ==> Commands ==> Creat a new command**.
+All the commands can be configured in the menu: **Config Tool ==> Object Configuration ==> Commands ==> Create a new command**.
 
 .. image:: /images/commands.png
  :scale: 90 %
