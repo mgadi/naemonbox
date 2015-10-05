@@ -12,8 +12,8 @@ Configuration
    configuration/04_services.rst
    configuration/05_commands.rst
    configuration/06_Timeperiods.rst
-   configuration/07_groups.rst
-   configuration/08_contact.rst
+   configuration/07_contact.rst
+   configuration/08_groups.rst
    configuration/09_tools.rst
    configuration/10_Apply.rst
    
