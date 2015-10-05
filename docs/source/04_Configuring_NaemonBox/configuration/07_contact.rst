@@ -64,9 +64,9 @@ More information on how to setup authentication and configure authorization for 
 
     A sample CGI configuration file (*/etc/naemon/cgi.cfg*) is installed for you.
 
-* The CGI allows you to view objects (i.e. hosts, host groups, contacts, contact groups, time periods, services, etc.) that you have defined in your object configuration file(s). 
+* This CGI allows you to view objects (i.e. hosts, host groups, contacts, contact groups, time periods, services, etc.) that you have defined in your object configuration file(s). 
 * You must be authorized for configuration information in order to any kind of configuration information.
 
 .. note::
 
-     The defaut Admin user has all authorisations set to **yes**.
+     The defaut admin user has all authorisations set to **yes**.
