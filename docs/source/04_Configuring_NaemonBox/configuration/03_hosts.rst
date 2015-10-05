@@ -5,6 +5,9 @@ Hosts Definition
 
 A host definition is used to define a physical server, workstation, device, etc. that resides on your network.
 
+All additions of hosts are done in the menu: **Config Tool ==> Object Configuration ==> Hosts ==> Create a
+new host**.
+
 .. image:: /images/hosts-definition.png
  :scale: 90 %
 
