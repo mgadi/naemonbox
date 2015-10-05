@@ -15,7 +15,7 @@ The contacts in Naemon are used to:
 
 To add a contact, simply go to the menu: **Config Tool ==> Object Configuration ==> Contacts ==> Create a new contact**.
  
-To display the matrix of notification of a contact, click on **View contact notifications** next to the **Add** menu.
+To display a contact, click on the **Object Configuration** field under **Contacts**, then click on the **Show** button.
 
 .. image:: /images/contacts.png
  :scale: 90 %
