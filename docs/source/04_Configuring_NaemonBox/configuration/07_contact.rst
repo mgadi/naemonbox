@@ -20,7 +20,7 @@ To display the matrix of notification of a contact, click on **View contact noti
 .. image:: /images/contacts.png
  :scale: 90 %
 
-To add neww attributes, clik on **add new attributes**.
+To add new attributes, clik on **add new attributes**.
  
 .. image:: /images/contacts-new-attributes.png
  :scale: 90 %
