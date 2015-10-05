@@ -60,17 +60,12 @@ You can now set to yes or no the global authorization functionality when determi
 More information on how to setup authentication and configure authorization for the CGIs can be found `here <http://www.naemon.org/documentation/usersguide/cgiauth.html>`_.
 
 
-
-  ::
-
-      http://[IP_DU_SERVER_CENTRAL]/index.php?autologin=1&useralias=[login_user]&token=[value_autologin]
-
 .. tip:: 
 
     A sample CGI configuration file (*/etc/naemon/cgi.cfg*) is installed for you.
 
-* The **Authentication Source** field specifies if the connection information comes from an LDAP directory or information stored locally on the server.
-* The **Access list groups** field serves to define an access group to a user (group use for access control (ACL)).
+* The CGI allows you to view objects (i.e. hosts, host groups, contacts, contact groups, time periods, services, etc.) that you have defined in your object configuration file(s). 
+* You must be authorized for configuration information in order to any kind of configuration information.
 
 .. note::
 
