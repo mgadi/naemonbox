@@ -50,9 +50,7 @@ GNU/Linux Debian 7 (or later) Installation
 
 Once you have access to your server, either directly or by SSH, you can install Naemonbox using the install script.
 
-Get the latest tarball `here`_ . 
-
-.. _here: https://github.com/mgadi/naemonbox/releases/latest
+Get the latest tarball `here <https://github.com/mgadi/naemonbox/releases/latest>`_ . 
 
 Installing Naemonbox
 =========
