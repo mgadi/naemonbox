@@ -10,8 +10,8 @@ Definition
 
 The contacts in Naemon are used to:
 
-* Log in to the Naemon web interface: each contact has its own rights of connection to the web interface.
-* Be warned in case of necessity (notification).
+* Log in to the Naemon web interface: each contact has its own rights of authentication to the web interface.
+* Be warned in the event of a problem on your network (notification).
 
 To add a contact, simply go to the menu: **Config Tool ==> Object Configuration ==> Contacts ==> Create a new contact**.
  
