@@ -29,15 +29,20 @@ According to your needs, add more attributes by clicking on **add new attributes
 General information
 *******************
 
-* The **Alias/Login** field defined the login to access the web interface.
-* The **Full Name** field contains the name and first name of the user.
-* The **EMail** and **Pager** fields contain respectively the e-mail address and the telephone number of the user (in the case of a notification by SMS or call for instance).
-* The field **Contact template used** allows us to link the contact to a Model of contact.
-* The **Linked to Contact Groups** list associated the contact to one or more groups of contacts.
-* The **Enable Notifications** field allows us to enable the sending of notifications to the user.
-* The **Host / Service Notification Options** field serves to define the statuses to which notifications are sent.
-* The **Host / Service Notification Period** field serves to choose the time period in which notifications are sent.
-* The **Host / Service Notification Command** field serves to choose the notification command to a host or a service.
+* The **contact_name** field defined the login to access the web interface.
+* The **alias** field is used to define a longer name or description for the contact.
+* The **use** field allows us to link the contact to a Model of contact.
+* The **can_submit_commands** directive is used to determine whether or not the contact can submit external commands to Naemon from the CGIs. Values: 0 = don't allow contact to submit commands, 1 = allow contact to submit commands. 
+* The **contactgroups** is used to associated the contact to one or more groups of contacts.
+* The **email** field contain the e-mail address of the contact (to send out an alert email to the contact).
+* The **host_notification_commands** field serves to choose the notification command to a host.
+* The **host_notification_options** field serves to define states for which notifications can be sent out to this contact..
+* The **host_notification_period** field serves to choose the time period for which notifications can be sent.
+* The **host_notification_enable** directive allows us to enable the sending of notifications to the user.
+* The **service_notification_commands** field serves to choose the notification command to a service.
+* The **service_notification_options** field serves to define states for which notifications can be sent out to this contact..
+
+
 
 ***********************
 Naemon authentication
