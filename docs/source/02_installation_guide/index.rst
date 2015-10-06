@@ -2,6 +2,15 @@
 Installation Guide
 ==============
 
+The table below provides naemon system (only) recommandation based on one poller
+
+======================= ==================== ================= ========= ========
+Monitored Nodes /Hosts  Monitored Services   Hard Drive Space  CPU Cores RAM
+50                      250                  40 GB             1-2       1-4 GB
+100                     500                  80 GB             2-4       4-8 GB 
+>500                    >2500                120 GB            >4        >8 GB
+======================= ==================== ================= ========= ========
+
 System requirements
 =========
 
@@ -41,7 +50,7 @@ GNU/Linux Debian 7 (or later) Installation
 
 Once you have access to your server, either directly or by SSH, you can install Naemonbox using the install script.
 
-Get the latest tarball here https://github.com/mgadi/naemonbox/releases/latest
+Get the latest tarball `here <https://github.com/mgadi/naemonbox/releases/latest>`_ . 
 
 Installing Naemonbox
 =========

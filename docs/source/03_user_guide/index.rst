@@ -38,10 +38,22 @@ You are strongly suggested to change credentials of the admin default user. Read
 Configure the monitoring
 
 there are 2 ways :
+
 1. Manualy, you can edit nagios/naemon config files. Not recommanded because you need to use an editor in text mode (vi, nano…).
-2. Use Naemon web config tool to configure and manage nagios. That is what we will detail in the nexte step 
+
+2. Use Naemon web config tool to configure and manage naemon. That is what we will detail in the nexte step 
 
 Step three 
 =========
 
 **The Basics** workings are all the elements that are involved in the monitoring and notification logic. There are described here, let's go into details !
+
+Step four
+=========
+
+How to monitor remote devices or services ? Several ways are possibles according to the host type’s.
+
+ * Linux host (debian like, Centos…) : install SNMP agent and/or NRPE
+ * Windows Host : install snmp and/or nsclient++ or via WMI (Naemonbox is ready for WMI)
+ * Network Host (switch, router, firewall) : enable SNMP
+ * Network services (http, ftp, smtp, pop…) : Many plugins are availables in /usr/lib/nagios/plugins
