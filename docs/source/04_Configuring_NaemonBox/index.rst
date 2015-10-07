@@ -1,5 +1,5 @@
 =============
-Configuration
+Configuring Naemon
 =============
 
 .. toctree::
