@@ -41,12 +41,12 @@ there are 2 ways :
 
 1. Manualy, you can edit nagios/naemon config files. Not recommanded because you need to use an editor in text mode (vi, nano…).
 
-2. Use Naemon web config tool to configure and manage naemon. That is what we will detail in the nexte step 
+2. Use Naemon web config tool to configure and manage naemon. That is what we will detail in the next  step 
 
 Step three 
 =========
 
-**The Basics** workings are all the elements that are involved in the monitoring and notification logic. There are described here, let's go into details !
+**The Basics** workings are all the elements that are involved in the monitoring and notification logic. There are described in `Configuring Naemon`_, let's go into details !
 
 Step four
 =========
