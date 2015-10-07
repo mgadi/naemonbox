@@ -30,4 +30,6 @@ Configuration by example
 
    overview.rst
    windows_agent_installation.rst
+   01.rst
+
 
