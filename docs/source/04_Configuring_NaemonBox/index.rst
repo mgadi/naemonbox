@@ -1,3 +1,6 @@
+
+.. _04_Configuring_NaemonBox/index
+
 =============
 Configuring Naemon
 =============
