@@ -1,5 +1,5 @@
 ==============
-User Guide
+Getting Started
 ==============
 This is a quick guide to the basics of `Naemonbox <https://naemonbox.com/>`_, written from a new user’s perspective. We don’t talk about advanced concepts for all apps. Visit the project website that provide complete documentation.
 
