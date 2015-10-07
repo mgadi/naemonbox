@@ -236,7 +236,7 @@ Setting the Service Template : *TMP-McAfee_Services*
 + Command verification : check_nt_services
 + Arguments: 'McAfee Framework Service!McShield McAfee!McAfee Task Manager!McAfee Validation Trust Protection Service'
 
-*McAfee_Service* Definition
+**McAfee_Service** Definition
 
 This service uses the command check_nt_services
 
