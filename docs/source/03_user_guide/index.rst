@@ -46,7 +46,7 @@ there are 2 ways :
 Step three 
 =========
 
-**The Basics** workings are all the elements that are involved in the monitoring and notification logic. There are described in  `configuring-naemon` section. 
+**The Basics** workings are all the elements that are involved in the monitoring and notification logic. There are described in  `configuring-naemon`_ section. 
 
 Step four
 =========
@@ -57,3 +57,5 @@ How to monitor remote devices or services ? Several ways are possibles according
  * Windows Host : install snmp and/or nsclient++ or via WMI (Naemonbox is ready for WMI)
  * Network Host (switch, router, firewall) : enable SNMP
  * Network services (http, ftp, smtp, pop…) : Many plugins are availables in /usr/lib/nagios/plugins
+ 
+.. _configuring-naemon http://naemonbox.readthedocs.org/en/latest/04_Configuring_NaemonBox/#configuring-naemon
