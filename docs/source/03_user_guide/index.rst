@@ -58,4 +58,4 @@ How to monitor remote devices or services ? Several ways are possibles according
  * Network Host (switch, router, firewall) : enable SNMP
  * Network services (http, ftp, smtp, pop…) : Many plugins are availables in /usr/lib/nagios/plugins
  
-.. _configuring-naemon http://naemonbox.readthedocs.org/en/latest/04_Configuring_NaemonBox/#configuring-naemon
+.. _configuring-naemon: http://naemonbox.readthedocs.org/en/latest/04_Configuring_NaemonBox/#configuring-naemon
