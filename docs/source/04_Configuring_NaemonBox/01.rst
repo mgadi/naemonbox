@@ -1,59 +1,7 @@
 
 ======================
-Configuring Naemon  
+How-to Monitor
 ======================
-
-.. image:: /images/naemonbox-naemon-login.png
-
-
-Introduction
-=========
-
-This document describes how to monitor local and Windows machines attributes, such as:
- 
-• Memory Usage
-• CPU load
-• Disk Usage
-
-Overview
-=========
-
-.. image:: /images/monitoring-windows.png
-Monitoring services or attributes of a Windows machine requires the installation of an agent. This agent acts as a proxy between the Nagios plugin and the actual service or attribute of the Windows machine to be monitored . Without installing an agent on the Windows machine, Naemon would be unable to monitor local services or attributes of the Windows machine.
-
-For this example, we will install NSClient ++ on the Windows machine and using the plugin check_nrpe that will communicate with the addon NSClient .
-
-Steps
-=========
-
-There are several steps you need to follow in order to monitor a new Windows machine:
-
-
-• Install a monitoring agent on the Windows machine
-• Create new host and service definitions for monitoring the Windows machine
-• Restart the Naemon Service
-
-Windows Agent Installation
-=========
-
-Naemon recommends using NSClient ++. These instructions allow a NSClient basic installation and Naemon configuration to monitor the Windows machine.
-
-
-1.  Download the latest stable version from http://www.nsclient.org
-2. Install NSClient++ and use the "Complete" setup type to make sure you got all features. On the next page use the default path for nsclient.ini and make sure "Install sample configuration" are checked
-3. Enter all hosts that are allowed to connect to NSClient++, separate multiple IP's with ",". Make sure to check the following:
- *  Check **Enable common check plugins**
- *  Check **Enable nsclient server (check_nt)**
- *  Check **Enable NRPE server (check_nrpe)**
- *  Check **Enable NSCA client**
- *  Check  **Enable WMI checks**
-
-.. image:: /images/nsclient-install1.png
-
-NSClient++ should be installed and set up to start automatically. This should be enough to start with some basic Windows monitoring.
-
-Configuration
-=========
 
 Introduction
 ===========
