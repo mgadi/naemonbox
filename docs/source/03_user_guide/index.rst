@@ -46,7 +46,7 @@ there are 2 ways :
 Step three 
 =========
 
-**The Basics** workings are all the elements that are involved in the monitoring and notification logic. There are described in `Configuring Naemon`_, let's go into details !
+**The Basics** workings are all the elements that are involved in the monitoring and notification logic. There are described in  `Configuring Naemon <04_Configuring_NaemonBox/index>` Section. let's go into details !
 
 Step four
 =========
