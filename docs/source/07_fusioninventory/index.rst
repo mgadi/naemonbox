@@ -18,8 +18,10 @@ ESX Client
 =========
 Do the following commands :
 
-* fusioninventory-esx --user root --password 'n-26sus1' --host @IP --directory /tmp
-* fusioninventory-injector -v --file /tmp/HSOTNAME-2013-11-04-07-13-32.ocs -u http://your_ip_address/glpi/plugins/fusioninventory/
+.. code-block:: console
+
+    # fusioninventory-esx --user root --password 'password' --host @IP --directory /tmp
+    # fusioninventory-injector -v --file /tmp/HOSTNAME-2013-11-04-07-13-32.ocs -u http://your_ip_address/glpi/plugins/fusioninventory/
 
 GLPI Console
 =========
