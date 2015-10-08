@@ -57,8 +57,6 @@ For complete documentation see http://naemonbox.readthedocs.org/en/latest/#welco
 
 If you have any question (after RTFM!), please post it on the official Q&A forum https://groups.google.com/forum/#!forum/naemonbox-users
 
-Thank's for using Naemonbox !
-
-
+Thank's for using `Naemonbox <https://naemonbox.com/>`_  !
 
 
