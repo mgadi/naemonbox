@@ -51,10 +51,9 @@ Go to url http://your_ip_adress/
 
 Naemonbox is distributed under GNU GPL v2 license, see LICENSE.
 
-Documentation
-=============
+### Documentation ###
 
-For complete documentation see `Naemonbox's Documentation <http://naemonbox.readthedocs.org/en/latest/#welcome-to-naemonbox-s-documentation>`_, visit `Naemonbox Homepage <https://naemonbox.com/>`_.
+For complete documentation see http://naemonbox.readthedocs.org/en/latest/#welcome-to-naemonbox-s-documentation, visit `Naemonbox Homepage <https://naemonbox.com/>`_.
 Thank's for using Naemonbox !
  
 
