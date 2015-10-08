@@ -16,7 +16,7 @@ Windows Client
 
 ESX Client
 =========
-Do the following commands :
+FusionInventory can contact a ESX/ESXi/vCenter serveur using the VMware SOAP API. It will identify the ESX server and the associated virtual machine. At the end, it will push XML inventory of the machines to the server. Do the following commands, as root :
 
 .. code-block:: console
 
