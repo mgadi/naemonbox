@@ -53,13 +53,9 @@ Naemonbox is distributed under GNU GPL v2 license, see LICENSE.
 
 ### Documentation ###
 
-For complete documentation see `Naemonbox Documentation <http://naemonbox.readthedocs.org/en/latest/#welcome-to-naemonbox-s-documentation>`_
+For complete documentation see https://naemonbox.com/
 
-If you have any question (after RTFM!), please post it on the official Q&A `forum`_. 
+Thank's for using Naemonbox !
 
-
-Thank's for using `Naemonbox <https://naemonbox.com/>`_  !
-
- .._forum: https://groups.google.com/forum/#!forum/naemonbox-users
 
 
