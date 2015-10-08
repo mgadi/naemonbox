@@ -59,6 +59,6 @@ If you have any question (after RTFM!), please post it on the official Q&A `foru
 
 Thank's for using Naemonbox !
 
-.. _forum: https://groups.google.com/forum/#!forum/naemonbox-users 
+ .. _forum: https://groups.google.com/forum/#!forum/naemonbox-users 
 
 
