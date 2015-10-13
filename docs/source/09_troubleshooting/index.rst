@@ -1,3 +1,4 @@
+.. _09_troubleshooting/index
 
 Troubleshooting
 ===============
@@ -7,4 +8,4 @@ Troubleshooting
    :glob:
 
 
-troubleshooting-naemonbox.rst
+   troubleshooting-naemonbox.rst
