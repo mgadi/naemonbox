@@ -3,5 +3,8 @@ Troubleshooting
 ===============
 
 .. toctree::
+   :maxdepth: 2
+   :glob:
 
-troubleshooting-naemon
+
+troubleshooting-naemonbox.rst
