@@ -2,9 +2,6 @@
 About Naemonbox
 ==============
 
-.. image:: /images/debian.png
- :scale: 90 %
-
 `Naemonbox <https://naemonbox.com/>`_ is a monitoring framework. It comes with a set of applications that meet the differents needs for a complete monitoring resource from an IT and business point of view.
 
 A whole new way to share IT content with the various actors of an information system (Governance, Administrators, Technicians, Operators, …). And exciting new connections between apps and devices. All that and more make NaemonBox better than ever.
