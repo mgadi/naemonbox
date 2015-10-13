@@ -14,7 +14,9 @@ Have you consulted at all the :ref:`resources available for users and developers
 
   * Read the through the  :ref:`Getting Started tutorials <gettingstarted/index>`
   * Search the documentation wiki
-  * Use this FAQ
+  * Use this `FAQ`_ section.
   * Bonus: Update this FAQ if you found the answer and think it would benefit someone else
 
 Doing this will improve the quality of the answers and your own expertise.
+
+.. _FAQ: https://groups.google.com/forum/#!forum/naemonbox-users
