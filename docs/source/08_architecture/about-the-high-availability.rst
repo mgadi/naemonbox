@@ -5,6 +5,22 @@
 =========================================
 High availability and load balancing out-of-the box
 
+Classification availability
+=============
+
+The classification of systems in terms of availability commonly leads to 7 classes, not taking into account class ( system available 90 % of the time , and therefore unavailable more than one month a year ) to the ultra class (available 99.99999 % of the time and therefore unavailable only three seconds per year) : these classes are the number 9 in the percentage of time that the class systems are available
+
+========================== ======================================= ======================= =====
+Type                       Downtime (per year)                     percentage availability class
+unmanaged                  50,000 ( 34 days , 17 hours and 20 min) 90 %                    1
+managed                    5000 ( 3 days , 11 hours and 20 min)    99 %                    2 
+well managed               500 ( 8:20 minutes)                     99,9 %                  3
+fault tolerance            50 (a little less than an hour )        99,99 %                 4
+high availability          5 minutes                               99,999 %                5
+very high availability     0,5 (30 secondes)                       99,9999 %               6 
+high critical availability 0,05 (3 secondes)                       99,99999 %              7
+========================== ======================================= ======================= =====
+
 Introduction 
 =============
 
