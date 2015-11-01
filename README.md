@@ -6,6 +6,7 @@ Naemonbox - monitoring framework
 
 Feel free to donate
 
+<a href='https://pledgie.com/campaigns/30490'><img alt='Click here to lend your support to: NaemonBox and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/30490.png?skin_name=chrome' border='0' ></a>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_donations">
 <input type="hidden" name="business" value="2PFUEVRP7JR3A">
@@ -16,6 +17,8 @@ Feel free to donate
 <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
 <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
 </form>
+
+
 
 
 
