@@ -4,6 +4,22 @@
 
 Naemonbox - monitoring framework 
 
+Feel free to donate
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_donations">
+<input type="hidden" name="business" value="2PFUEVRP7JR3A">
+<input type="hidden" name="lc" value="FR">
+<input type="hidden" name="item_name" value="naemonbox">
+<input type="hidden" name="currency_code" value="EUR">
+<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHosted">
+<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
+<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+
+
 ## Presentation ##
 
 NAEMONBOX is based on Debian. This software provide a quick and easy installation wich includes the most-used tools in the Nagios/Naemon community.
