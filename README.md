@@ -2,8 +2,6 @@
 
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=mgadi&url=https://github.com/mgadi/naemonbox&title=badges&language=&tags=github&category=software)
 
-Naemonbox - monitoring framework 
-
 Feel free to donate
 
 <a href='https://pledgie.com/campaigns/30490'><img alt='Click here to lend your support to: NaemonBox and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/30490.png?skin_name=chrome' border='0' ></a>
@@ -18,10 +16,7 @@ Feel free to donate
 <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
 </form>
 
-
-
-
-
+Naemonbox - monitoring framework 
 
 ## Presentation ##
 
