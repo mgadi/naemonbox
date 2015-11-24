@@ -5,7 +5,7 @@ Fusioninventory Client Installation
 Windows Client
 =========
 
-+ Select the version to install for the following architecture :
++ Select the version to install for your architecture :
 .. image:: /images/fusioninventory-agent_windows.png
 + The installer detects the system language installed . Leave blank and click OK.
 .. image:: /images/fusioninventory-agent_windows-lang.png
