@@ -41,6 +41,9 @@ Distributed monitoring
 Where operations are dispersed across multiple sites, Naemonbox enables distributed monitoring too. Thanks to Naemonbox cluster zoning, satellite instances can be demarcated into their own secure zones to report to a central NOC. Satellites can be simple checkers or fully equipped with local MySQL database, user interface and other extensions too.
 Replication can be isolated to occur only between the master zone and each individual satellite, keeping satellite sites blind to one another. If a satellite goes rogue, check results are saved for retroactive replication access once the connection is restored.
 
+.. image:: /images/Architecture_nagios.png
+ :scale: 50 %
+ 
 Distributed, high availability monitoring
 ==========================================
 
@@ -51,3 +54,5 @@ Satellite nodes can be scaled to form high availability clusters and cordoned of
     
 Diagrams 
 =========
+.. image:: /images/Architecture-HA_nagios.png
+ :scale: 50 %
