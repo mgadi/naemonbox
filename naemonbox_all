@@ -36,7 +36,7 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 
 dir="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-bindir="$dir/bin"
+bindir="$dir/sources"
 
 ###################################
 # BEGIN
@@ -94,7 +94,7 @@ echo 'GRUB_BACKGROUND="/usr/share/images/grub/Lake_mapourika_NZ.tga"' >> /etc/de
 update-grub
 cp $dir/contrib/.bashrc /root/
 cp $dir/contrib/motd.sh /etc/profile.d/
-$dir/update-hosts | tee -a $log_file
+$dir/scripts/update-hosts | tee -a $log_file
 mkdir /root/mibs_removed
 mv /usr/share/mibs/ietf/IPATM-IPMC-MIB /root/mibs_removed/
 mv /usr/share/mibs/ietf/SNMPv2-PDU /root/mibs_removed/ 
@@ -136,7 +136,7 @@ update-rc.d npcd defaults
 rm /usr/local/pnp4nagios/share/install.php
 # patch Eric Coquard 29/11/2014
 rm -r $bindir/pnp4nagios-$pnp4nagios_version/
-rm /etc/naemon/conf.d/printer.cfg /etc/naemon/conf.d/switch.cfg /etc/naemon/conf.d/windows.cfg
+rm rm /etc/naemon/conf.d/localhost.cfg /etc/naemon/conf.d/printer.cfg /etc/naemon/conf.d/switch.cfg /etc/naemon/conf.d/windows.cfg
 cd $dir
 cp contrib/naemon/*.cfg /etc/naemon/ | tee -a $log_file
 cp -r contrib/naemon/conf.d/*.cfg /etc/naemon/conf.d/ | tee -a $log_file
@@ -152,12 +152,40 @@ chmod 664 /etc/naemon/conf.d/*.cfg
 chmod 664 /etc/naemon/conf.d/templates/*.cfg
 chown -R naemon:naemon /etc/naemon/*.cfg | tee -a $log_file
 chown -R naemon:naemon /etc/naemon/conf.d/*.cfg | tee -a $log_file
-
 echo '$USER2$=public' >> /etc/naemon/resource.cfg
+echo '$USER3$=root' >> /etc/naemon/resource.cfg
+echo '$USER4$=pass' >> /etc/naemon/resource.cfg
+sed -i "s/"pass"/"$dbpass"/g" /etc/naemon/resource.cfg
 cp /usr/share/naemon/root/favicon.ico /var/www/
+sed -i "21i\add_link('name' => 'Business Process View', 'href' => '\/nagiosbp\/cgi-bin\/nagios-bp.cgi'); \n" /usr/share/naemon/menu.conf 
 echo "add_section('name' => 'Nagvis');">>/usr/share/naemon/menu.conf
 echo "  add_link('name' => 'Map',          'href' => '/nagvis');">>/usr/share/naemon/menu.conf
 
+# NagiosBP install
+cd $bindir
+printf "$line"
+echo "NagiosBP install on Naemonbox server             " | tee -a $log_file
+printf "$line"
+$tar nagios-business-process-addon-$nagios_business_process_addon_version.tar.gz
+cd nagios-business-process-addon-$nagios_business_process_addon_version
+./configure --with-nagcgiurl=/naemon/cgi-bin --with-naghtmurl=/naemon --with-nagetc=/etc/naemon/ --with-httpd-conf=/etc/apache2/conf-available --with-nagiosbp-user=naemon --with-nagiosbp-group=naemon --with-apache-authname="Naemon Monitoring"
+make install
+cd $bindir
+rm -r nagios-business-process-addon-$nagios_business_process_addon_version
+tar xvzf language_pack_fr_0.9.3.tar.gz
+cp fr/i18n_fr.txt /usr/local/nagiosbp/share/lang/
+rm -r fr
+cd $dir
+cp $dir/conf/apache2.conf /etc/apache2/
+cp $dir/conf/nagios-bp.conf /usr/local/nagiosbp/etc/
+cp $dir/conf/ndo.cfg /usr/local/nagiosbp/etc/
+cp $dir/conf/*.css /usr/local/nagiosbp/share/stylesheets
+cp $dir/conf/nagiosbp.conf /etc/apache2/conf-available/
+sed -i "s/NAGIOS_BASE_URL/NAGIOSBP_HTML_URL/g" /usr/local/nagiosbp/sbin/nagios-bp.cgi
+sed -i "s/naemonbox-server/$server/g" /usr/local/nagiosbp/etc/nagios-bp.conf
+chown -R naemon.naemon /usr/local/nagiosbp
+a2enconf nagiosbp
+/etc/init.d/apache2 force-relcad
 
 #Compile NRPE 
 cd $bindir
@@ -216,9 +244,7 @@ $tar wmi.tar.gz
 cp wmi/wmic /usr/bin/ | tee -a $log_file
 cp -r wmi/check_wmi_plus.* /usr/lib/nagios/plugins/ | tee -a $log_file
 rm -r wmi
-# patch Eric Coquard 06/12/2014 # replace localhost for hostname
-mv /etc/naemon/conf.d/localhost.cfg /etc/naemon/conf.d/$server.cfg
-sed -i "s/localhost/$server/g" /etc/naemon/conf.d/$server.cfg
+sed -i "s/naemonbox-server/$server/g" /etc/naemon/conf.d/linuxhost.cfg
 }
 
 # Function: Verify Naemon config files
@@ -289,17 +315,17 @@ cd nagvis-$nagvis_version
 
 # create a default map
 cp $dir/contrib/nagvis/nagvis.ini.php /usr/local/nagvis/etc/
-cp $dir/contrib/nagvis/monitoring.png /usr/local/nagvis/share/userfiles/images/maps 
-cp $dir/contrib/nagvis/monitoring.cfg /usr/local/nagvis/etc/maps
+cp $dir/contrib/nagvis/*.png /usr/local/nagvis/share/userfiles/images/maps 
+cp $dir/contrib/nagvis/*.cfg /usr/local/nagvis/etc/maps
 chmod 664 /usr/local/nagvis/share/userfiles/images/maps/monitoring.png
 chown www-data:www-data  /usr/local/nagvis/share/userfiles/images/maps/monitoring.png
 chmod 664 /usr/local/nagvis/etc/maps/monitoring.cfg
 chown www-data:www-data /usr/local/nagvis/etc/maps/monitoring.cfg
 rm -r $bindir/nagvis-$nagvis_version
-cp $dir/contrib/apache/apache2.conf /etc/apache2/apache2.conf 
+ 
 # patch Eric Coquard 06/12/2014
 # replace localhost for hostname
-sed -i "s/localhost/$server/g" /usr/local/nagvis/etc/maps/monitoring.cfg
+sed -i "s/localhost/$server/g" /usr/local/nagvis/etc/maps/*.cfg
 a2enconf nagvis
 systemctl reload apache2
 }
@@ -315,12 +341,12 @@ printf "$line"
 cd $bindir
 $tar glpi.tar.gz
 mv glpi /var/www/
-sed -i "s/http:\/\/192.168.0.44\/glpi/http:\/\/$ip\/glpi/g" /var/www/glpi/glpi.sql
+sed -i "s/server.domain.com/$ip/g" /var/www/glpi/glpi.sql
 mysqladmin -u root -p"$dbpass" create glpi
 mysql -u root -p"$dbpass" glpi < /var/www/glpi/glpi.sql
 chown -R www-data:www-data /var/www/glpi/
 sed -i "s/#server = http:\/\/server.domain.com\/glpi/server = http:\/\/$ip\/glpi/g" /etc/fusioninventory/agent.cfg
-sed -i "s/http:\/\/192.168.0.19\/naemon/http:\/\/$ip\/naemon/g" /var/www/glpi/plugins/webservices/scripts/glpi7a.php
+sed -i "s/http:\/\/server.domain.com\/naemon/http:\/\/$ip\/naemon/g" /var/www/glpi/plugins/webservices/scripts/glpi7a.php
 # patch Eric Coquard 29/11/2014
 sed -i "s/var \$dbpassword= 'secret';/var \$dbpassword= '$dbpass';/g" /var/www/glpi/config/config_db.php
 a2enconf glpi
@@ -352,7 +378,7 @@ mysqladmin -u root -p"$dbpass" create syslog
 mysql -u root -p"$dbpass" syslog </var/www/cacti/syslog.sql
 mysql -u root -p"$dbpass" < $dir/sql/20750.tmp.sql
 mysql -u root -p"$dbpass" < $dir/sql/20751.tmp.sql
-cp $dir/etc/rsyslog.conf /etc/
+cp $dir/conf/rsyslog.conf /etc/
 chown -R cacti:www-data /var/www/cacti/
 cp $dir/sql/mysql.conf /etc/rsyslog.d/
 
@@ -391,8 +417,8 @@ mv wiki/ /var/www/
 chown -R www-data:www-data /var/www/wiki
 mysqladmin -u root -p"$dbpass" create wiki
 mysql -u root -p"$dbpass" wiki < /var/www/wiki/wiki.sql
-sed -i "s/http:\/\/192.168.0.19/http:\/\/$ip/g" /var/www/wiki/LocalSettings.php
-sed -i "s/apache@192.168.0.19/apache@$ip/g" /var/www/wiki/LocalSettings.php
+sed -i "s/http:\/\/server.domain.com/http:\/\/$ip/g" /var/www/wiki/LocalSettings.php
+sed -i "s/apache@server.domain.com/apache@$ip/g" /var/www/wiki/LocalSettings.php
 sed -i "s/"secret"/"$dbpass"/g" /var/www/wiki/LocalSettings.php
 a2enconf wiki
 systemctl reload apache2 
@@ -465,10 +491,9 @@ test -x /usr/sbin/backup-manager || exit 0
 EOF
 cp /etc/backup-manager.conf /etc/backup-manager.conf.original
 cp $dir/contrib/backup-manager.conf /etc/
+mkdir /home/archives
 sed -i "s/"secret"/"$dbpass"/g" /etc/backup-manager.conf
-$dir/test
-
-echo "Go to URL: http://$ip/"
+$dir/scripts/test
 }
 installation_backup
 
@@ -484,7 +509,9 @@ rm -r vmware-vsphere-cli-distrib/
 #sed -i "s/return defined $user_agent/return (defined $user_agent/g" /usr/share/perl/5.20/VMware/VICommon.pm
 #sed -i "s/user_agent->cookie_jar->as_string ne '';/user_agent->cookie_jar->as_string ne '');/g" /usr/share/perl/5.20/VMware/VICommon.pm
 cp $dir/contrib/VICommon.pm /usr/share/perl/5.20/VMware/
+cp $dir/scripts/naemonbox /usr/bin/naemonbox
+naemonbox version
+echo "Go to URL: http://$ip/"
 }
 installation_vmware-pack
-
 

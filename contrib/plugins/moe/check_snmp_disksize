@@ -1,0 +1,205 @@
+#!/bin/bash
+
+# check_snmp_disksize
+# Description : Check the disk size of Windows server and Unix server
+# Version : 1.6
+# Author : Yoann LAMY
+# Licence : GPLv2
+
+# Commands
+CMD_BASENAME="/usr/bin/basename"
+CMD_SNMPGET="/usr/bin/snmpget"
+CMD_SNMPWALK="/usr/bin/snmpwalk"
+CMD_BC="/usr/bin/bc"
+CMD_AWK="/usr/bin/awk"
+CMD_GREP="/bin/grep"
+CMD_EXPR="/usr/bin/expr"
+
+# Script name
+SCRIPTNAME=`$CMD_BASENAME $0`
+
+# Version
+VERSION="1.6"
+
+# Plugin return codes
+STATE_OK=0
+STATE_WARNING=1
+STATE_CRITICAL=2
+STATE_UNKNOWN=3
+
+# 'hrStorageDescr', HOST-RESOURCES-MIB
+OID_DESC=".1.3.6.1.2.1.25.2.3.1.3"
+
+# 'hrStorageAllocationUnits', HOST-RESOURCES-MIB
+OID_UNIT=".1.3.6.1.2.1.25.2.3.1.4"
+
+# 'hrStorageSize', HOST-RESOURCES-MIB
+OID_TOTAL=".1.3.6.1.2.1.25.2.3.1.5"
+
+# 'hrStorageUsed', HOST-RESOURCES-MIB
+OID_USED=".1.3.6.1.2.1.25.2.3.1.6"
+
+# Default variables
+DESCRIPTION="Unknown"
+STATE=$STATE_UNKNOWN
+CODE=0
+
+# Default options
+COMMUNITY="public"
+HOSTNAME="127.0.0.1"
+DISK=""
+WARNING=0
+CRITICAL=0
+
+# Option processing
+print_usage() {
+  echo "Usage: ./check_snmp_disksize -H 127.0.0.1 -C public -d C: -w 80 -c 90"
+  echo "  $SCRIPTNAME -H ADDRESS"
+  echo "  $SCRIPTNAME -C STRING"
+  echo "  $SCRIPTNAME -d STRING"
+  echo "  $SCRIPTNAME -w INTEGER" 
+  echo "  $SCRIPTNAME -c INTEGER" 
+  echo "  $SCRIPTNAME -h"
+  echo "  $SCRIPTNAME -V"
+}
+
+print_version() {
+  echo $SCRIPTNAME version $VERSION
+  echo ""
+  echo "This nagios plugins comes with ABSOLUTELY NO WARRANTY."  
+  echo "You may redistribute copies of the plugins under the terms of the GNU General Public License v2." 
+}
+
+print_help() {
+  print_version
+  echo ""
+  print_usage
+  echo ""
+  echo "Check the disk size of Windows server and Unix server"
+  echo ""
+  echo "-H ADDRESS"
+  echo "   Name or IP address of host (default: 127.0.0.1)"
+  echo "-C STRING"
+  echo "   Community name for the host's SNMP agent (default: public)"
+  echo "-d STRING"
+  echo "   Drive letter (C:) or mount point (/home)"
+  echo "-w INTEGER"
+  echo "   Warning level for size in percent (default: 0)"
+  echo "-c INTEGER"
+  echo "   Critical level for size in percent (default: 0)"  
+  echo "-h"
+  echo "   Print this help screen"
+  echo "-V"
+  echo "   Print version and license information"
+  echo ""
+  echo ""
+  echo "This plugin uses the 'snmpget' command and the 'snmpwalk' command included with the NET-SNMP package."
+  echo "This plugin support performance data output."
+  echo "If the percentage of the warning and critical levels are set 0, then the script returns a OK state."      
+}
+
+while getopts H:C:d:w:c:hV OPT
+do
+  case $OPT in
+    H) HOSTNAME="$OPTARG" ;;
+    C) COMMUNITY="$OPTARG" ;;
+    d) DISK="$OPTARG" ;;
+    w) WARNING=$OPTARG ;;
+    c) CRITICAL=$OPTARG ;; 
+    h) 
+      print_help
+      exit $STATE_UNKNOWN
+      ;;
+    V)
+      print_version
+      exit $STATE_UNKNOWN
+      ;;
+   esac
+done
+
+# Plugin processing
+if [  ${DISK: 0:1} != "/" ]; then
+  if [  ${DISK: -1} != ":" ]; then
+    DISK="${DISK}:"
+  fi
+fi
+
+size_convert() {
+  if [ $VALUE -ge 1099511627776 ]; then
+    VALUE=`echo "scale=2 ; ( ( ( $VALUE / 1024 ) / 1024 ) / 1024 ) / 1024" | $CMD_BC`
+    VALUE="$VALUE To"
+  elif [ $VALUE -ge 1073741824 ]; then
+    VALUE=`echo "scale=2 ; ( ( $VALUE / 1024 ) / 1024 ) / 1024" | $CMD_BC`
+    VALUE="$VALUE Go"
+  elif [ $VALUE -ge 1048576 ]; then
+    VALUE=`echo "scale=2 ; ( $VALUE / 1024 ) / 1024" | $CMD_BC`
+    VALUE="$VALUE Mo"
+  else
+    VALUE=`echo "scale=2 ; $VALUE / 1024" | $CMD_BC`
+    VALUE="$VALUE Octets"
+  fi
+}
+
+size_fix() {
+  if [  ${VALUE: 0:1} = "-" ]; then
+    VALUE=`$CMD_EXPR 4294967294 - \( 0 - $VALUE \)`
+  fi
+}
+
+DISK_DESC=`$CMD_SNMPWALK -t 2 -r 2 -v 1 -c $COMMUNITY $HOSTNAME "$OID_DESC" | $CMD_GREP "$DISK"`
+
+if [ -n "$DISK_DESC" ]; then
+  DISK_ID=`echo $DISK_DESC | $CMD_AWK '{print $1}' | $CMD_AWK -F "." '{print $NF}'`
+  if [  ${DISK: 0:1} != "/" ]; then
+    DISK_LABEL=`echo $DISK_DESC | $CMD_AWK '{ print $5 }' | $CMD_AWK -F ':' '{ print $2 }'`
+  fi
+
+  DISK_UNIT=`$CMD_SNMPGET -t 2 -r 2 -v 1 -c $COMMUNITY -OvqU $HOSTNAME "${OID_UNIT}.${DISK_ID}"`
+  DISK_TOTAL=`$CMD_SNMPGET -t 2 -r 2 -v 1 -c $COMMUNITY -OvqU $HOSTNAME "${OID_TOTAL}.${DISK_ID}"`
+  DISK_USED=`$CMD_SNMPGET -t 2 -r 2 -v 1 -c $COMMUNITY -OvqU $HOSTNAME "${OID_USED}.${DISK_ID}"`
+
+  if [ $DISK_TOTAL != 0 ]; then
+    VALUE=$DISK_TOTAL
+    size_fix
+    DISK_TOTAL=$VALUE
+
+    VALUE=$DISK_USED
+    size_fix
+    DISK_USED=$VALUE
+
+    DISK_TOTAL=`$CMD_EXPR $DISK_TOTAL \* \( $DISK_UNIT \)`
+    DISK_USED=`$CMD_EXPR $DISK_USED \* \( $DISK_UNIT \)`
+    PERFDATA_WARNING=0
+    PERFDATA_CRITICAL=0
+
+    if [ $WARNING != 0 ] || [ $CRITICAL != 0 ]; then
+      DISK_USED_POURCENT=`$CMD_EXPR \( $DISK_USED \* 100 \) / $DISK_TOTAL`
+      PERFDATA_WARNING=`$CMD_EXPR \( $DISK_TOTAL \* $WARNING \) / 100`
+      PERFDATA_CRITICAL=`$CMD_EXPR \( $DISK_TOTAL \* $CRITICAL \) / 100`
+
+      if [ $DISK_USED_POURCENT -gt $CRITICAL ] && [ $CRITICAL != 0 ]; then
+        STATE=$STATE_CRITICAL
+      elif [ $DISK_USED_POURCENT -gt $WARNING ] && [ $WARNING != 0 ]; then
+        STATE=$STATE_WARNING
+      else
+        STATE=$STATE_OK
+      fi
+    else
+      STATE=$STATE_OK
+    fi
+
+    VALUE=$DISK_TOTAL
+    size_convert
+    DISK_TOTAL_FORMAT=$VALUE
+
+    VALUE=$DISK_USED
+    size_convert
+    DISK_USED_FORMAT=$VALUE
+
+    DESCRIPTION="Disk/partition usage '$DISK' $DISK_LABEL : $DISK_USED_FORMAT utilise sur $DISK_TOTAL_FORMAT (${DISK_USED_POURCENT}%) | total=${DISK_TOTAL}B;$PERFDATA_WARNING;$PERFDATA_CRITICAL;0 used=${DISK_USED}B;0;0;0"
+  fi
+fi
+
+echo $DESCRIPTION
+exit $STATE
+

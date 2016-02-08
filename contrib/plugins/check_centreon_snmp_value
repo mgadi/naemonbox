@@ -43,7 +43,7 @@
 use strict;
 use Getopt::Long;
 
-require "/usr/local/nagios/libexec/Centreon/SNMP/Utils.pm";
+require "/usr/lib/nagios/plugins/Utils.pm";
 
 my $PROGNAME = "$0";
 

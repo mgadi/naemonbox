@@ -1,0 +1,147 @@
+==============================================================================
+NaemonBox Version 0.0.7-RCx
+==============================================================================
+
+Version 0.0.7-RC6
+=============
+
+   * Webmin 1.780
+   * nagios-business-process-addon-0.9.6
+   * naemonbox --backup|--checknagios|--definenetwork|--purge|--reboot|--restart|--searcherrors|--searchlogs|--status|--start|--stop|--version
+   * purgeip.sh when your server change IP address, use this script to set all your conf files with the new IP address 
+
+Version 0.0.7-RC5
+=============
+
+Bugs corrected :
+
+   * WebUI : Failed to connect to the database: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES). (issue #22]
+
+Version 0.0.7-RC4
+=============
+
+Bugs corrected :
+
+   * Thruk Addons & Plugin Manager Readonly: Make sure the config file is writable New Web UI based on bootstrap (issue #21)
+   * Cannot commit changes Thruk Business process ( # 20)
+
+   
+Version 0.0.7-RC3
+=============  
+
+Enhancements and new features:
+
+   * Layout of the wiki home page (issue #19)
+
+Bugs corrected : 
+ 
+   * Panorama view doesnt work in version Thruk 1.88-2 (issue #18)  
+   * Possible precedence issue with control flow operator (issue #17) 
+
+   
+Version 0.0.7-RC2
+=============    
+
+Bugs corrected :
+
+   * Fix motd error on apache (issue #16)
+
+ Enhancements and new features:
+ 
+   * New Web UI based on bootstrap
+   
+Version 0.0.7-RC1
+============= 
+
+   * Add 3 new graph template to Cacti (XML) (issue #15)
+   * Add 8 more contrib logos for naemon classic themes (issue #14)
+   * Add 653 more contrib plugins (issue #13)
+   * Upgrading installs to the new operating system Debian 8.1 JESSIE (issue #12)
+   * Naemon configuration pack for VMWare (issue #11)
+ 
+ Update :
+ 
+   * Naemon 1.0.3
+   * Nagvis 1.8.5
+   * Webmin 1.760_all 
+ 
+ Enhancements and new features:
+ 
+   * nmap2naemon 0.1.4 (discovery module)
+ 
+==============================================================================
+NaemonBox Version 0.0.6-RC1
+==============================================================================
+
+ Enhancements and new features:
+ 
+   *  Add NSCA addon installation (issue #9)
+   *  Add NRPE addon installation ( issue #8)
+   *  Add psdash installation with a link menu in the WebUI (issue #7)
+   
+Bugs corrected :
+
+   *  Fix GLPI Create Ticket on OpenVZ (issue #5)
+   *  Fix FusionInventory Config on OpenVZ (issue #4) 
+   *  Replace localhost for hostname for naemon conf and glpi conf, patch by Eric Coquard 29/11/2014 (issue #2)   
+   *  Pass arguments from the command line to set Mediawiki Mysql password ; patch from Eric Coquard 29/11/2014 (issue #1)
+   
+==============================================================================
+NaemonBox Version 0.0.5-RCx
+==============================================================================
+
+Version 0.0.5-RC2
+============= 
+
+Bugs corrected :
+
+   * Fix remove linux_logo from install
+
+ Enhancements and new features:
+   * Add motd in profile.d
+  
+
+Version 0.0.5-RC1
+============= 
+
+Bugs corrected :
+
+   * Fix linux_logo in bashrc
+   * Fix ntops debconf network interface
+
+Version 0.0.5
+============= 
+
+ Enhancements and new features:
+
+   * Add cacti with syslog (rsyslog)
+
+Bugs corrected :
+   
+   * fix update-rc.d snmpd -f remove
+   * fix rm -r $bindir/pnp4nagios-0.6.21/
+   * fix bug glpi config_db.php   
+
+==============================================================================
+NaemonBox Version 0.0.4
+==============================================================================
+
+ Enhancements and new features:
+ 
+   * Remove cacti/syslog installation from script,it will be add later
+   
+==============================================================================
+NaemonBox Version 0.0.3
+==============================================================================
+
+Bugs corrected :
+
+   * Create apt.sh 
+
+==============================================================================
+NaemonBox Version 0.0.2
+==============================================================================   
+
+   * Initial commit
+   
+   

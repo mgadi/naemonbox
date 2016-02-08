@@ -1,0 +1,630 @@
+#! /bin/bash
+# This file is part of NagiosBox
+
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Library General Public
+# License as published by the Free Software Foundation; version 2
+# of the License.
+
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Library General Public License for more details.
+
+# You should have received a copy of the GNU Library General Public License
+# along with this library; see the file COPYING.LIB.  If not, write to 
+# the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA 02110-1301, USA.
+#
+### BEGIN INIT INFO
+# Provides: NagiosBox
+# Required-Start: $local_fs $network
+# Required-Stop: $local_fs $remote_fs
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: NagiosBox Server
+# Description: Solution complete de gestion de parc
+### END INIT INFO
+
+
+
+VERT="\\033[1;32m"
+NORMAL="\\033[0;39m"
+ROUGE="\\033[1;31m"
+ROSE="\\033[1;35m"
+BLEU="\\033[1;34m"
+BLANC="\\033[0;02m"
+BLANCLAIR="\\033[1;08m"
+JAUNE="\\033[1;33m"
+CYAN="\\033[1;36m"
+task=""
+nocolor=""
+version="0.0.7-RC6"
+
+# Lecture et affectation des parametres
+while [[ $# -gt 0 ]]
+
+    do
+
+        case "$1" in
+        
+               backup)
+               task="backup"
+        
+        ;;
+        
+               --backup)
+               task="backup"
+        
+        ;;
+        
+               checknagios)
+               task="checknagios"
+        
+        ;;
+        
+               --checknagios)
+               task="checknagios"
+        
+        ;;
+        
+               definenetwork)
+               task="definenetwork"
+        
+        ;;
+        
+               --definenetwork)
+               task="definenetwork"
+        
+        ;;
+        
+               purge)
+               task="purge"
+        
+        ;;
+        
+               --purge)
+               task="purge"
+        
+        ;;
+                 
+               reboot)
+               task="reboot"
+        
+        ;;
+        
+               --reboot)
+               task="reboot"
+        
+        ;;
+        
+               restart)
+               task="restart"
+        
+        ;;
+        
+               --restart)
+               task="restart"
+        
+        ;;
+              
+               searcherrors)
+               task="searcherrors"
+        
+        ;;
+        
+               --searcherrors)
+               task="searcherrors"
+        
+        ;;
+        
+               searchlogs)
+               task="searchlogs"
+        
+        ;;
+        
+               --searchlogs)
+               task="searchlogs"
+        
+        ;;
+        
+               status)
+               task="status"
+        
+        ;;
+        
+               --status)
+               task="status"
+        
+        ;;
+        
+               start)
+               task="start"
+        
+        ;;
+
+               --start)
+               task="start"
+        
+        ;;
+        
+               stop)
+               task="stop"
+        
+        ;;
+        
+               --stop)
+               task="stop"
+        
+        ;;
+             
+               version)
+               task="version"
+        
+        ;;
+        
+               --version)
+               task="version"
+        
+        ;;
+        
+               --NetworkMode)
+               shift
+               NaemonboxServerNetworkMode=$1
+        
+        ;;
+
+               --Hostname)
+               shift
+               NaemonboxServerHostname=$1
+
+        ;;
+
+               --ServerIP)
+               shift
+               NaemonboxServerIP=$1
+
+        ;;
+
+               --NaemonboxServerDNSServer1)
+               shift
+               NaemonboxServerDNSServer1=$1
+
+        ;;
+
+               --NaemonboxServerDNSServer2)
+               shift
+               NaemonboxServerDNSServer2=$1
+
+        ;;
+
+               --NaemonboxServerDNSSuffix)
+               shift
+               NaemonboxServerDNSSuffix=$1
+
+        ;;
+
+               --Gateway)
+               shift
+               NaemonboxServerGateway=$1
+
+        ;;
+
+               --SubnetMask)
+               shift
+               NaemonboxServerSubnetMask=$1
+
+        ;;
+
+               nocolor)
+
+               nocolor="--nocolor"
+               ROUGE=""
+               VERT=""
+               JAUNE=""
+               BLEU=""
+               MAGENTA=""
+               defaut=""
+
+        ;;
+
+               --nocolor)
+
+               nocolor="--nocolor"
+               ROUGE=""
+               VERT=""
+               JAUNE=""
+               BLEU=""
+               MAGENTA=""
+               defaut=""
+
+        ;;
+
+               --Gitname)
+               shift
+               Gitname="$1"
+
+        ;;
+
+               --Gitversion)
+               shift
+               Gitversion="$1"
+
+        ;;
+		
+    
+        esac
+    
+        shift
+
+    done
+
+case "$task" in
+
+    backup)
+  
+        printf "\n$NORMAL"
+        sudo /usr/sbin/backup-manager --verbose --no-warnings --force 
+        printf "\n$NORMAL"
+
+    ;;
+  
+    checknagios)
+		printf "\n$NORMAL"
+        sudo /usr/bin/naemon -v /etc/naemon/naemon.cfg 
+		printf "\n$NORMAL"
+    ;;
+  
+    definenetwork)
+  
+        # Le message qui sera affiche si le nombre de parametre passe est faux
+        USAGE="`basename $0` --definenetwork [--NetworkMode <value>] [--Hostname <value>] [--ServerIP <value>] [--NaemonboxServerDNSServer1 <value>] [--NaemonboxServerDNSServer2 <value>] [--NaemonboxServerDNSSuffix <value>] [--Gateway <value>] [--SubnetMask <value>]\n\n" 
+    
+        printf "\n$NORMAL"
+        printf "Configuration to be applied : \n"
+        case "$NaemonboxServerNetworkMode" in
+        
+            DHCP)
+  
+              printf "  --> Mode ...... : $NaemonboxServerNetworkMode\n"  
+              printf "  --> Hostname .. : $NaemonboxServerHostname\n"  
+              printf "\n$NORMAL"
+
+              if [ "$NaemonboxServerHostname" = "" ]; then
+
+                  printf "$ROUGE"
+                  printf "Syntax Error : miss some values\n\n"
+                  printf "$NORMAL"
+                  printf "$USAGE"
+                  exit 2
+
+              fi
+
+              ## update hostname
+              echo . update hostname
+              echo "$NaemonboxServerHostname" | sudo tee /etc/hostname >/dev/null
+
+              ## update interface
+              echo . update interface
+              echo "# This file describes the network interfaces available on your system" > /tmp/interfaces
+              echo "# and how to activate them. For more information, see interfaces(5)." >> /tmp/interfaces
+              echo "#" >> /tmp/interfaces
+              echo "# The loopback network interface" >> /tmp/interfaces
+              echo "#" >> /tmp/interfaces
+              echo "auto lo" >> /tmp/interfaces
+              echo "iface lo inet loopback" >> /tmp/interfaces
+              echo "#" >> /tmp/interfaces
+              echo "# The primary network interface" >> /tmp/interfaces
+              echo "auto eth0" >> /tmp/interfaces
+              echo "iface eth0 inet dhcp" >> /tmp/interfaces
+              echo "#   address $NaemonboxServerIP" >> /tmp/interfaces
+              echo "#   netmask $NaemonboxServerSubnetMask" >> /tmp/interfaces
+              echo "#   gateway $NaemonboxServerGateway" >> /tmp/interfaces
+              cat /tmp/interfaces | sudo tee /etc/network/interfaces >/dev/null
+
+              ## update resolv.conf
+              echo . update resolv.conf
+              echo "#" | sudo tee /etc/resolv.conf >/dev/null
+
+              ## restart network services
+              echo . restart network services
+              sudo /etc/init.d/hostname.sh 2>/dev/null
+              sudo nohup sh -c "ifdown eth0 && ifup eth0" 2>/dev/null
+
+            ;;
+  
+            STATIC)
+
+              printf "  --> Mode ...... : $NaemonboxServerNetworkMode\n"  
+              printf "  --> Hostname .. : $NaemonboxServerHostname\n"  
+              printf "  --> IP ........ : $NaemonboxServerIP\n"  
+              printf "  --> DNS 1 ..... : $NaemonboxServerDNSServer1\n"  
+              printf "  --> DNS 2 ..... : $NaemonboxServerDNSServer2\n"  
+              printf "  --> DNS Suffix  : $NaemonboxServerDNSSuffix\n"  
+              printf "  --> Gateway ... : $NaemonboxServerGateway\n"  
+              printf "  --> Subnet Mask : $NaemonboxServerSubnetMask\n"  
+              printf "\n$NORMAL"
+
+              if [ "${NaemonboxServerHostname}" = "" ] || [ "${NaemonboxServerIP}" = "" ] || [ "${NaemonboxServerDNSServer1}" = "" ] || [ "${NaemonboxServerDNSServer2}" = "" ] || [ "${NaemonboxServerDNSSuffix}" = "" ] || [ "${NaemonboxServerGateway}" = "" ] || [ "${NaemonboxServerSubnetMask}" = "" ]; then
+
+                  printf "$ROUGE"
+                  printf "Syntax Error : miss some values\n\n"
+                  printf "$NORMAL"
+                  printf "$USAGE"
+                  exit 2
+
+              fi 
+
+              ## update hostname
+              echo . update hostname
+              echo "$NaemonboxServerHostname" | sudo tee /etc/hostname >/dev/null
+
+              ## update interface 
+              echo . update interface 
+              echo "# This file describes the network interfaces available on your system" > /tmp/interfaces
+              echo "# and how to activate them. For more information, see interfaces(5)." >> /tmp/interfaces
+              echo "#" >> /tmp/interfaces
+              echo "# The loopback network interface" >> /tmp/interfaces
+              echo "#" >> /tmp/interfaces
+              echo "auto lo" >> /tmp/interfaces
+              echo "iface lo inet loopback" >> /tmp/interfaces
+              echo "#" >> /tmp/interfaces
+              echo "# The primary network interface" >> /tmp/interfaces
+              echo "auto eth0" >> /tmp/interfaces
+              echo "iface eth0 inet static" >> /tmp/interfaces
+              echo "   address $NaemonboxServerIP" >> /tmp/interfaces
+              echo "   netmask $NaemonboxServerSubnetMask" >> /tmp/interfaces
+              echo "   gateway $NaemonboxServerGateway" >> /tmp/interfaces
+              cat /tmp/interfaces | sudo tee /etc/network/interfaces >/dev/null
+
+              ## update resolv.conf 
+              echo . update resolv.conf 
+              echo "nameserver $NaemonboxServerDNSServer1" > /tmp/resolv.conf 2>/dev/null
+              echo "nameserver $NaemonboxServerDNSServer2" >> /tmp/resolv.conf 2>/dev/null
+              echo "search $NaemonboxServerDNSSuffix" >> /tmp/resolv.conf 2>/dev/null
+              cat /tmp/resolv.conf | sudo tee /etc/resolv.conf >/dev/null
+
+              ## restart network services
+              echo . restart network services
+              sudo /etc/init.d/hostname.sh 2>/dev/null
+              sudo nohup sh -c "ifdown eth0 && ifup eth0" 2>/dev/null
+
+            ;;
+  
+            *)
+
+              printf "$ROUGE"
+              printf "Syntax Error : Mode MUST be DHCP or STATIC\n\n"
+              printf "$NORMAL"
+              printf "$USAGE"
+              exit 2
+
+
+            ;;
+
+        esac
+
+        printf "\n$NORMAL"
+        
+        /usr/bin/naemonbox --status $nocolor
+
+    ;;
+
+    purge)
+
+        printf "\n$NORMAL"
+        printf "purge archives ..."
+        sudo rm /datas/archives/* 2>/dev/null
+        printf "$VERT OK\n$NORMAL"
+		printf "purge /tmp directory ..."
+        sudo rm -rf /tmp/* 2>/dev/null
+        printf "$VERT OK\n$NORMAL"
+        printf "purge metrics directory ..."
+        sudo rm /usr/local/pnp4nagios/var/perfdata/*.rrd 2>/dev/null
+		sudo rm /var/lib/ntop/rrd/interfaces/eth0/*.rrd 2>/dev/null
+        printf "$VERT OK\n$NORMAL"
+        printf "purge log files ..."
+        printf "for logs in \`find /var/log -type f\`; do > \$logs; done\n" > /tmp/purge_varlog.sh
+        printf "for logs in \`find / -name "*.log" -type f\`; do > \$logs; done\n" >> /tmp/purge_varlog.sh
+        chmod 755 /tmp/purge_varlog.sh
+        sudo /tmp/purge_varlog.sh 
+        sudo rm /tmp/purge_varlog.sh
+        printf "$VERT OK\n$NORMAL"
+        printf "\n$NORMAL"
+
+    ;;
+
+     reboot)
+
+        printf "\n$NORMAL"
+        /usr/bin/naemonbox --stop $nocolor
+        reboot 
+        printf "\n$NORMAL"
+
+    ;;
+
+    restart)
+
+        printf "\n$NORMAL"
+        /usr/bin/naemonbox --stop $nocolor
+        /usr/bin/naemonbox --start $nocolor
+        printf "\n$NORMAL"
+
+    ;;
+
+     searcherrors)
+
+        printf "\n$NORMAL"
+        echo - Apache -----------------------------------------------
+        sudo grep -i error /var/log/apache2/error.log | grep -v "PHP Warning" | grep -v "PHP Notice" | grep -v "PHP Deprecated"
+        echo - Mysql ------------------------------------------------
+        sudo grep -i error /var/log/syslog | grep -i mysql
+        echo - Naemon -----------------------------------------------
+        sudo grep -i error /var/log/naemon/naemon.log | grep -v "no errors" | grep -v "SERVICE NOTIFICATION" | grep -v "SERVICE ALERT" | grep -v "INITIAL SERVICE STATE"
+	echo - Thruk ------------------------------------------------
+	sudo grep -i error /var/log/naemon/thruk.log 
+     
+	echo - Syslog -----------------------------------------------
+        # on exclut les CRON Error : pas d'impact sur le systeme
+        # on exclut les "checking image file" : impact sur la veille prolongee -> pas d'impact sur Naemonbox 
+        # on exclut les "bluez error" : impact sur le bluetooth -> pas d'impact sur Naemonbox
+        sudo grep -i error /var/log/syslog | grep -v "(CRON) error" | grep -v "bluez error" | grep -v "checking image file" | more
+        printf "\n$NORMAL"
+
+    ;;
+
+    searchlogs)
+
+        printf "\n$NORMAL"
+        sudo find / -name '*.log' -mmin -5 -exec ls -altr {} \; 
+        printf "\n$NORMAL"
+
+    ;;
+    
+    start)
+
+        printf "\n$NORMAL"
+		sudo systemctl start mysql
+	    sudo systemctl start apache2		
+		sudo systemctl start nrpe 
+	    sudo systemctl start nsca
+	    sudo systemctl start npcd
+		sudo systemctl start naemon 
+		sudo systemctl start rsyslog
+		sudo systemctl start snmpd 
+		sudo systemctl start snmptrapd
+        sleep 5
+        printf "\n$NORMAL"
+        /usr/bin/naemonbox --status $nocolor
+
+    ;;
+
+    status)
+
+        printf "\n$NORMAL"
+        NaemonBox_HOSTNAME=`hostname`
+        NaemonBox_IP=`sudo ifconfig eth0 2>/dev/null | grep "inet ad" | cut -f2 -d: | awk '{print $1}'`
+        NaemonBox_SUBNET=`sudo ifconfig eth0 2>/dev/null | grep "Masque" | cut -f4 -d: | awk '{print $1}'`
+        NaemonBox_GATEWAY=`sudo route | grep eth0 | grep default | awk '{print $2}'`
+        NaemonBox_SUFFIX_DNS=`sudo cat /etc/resolv.conf | grep "search" | awk '{print $2}'`
+        NbDNSServers=`sudo cat /etc/resolv.conf | grep nameserver | wc -l`
+        if [ "${NbDNSServers}" = "2" ]; then
+          NaemonBox_DNS2=`sudo cat /etc/resolv.conf | grep "nameserver" | tail -1 | awk '{print $2}'`
+          NaemonBox_DNS1=`sudo cat /etc/resolv.conf | grep "nameserver" | grep -v $NagiosBox_DNS2 | awk '{print $2}'`
+        else
+          NaemonBox_DNS1=`sudo cat /etc/resolv.conf | grep "nameserver" | awk '{print $2}'`
+          NaemonBox_DNS2=""
+        fi
+        printf "$NORMAL"
+        NaemonBox_NETWORK_MODE=`grep dhcp /etc/network/interfaces | grep eth0 | wc -l`
+        if [ "${NaemonBox_NETWORK_MODE}" = "1" ]; then
+          printf "Mode : $JAUNE DHCP\n$NORMAL"
+          printf "Hostname : $JAUNE `echo $NaemonBox_HOSTNAME`$NORMAL   IP : $JAUNE $NaemonBox_IP\n$NORMAL"
+          printf "\n$NORMAL"
+        else
+          printf "Mode : $JAUNE STATIC\n$NORMAL"
+          printf "Hostname : $JAUNE `echo $NaemonBox_HOSTNAME`$NORMAL    IP : $JAUNE $NaemonBox_IP\n$NORMAL"
+          printf "\n$NORMAL"
+                    printf "\n$NORMAL"
+
+        fi
+
+        sudo /etc/init.d/mysql status >/dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            printf "MYSQL      Status :$VERT OK (`pgrep mysqld -x -d " "`)\n$NORMAL"
+        else
+            printf "MYSQL      Status :$ROUGE KO\n$NORMAL"
+        fi
+        sudo /etc/init.d/apache2 status >/dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            printf "APACHE     Status :$VERT OK (`pgrep apache2 -x -d " "`)\n$NORMAL"
+        else
+            printf "APACHE     Status :$ROUGE KO\n$NORMAL"
+        fi
+        NAEMON_PID=`pgrep naemon -x -d " "`
+        if [ "1${NAEMON_PID}" != "1" ]; then
+            printf "NAEMON     Status :$VERT OK (`pgrep naemon -x -d " "`)\n$NORMAL"
+        else
+            printf "NAEMON     Status :$ROUGE KO\n$NORMAL"
+        fi
+	PNP4NAGIOS_PID=`pgrep npcd -x -d " "`
+	if [ "1${PNP4NAGIOS_PID}" != "1" ]; then
+            printf "PNP4NAGIOS Status :$VERT OK (`pgrep npcd -x -d " "`)\n$NORMAL"
+	else
+            printf "PNP4NAGIOS Status :$ROUGE KO\n$NORMAL"
+        fi
+	SYSLOG_PID=`pgrep rsyslogd -x -d " "`
+        if [ "1${SYSLOG_PID}" != "1" ]; then
+            printf "RSYSLOG    Status :$VERT OK (`pgrep rsyslogd -x -d " "`)\n$NORMAL"
+        else
+            printf "RSYSLOG    Status :$ROUGE KO\n$NORMAL"
+	fi
+	SNMPD_PID=`pgrep snmpd -x -d " "`
+        if [ "1${SNMPD_PID}" != "1" ]; then
+            printf "SNMPD      Status :$VERT OK (`pgrep snmpd -x -d " "`)\n$NORMAL"
+        else
+            printf "SNMPD      Status :$ROUGE KO\n$NORMAL"
+        fi
+	SNMPTRAPD_PID=`pgrep snmptrapd -x -d " "`
+        if [ "1${SNMPTRAPD_PID}" != "1" ]; then
+            printf "SNMPTRAPD  Status :$VERT OK (`pgrep snmptrapd -x -d " "`)\n$NORMAL"
+        else
+            printf "SNMPTRAPD  Status :$ROUGE KO\n$NORMAL"
+        fi
+        sudo /etc/init.d/nrpe status >/dev/null 2>&1
+        NRPE_PID=`pgrep nrpe -x -d " "`
+        if [ "1${NRPE_PID}" != "1" ]; then
+            printf "NRPE       Status :$VERT OK ($NRPE_PID)\n$NORMAL"
+        else
+            printf "NRPE       Status :$ROUGE KO\n$NORMAL"
+        fi
+        NSCA_PID=`pgrep nsca -x -d " "`
+        if [ "1${NSCA_PID}" != "1" ]; then
+            printf "NSCA       Status :$VERT OK ($NSCA_PID)\n$NORMAL"
+        else
+            printf "NSCA       Status :$ROUGE KO\n$NORMAL"
+        fi
+        printf "\n$NORMAL"
+
+    ;;
+
+    stop)
+
+        printf "\n$NORMAL"
+        sudo systemctl stop nsca 
+        sudo systemctl stop nrpe 
+        sudo systemctl stop npcd
+		sudo systemctl stop naemon 
+        sudo systemctl stop apache2
+		sudo systemctl stop syslog.socket rsyslog.service
+		sudo systemctl stop mysql
+		sudo systemctl stop snmpd 
+		sudo systemctl stop snmptrapd
+       printf "\n$NORMAL"
+        /usr/bin/naemonbox --status $nocolor
+
+    ;;
+
+    version)
+    
+        printf "\n$NORMAL"
+        cd /
+        VersionLocale=$version
+        printf "$VERT  . Local  :$NORMAL $VersionLocale\n"
+        printf "\n$NORMAL"
+
+    ;;
+      
+    *)
+
+        printf "Usage : naemonbox {--backup|--checknagios|--definenetwork|--purge|--reboot|--restart|--searcherrors|--searchlogs|--status|--start|--stop|--version}\n"
+        printf "Samples :\n"
+        printf "  - switch in DHCP mode : naemonbox --definenetwork --NetworkMode DHCP --Hostname <NAEMONBOX_HOSTNAME>\n"
+        printf "  - get NAEMONBOX version : naemonbox --version\n"
+        exit 1
+
+    ;;
+
+esac
+
+exit 0

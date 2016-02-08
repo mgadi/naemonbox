@@ -114,7 +114,7 @@ EOF
 cp /etc/apt/sources.list /etc/apt/sources.list.d/wheezy.list
 sed -i 's/jessie/wheezy/g' /etc/apt/sources.list.d/wheezy.list
 
-apt-get update;apt-get upgrade
+apt-get update -qq;apt-get upgrade -qq
 ##############################################################
 printf "$ROSE Check dependencies \n$NORMAL"
 ##############################################################
