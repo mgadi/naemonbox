@@ -5,14 +5,23 @@ Fusioninventory Client Installation
 Windows Client
 =========
 
-+ Select the version to install for the following architecture :
++ Select the version to install for your architecture :
+.. image:: /images/fusioninventory-agent_windows.png
 + The installer detects the system language installed . Leave blank and click OK.
+.. image:: /images/fusioninventory-agent_windows-lang.png
 + Click Next 
+.. image:: /images/fusioninventory-agent_windows-1.png
 + Agree with the license terms and click Next
+.. image:: /images/fusioninventory-agent_windows-2.png
 + Click Next
+.. image:: /images/fusioninventory-agent_windows-3.png
 + Click Next
+.. image:: /images/fusioninventory-agent_windows-4.png
 + In the field Servers Mode, enter the IP @ of GLPI server : http://your_ip_address/glpi/plugins/fusioninventory/
+.. image:: /images/fusioninventory-agent_windows-6.png
 + Click Install , Next, and Close.
+fusioninventory-agent_windows-7.png
+
 
 ESX Client
 =========
