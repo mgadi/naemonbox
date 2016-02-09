@@ -56,6 +56,14 @@ When installing from a released tarball, all you need to do is run as root
 # cd naemon 
 # ./install
 ```
+
+or
+
+```
+# git clone https://github.com/mgadi/naemonbox.git
+# cd naemonbox
+# ./install
+```
 Go to url http://your_ip_adress/
 
     Login/password : admin/admin
