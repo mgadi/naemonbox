@@ -5,7 +5,7 @@ NaemonBox Version 0.0.7-RCx
 Version 0.0.7-RC6
 =============
 
-   * Webmin 1.780
+   * Webmin 1.780 (issue #25)
    * nagios-business-process-addon-0.9.6
    * naemonbox --backup|--checknagios|--definenetwork|--purge|--reboot|--restart|--searcherrors|--searchlogs|--status|--start|--stop|--version
    * purgeip.sh when your server change IP address, use this script to set all your conf files with the new IP address 
