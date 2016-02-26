@@ -14,7 +14,7 @@ Monitored Nodes /Hosts  Monitored Services   Hard Drive Space  CPU Cores RAM
 System requirements
 =========
 
-   * An x86-compatible hardware
+   * An x64-compatible hardware
    * 4 GB free disk space
    * 1 GB of RAM. 
    * 1 processor core - 1 GHz CPU
@@ -22,7 +22,7 @@ System requirements
 Recommended system requirements
 =========
 
-   * An x86-compatible hardware 
+   * An x64-compatible hardware 
    * 20 GB plus the required disk space recommended essentialy for /var. Disk space needed by mysql and rrd files
    * 2 processors core or hyper-thread for each virtualized CP - 2 GHz+ CPU.
    * 2 GB of RAM.
