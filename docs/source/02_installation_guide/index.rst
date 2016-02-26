@@ -29,7 +29,7 @@ Recommended system requirements
 
 Client Operating Systems
 =========
-   • Windows: 2000,XP or later, 2003,2007 or later
+   • Windows: 2000,XP or later, 2003,2008 or later
    • Linux/Unix: 2.4+ kernel Linux distributions, Solaris 9+ , FreeBSD 6.4+, AIX 5.2/5.3 
 
 
