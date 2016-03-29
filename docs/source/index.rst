@@ -5,7 +5,7 @@
    
 .. _index
 
-Welcome to NaemonBox's documentation!
+Welcome to NaemonBox's Administrator Handbook !
 ============================================
 
 Contents:
