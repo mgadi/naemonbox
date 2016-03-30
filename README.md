@@ -72,7 +72,7 @@ Go to url http://your_ip_adress/
 How to contribute ?
 ===================
 
-If you want to contribute to the Glances project, read this [wiki](https://github.com/mgadi/naemonbox/wiki) page.
+If you want to contribute to the Naemonbox project, read this [wiki](https://github.com/mgadi/naemonbox/wiki) page.
 
 There is also a chat dedicated to the Naemonbox developers:
 
