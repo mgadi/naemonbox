@@ -72,12 +72,11 @@ Go to url http://your_ip_adress/
 How to contribute ?
 ===================
 
-If you want to contribute to the Glances project, read this `wiki`_ page.
+If you want to contribute to the Glances project, read this [wiki](https://github.com/mgadi/naemonbox/wiki) page.
 
-There is also a chat dedicated to the Naeomnbox developers:
+There is also a chat dedicated to the Naemonbox developers:
 
-.. image:: https://badges.gitter.im/Join Chat.svg
-        :target: https://gitter.im/mgadi/naemonbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+[![Chat this git repo]( https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mgadi/naemonbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### License ###
 
@@ -90,6 +89,3 @@ For complete documentation see [Naemonbox Manual !](http://naemonbox.readthedocs
 If you have any question (after RTFM!), please post it on the official Q&A  [forum .](https://groups.google.com/forum/#!forum/naemonbox-users)
 
 Thank's for using Naemonbox !
-
-
-
