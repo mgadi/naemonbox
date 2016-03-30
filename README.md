@@ -76,7 +76,7 @@ If you want to contribute to the Glances project, read this `wiki`_ page.
 
 There is also a chat dedicated to the Naeomnbox developers:
 
-.. image:: https://badges.gitter.im/Join%20Chat.svg
+.. image:: https://badges.gitter.im/Join Chat.svg
         :target: https://gitter.im/mgadi/naemonbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
 ### License ###
