@@ -69,6 +69,16 @@ Go to url http://your_ip_adress/
     Login/password : admin/admin
     Wiki Login/password : wikiadmin/admin
 
+How to contribute ?
+===================
+
+If you want to contribute to the Glances project, read this `wiki`_ page.
+
+There is also a chat dedicated to the Naeomnbox developers:
+
+.. image:: https://badges.gitter.im/Join%20Chat.svg
+        :target: https://gitter.im/mgadi/naemonbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 ### License ###
 
 Naemonbox is distributed under GNU GPL v2 license, see LICENSE.
