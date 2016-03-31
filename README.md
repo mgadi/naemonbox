@@ -37,15 +37,20 @@ ln -s /usr/share/zoneinfo/Europe/Paris ./localtime
 Naemonbox is only available for x86_64 architecture, at the moment. (Since naemonbox-0.0.6, we enable the non-free repository for you. You can directly jump to Installing section). 
 You need to enable the non-free packages to install gettext and SNMP MIBs. Open up ```/etc/apt/sources.list```, and you should see lines like the following (URLs will likely vary). Simply add non-free to the respective URLs you wish to use :
 ```
-deb http://ftp.fr.debian.org/debian/ wheezy main non-free contrib
-deb-src http://ftp.fr.debian.org/debian/ wheezy main non-free contrib
+deb http://ftp.fr.debian.org/debian/ jessie main non-free contrib
+deb-src http://ftp.fr.debian.org/debian/ jessie main non-free contrib
  
-deb http://security.debian.org/ wheezy/updates main contrib non-free
-deb-src http://security.debian.org/ wheezy/updates main contrib non-free
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
  
 # wheezy-updates, previously known as 'volatile'
-deb http://ftp.fr.debian.org/debian/ wheezy-updates main contrib non-free
-deb-src http://ftp.fr.debian.org/debian/ wheezy-updates main contrib non-free
+deb http://ftp.fr.debian.org/debian/ jessie-updates main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ jessie-updates main contrib non-free
+
+# jessie-backports, previously on backports.debian.org
+deb http://ftp.fr.debian.org/debian/ jessie-backports main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ jessie-backports main contrib non-free
+
 ```
 Running ```apt-get update``` will update your local repo with the package listing.
 
