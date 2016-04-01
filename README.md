@@ -43,7 +43,7 @@ deb-src http://ftp.fr.debian.org/debian/ jessie main non-free contrib
 deb http://security.debian.org/ jessie/updates main contrib non-free
 deb-src http://security.debian.org/ jessie/updates main contrib non-free
  
-# wheezy-updates, previously known as 'volatile'
+# jessie-updates, previously known as 'volatile'
 deb http://ftp.fr.debian.org/debian/ jessie-updates main contrib non-free
 deb-src http://ftp.fr.debian.org/debian/ jessie-updates main contrib non-free
 
