@@ -32,7 +32,7 @@
 # For more information : contact@centreon.com
 # 
 # SVN : $URL: http://svn.centreon.com/trunk/plugins-2.x/src/check_centreon_snmp_traffic $
-# SVN : $Id: check_centreon_snmp_traffic 12719 2011-11-17 10:39:40Z mbersoult $
+# SVN : $Id: check_centreon_snmp_traffic 11631 2011-02-08 17:02:51Z shotamchay $
 #
 ####################################################################################
 #
@@ -43,7 +43,7 @@ use strict;
 use Net::SNMP qw(:snmp oid_lex_sort);
 use FindBin;
 use lib "$FindBin::Bin";
-use lib "/usr/lib/nagios/plugins";
+use lib "/usr/local/nagios/libexec";
 use utils qw($TIMEOUT %ERRORS &print_revision &support);
 if (eval "require centreon" ) {
     use centreon qw(get_parameters);
@@ -55,7 +55,7 @@ if (eval "require centreon" ) {
 }
 use vars qw($PROGNAME);
 use Getopt::Long;
-use vars qw($opt_V $opt_h $opt_P $opt_64bits $opt_v $opt_C $opt_b $opt_k $opt_u $opt_p $opt_H $opt_D $opt_i $opt_n $opt_w $opt_c $opt_s $opt_T $opt_a $opt_r $opt_S);
+use vars qw($opt_V $opt_h $opt_P $opt_64bits $opt_v $opt_C $opt_b $opt_k $opt_u $opt_p $opt_x $opt_H $opt_D $opt_i $opt_n $opt_w $opt_c $opt_s $opt_T $opt_a $opt_r $opt_S);
 
 # Plugin var init
 
@@ -72,6 +72,7 @@ GetOptions
      "p=s"   => \$opt_p, "password=s" => \$opt_p,
      "P=s"   => \$opt_P, "--snmp-port=s" => \$opt_P,
      "k=s"   => \$opt_k, "key=s"      => \$opt_k,
+     "x=s"   => \$opt_x, "privpasswd=s" => \$opt_x,
      "s"   => \$opt_s, "show"         => \$opt_s,
      "V"   => \$opt_V, "version"      => \$opt_V,
      "i=s" => \$opt_i, "interface=s"  => \$opt_i,
@@ -106,8 +107,10 @@ if (!$opt_H) {
 	print_usage();
 	exit $ERRORS{'OK'};
 }
-($opt_v) || ($opt_v = shift) || ($opt_v = "2");
-my $snmp = $1 if ($opt_v =~ /(\d)/);
+my $snmp = "1";
+if ($opt_v && $opt_v =~ /^[0-9]$/) {
+	$snmp = $opt_v;
+}
 
 if ($snmp eq "3") {
 if (!$opt_u) {
@@ -201,16 +204,20 @@ if ($snmp eq "1" || $snmp =~ /2/) {
 	    exit $ERRORS{'UNKNOWN'};
 	}
 } elsif ($opt_p) {
+    if ($opt_x) {
+       ($session, $error) = Net::SNMP->session(-hostname => $opt_H, -version => $snmp,  -username => $opt_u, -authpassword => $opt_p, -privpassword => $opt_x, -port => $opt_P);
+    } else {
     ($session, $error) = Net::SNMP->session(-hostname => $opt_H, -version => $snmp,  -username => $opt_u, -authpassword => $opt_p, -port => $opt_P);
 	if (!defined($session)) {
 	    print("UNKNOWN: SNMP Session : $error\n");
 	    exit $ERRORS{'UNKNOWN'};
 	}
 }
+}
 $session->translate(Net::SNMP->TRANSLATE_NONE) if (defined($session));
 
 
-my $cacheFile = "/var/lib/naemon/traffic_cache_".$opt_H;
+my $cacheFile = "/var/lib/naemon/centplugins/traffic_cache_".$opt_H;
 my $result;
 my $mustCreateFile = 0;
 #my $row;
@@ -294,7 +301,6 @@ if ($opt_n) {
                 my @resLine = split(/\;/, $row);            
                 $resLine[1] =~ s/\x00//g;
                 $resLine[1] =~ s/\n//g;
-                $resLine[1] =~ s/\s*$//g;
                 if ($resLine[1] eq $opt_i) {
                     $interface = $resLine[0];
                 }
@@ -604,9 +610,10 @@ sub print_usage () {
     print "                        2 for SNMP v2c\n";
     print "                        3 for SNMP v3\n";
     print "   -P (--snmp-port)  SNMP port (default: 161)\n";
-	print "   -k (--key)        snmp V3 key\n";
-	print "   -p (--password)   snmp V3 password\n";
-	print "   -u (--username)   snmp v3 username \n";
+    print "   -k (--key)        snmp V3 key\n";
+    print "   -x (--privpasswd) snmp V3 key\n";
+    print "   -p (--password)   snmp V3 password\n";
+    print "   -u (--username)   snmp v3 username \n";
     print "   -s (--show)       Describes all interfaces number (debug mode)\n";
     print "   -i (--interface)  Set the interface number (2 by default)\n";
     print "   -n (--name)       Allows to use interface name with option -i instead of interface oid index\n";
