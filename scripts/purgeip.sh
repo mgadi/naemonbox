@@ -61,30 +61,30 @@ dbpass="$1" echo -e "\n--- Type MySQL root password ---\n"
 echo -e "\n--- Type MySQL root password ---\n"
 
 mysqldump -uroot -p"$dbpass" --opt glpi>/tmp/glpi.sql
-sed -i 's/$oldip/$ip/g' /tmp/glpi.sql
+sed -i "s/$oldip/$ip/g" /tmp/glpi.sql
 mysql -u root -p"$dbpass" glpi</tmp/glpi.sql
 printf "$VERT"
 mysqladmin -u root -p"$dbpass" drop cacti -f -s
 mysqladmin -u root -p"$dbpass" create cacti
 mysql -u root -p"$dbpass" cacti </var/www/cacti/cacti-backup.sql
 printf "$defaut"
-echo - Database "cacti" updated  
+echo - Database "cacti" updated
 printf "$VERT"
 mysqladmin -u root -p"$dbpass" drop syslog -f -s
 mysqladmin -u root -p"$dbpass" create syslog
 mysql -u root -p"$dbpass" syslog </var/www/cacti/syslog.sql
 printf "$defaut"
-echo - Database "syslog" updated 
-sed -i 's/only_from       = 127.0.0.1 $oldip/only_from       = 127.0.0.1 $ip/g' /etc/xinetd.d/nrpe
-sed -i 's/allowed_hosts=127.0.0.1,$oldip/allowed_hosts=127.0.0.1,$ip/g' /etc/naemon/nrpe.cfg
-sed -i 's/server = http:\/\/$oldip\/glpi/server = http:\/\/$ip\/glpi/g' /etc/fusioninventory/agent.cfg
+echo - Database "syslog" updated
+sed -i "s/only_from       = 127.0.0.1 $oldip/only_from       = 127.0.0.1 $ip/g" /etc/xinetd.d/nrpe
+sed -i "s/allowed_hosts=127.0.0.1,$oldip/allowed_hosts=127.0.0.1,$ip/g" /etc/naemon/nrpe.cfg
+sed -i "s/server = http:\/\/$oldip\/glpi/server = http:\/\/$ip\/glpi/g" /etc/fusioninventory/agent.cfg
 #fusioninventory-agent --debug --debug
-sed -i 's/http:\/\/$oldip\/naemon/http:\/\/$ip\/naemon/g' /var/www/glpi/plugins/webservices/scripts/glpi7a.php
-sed -i 's/http:\/\/$oldip/http:\/\/$ip/g' /var/www/wiki/LocalSettings.php
-sed -i 's/apache@$oldip/apache@$ip/g' /var/www/wiki/LocalSettings.php
+sed -i "s/http:\/\/$oldip\/naemon/http:\/\/$ip\/naemon/g" /var/www/glpi/plugins/webservices/scripts/glpi7a.php
+sed -i "s/http:\/\/$oldip/http:\/\/$ip/g" /var/www/wiki/LocalSettings.php
+sed -i "s/apache@$oldip/apache@$ip/g" /var/www/wiki/LocalSettings.php
 systemctl reload apache2
 printf "$VERT"
-echo "Go to URL: http://$ip/"
+echo "Go to URL: http://$ip"
 }
 changeip
 

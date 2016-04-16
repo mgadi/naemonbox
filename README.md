@@ -37,15 +37,20 @@ ln -s /usr/share/zoneinfo/Europe/Paris ./localtime
 Naemonbox is only available for x86_64 architecture, at the moment. (Since naemonbox-0.0.6, we enable the non-free repository for you. You can directly jump to Installing section). 
 You need to enable the non-free packages to install gettext and SNMP MIBs. Open up ```/etc/apt/sources.list```, and you should see lines like the following (URLs will likely vary). Simply add non-free to the respective URLs you wish to use :
 ```
-deb http://ftp.fr.debian.org/debian/ wheezy main non-free contrib
-deb-src http://ftp.fr.debian.org/debian/ wheezy main non-free contrib
+deb http://ftp.fr.debian.org/debian/ jessie main non-free contrib
+deb-src http://ftp.fr.debian.org/debian/ jessie main non-free contrib
  
-deb http://security.debian.org/ wheezy/updates main contrib non-free
-deb-src http://security.debian.org/ wheezy/updates main contrib non-free
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
  
-# wheezy-updates, previously known as 'volatile'
-deb http://ftp.fr.debian.org/debian/ wheezy-updates main contrib non-free
-deb-src http://ftp.fr.debian.org/debian/ wheezy-updates main contrib non-free
+# jessie-updates, previously known as 'volatile'
+deb http://ftp.fr.debian.org/debian/ jessie-updates main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ jessie-updates main contrib non-free
+
+# jessie-backports, previously on backports.debian.org
+deb http://ftp.fr.debian.org/debian/ jessie-backports main contrib non-free
+deb-src http://ftp.fr.debian.org/debian/ jessie-backports main contrib non-free
+
 ```
 Running ```apt-get update``` will update your local repo with the package listing.
 
@@ -69,6 +74,15 @@ Go to url http://your_ip_adress/
     Login/password : admin/admin
     Wiki Login/password : wikiadmin/admin
 
+How to contribute ?
+===================
+
+If you want to contribute to the Naemonbox project, read this [wiki](https://github.com/mgadi/naemonbox/wiki) page.
+
+There is also a chat dedicated to the Naemonbox developers:
+
+[![Chat this git repo]( https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mgadi/naemonbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ### License ###
 
 Naemonbox is distributed under GNU GPL v2 license, see LICENSE.
@@ -80,6 +94,3 @@ For complete documentation see [Naemonbox Manual !](http://naemonbox.readthedocs
 If you have any question (after RTFM!), please post it on the official Q&A  [forum .](https://groups.google.com/forum/#!forum/naemonbox-users)
 
 Thank's for using Naemonbox !
-
-
-

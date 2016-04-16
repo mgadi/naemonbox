@@ -2,20 +2,17 @@
 About Naemonbox
 ==============
 
-`Naemonbox <https://naemonbox.com/>`_ is a monitoring framework. It comes with a set of applications that meet the differents needs for a complete monitoring resource from an IT and business point of view.
+`Naemonbox <https://naemonbox.com/>`_ is an extansive Software Package for monitoring devices. Monitoring requires some clarification of the concepts used and how they are defined in NaemonBox. This means to observe, record, collect and display different aspects of hardware and software from activities point of view. This monitored aspects could be close to hardware like CPU Temperature, CPU Voltage, FAN Spin from NET devices but also close to services running on monitored Operating System like SSH daemons, POSTFIX daemons, HTTP services or checks the availability of devices via ping. It notifies users of outages, generates performance data for reporting, creates automated ticket with GLPI in the release of an alarm from Naemon.  It allows you to centralize, and analyze log messages with cacti and rsyslog, and many other possibilities …
 
 A whole new way to share IT content with the various actors of an information system (Governance, Administrators, Technicians, Operators, …). And exciting new connections between apps and devices. All that and more make NaemonBox better than ever.
-
-Naemon checks the availability of your network resources, notifies users of outages, and generates performance data for reporting. It creates automated ticket with GLPI in the release of an alarm from Naemon.  It allows you to centralize, and analyze log messages with cacti and rsyslog, and many other possibilities …
 
 .. image:: /images/naemonbox-thumb.png
  :scale: 90 %
 Naemonbox Project
 ================
-The purpose of NAEMONBOX is to provide a quick and easy installation wich includes the most-used tools in the Nagios/Naemon community.
-NAEMONBOX avoid the tedious work of manually compiling and integrating Nagios addons avoiding outdated pre-packaged installations with no regular updates. NAEMONBOX bundles Naemon together with many important addons into a Gnu/Linux operating systems Debian 7. Having the Nagios/Naemon tools already installed and configured for you, will bring you more than you expect …
+NAEMONBOX is a tool that allows you to install and easy to use your own Monitoring server. Having the Nagios/Naemon tools already installed and configured for you, will bring you more than you expect …
 
-Naemon comes with a PHP based web-tool for configuring the monitoring software, provide graph for your performance data with PNP4Nagios, and customizable map with Nagvis, well integrated with Thruk. You won’t need to install another web interface. 
+NAEMONBOX comes with a PHP based web-tool to ease configuration and administration on One central storage. It manage groups, users and corresponding permissions and notifications. It provide Flexible preselection by device and monitoring categories with beautiful graphing of your performance data. It run distributed monitoring instances as master/worker instances to increase performance and availability in complex networks. It gives customizable map with Nagvis, well integrated with Thruk. You won’t need to install another web interface. 
 
    * Easy to install : install is mainly done with the install script of the release tarball.
    * Easy for new users : once installed, Naemonbox provide a single WebUI to interface with all modules and packs.

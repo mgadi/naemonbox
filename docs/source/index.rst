@@ -5,7 +5,7 @@
    
 .. _index
 
-Welcome to NaemonBox's documentation!
+Welcome to NaemonBox's Administrator Handbook !
 ============================================
 
 Contents:
@@ -13,6 +13,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+ 01_introduction/overview.rst
  01_introduction/index
  02_installation_guide/index
  03_user_guide/index
