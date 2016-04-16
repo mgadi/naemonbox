@@ -12,7 +12,7 @@ A whole new way to share IT content with the various actors of an information sy
    :scale: 90 %
 .. image:: /images/naemonbox-thumb.png
  :scale: 90 %
-Naemonbox Project
+Project
 ================
 NAEMONBOX is a tool that allows you to install and easy to use your own Monitoring server. Having the Nagios/Naemon tools already installed and configured for you, will bring you more than you expect …
 
