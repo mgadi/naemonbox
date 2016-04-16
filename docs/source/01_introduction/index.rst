@@ -6,8 +6,7 @@ Naemonbox is an extansive Software Package for monitoring devices. Monitoring re
 
 A whole new way to share IT content with the various actors of an information system (Governance, Administrators, Technicians, Operators, …). And exciting new connections between apps and devices. All that and more make NaemonBox better than ever.
 
-`Official site <https://na
-Naemonbox Projectemonbox.com/>`_ 
+`Official site <https://naemonbox.com/>`_ 
 
  .. image:: /images/Logo-250x50.png 
    :scale: 90 %
