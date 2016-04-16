@@ -2,7 +2,7 @@
 About Naemonbox
 ==============
 
-> .. image:: /images/Logo-250x50.png 
+ .. image:: > /images/Logo-250x50.png 
  :scale: 90 %
  
 `Naemonbox <https://naemonbox.com/>`_ is an extansive Software Package for monitoring devices. Monitoring requires some clarification of the concepts used and how they are defined in NaemonBox. This means to observe, record, collect and display different aspects of hardware and software from activities point of view. This monitored aspects could be close to hardware like CPU Temperature, CPU Voltage, FAN Spin from NET devices but also close to services running on monitored Operating System like SSH daemons, POSTFIX daemons, HTTP services or checks the availability of devices via ping. It notifies users of outages, generates performance data for reporting, creates automated ticket with GLPI in the release of an alarm from Naemon.  It allows you to centralize, and analyze log messages with cacti and rsyslog, and many other possibilities …
