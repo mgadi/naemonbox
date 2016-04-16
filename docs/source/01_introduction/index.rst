@@ -8,9 +8,8 @@ A whole new way to share IT content with the various actors of an information sy
 
 `Official site <https://naemonbox.com/>`_ 
 
- .. image:: /images/Logo-250x50.png 
-   :scale: 90 %
-.. image:: /images/naemonbox-thumb.png
+
+.. image:: /images/Logo-250x50.png
  :scale: 90 %
 Project
 ================
