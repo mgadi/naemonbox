@@ -10,9 +10,10 @@ A whole new way to share IT content with the various actors of an information sy
 
  .. image:: /images/Logo-250x50.png 
    :scale: 90 %
-
- Project
-=========
+.. image:: /images/naemonbox-thumb.png
+ :scale: 90 %
+Naemonbox Project
+================
 NAEMONBOX is a tool that allows you to install and easy to use your own Monitoring server. Having the Nagios/Naemon tools already installed and configured for you, will bring you more than you expect …
 
 NAEMONBOX comes with a PHP based web-tool to ease configuration and administration on One central storage. It manage groups, users and corresponding permissions and notifications. It provide Flexible preselection by device and monitoring categories with beautiful graphing of your performance data. It run distributed monitoring instances as master/worker instances to increase performance and availability in complex networks. It gives customizable map with Nagvis, well integrated with Thruk. You won’t need to install another web interface. 
