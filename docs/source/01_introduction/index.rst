@@ -11,7 +11,6 @@ A whole new way to share IT content with the various actors of an information sy
 
 `Official site <https://naemonbox.com/>`_ 
 
-<div class="align-left">Centered text</div>
 .. image:: /images/naemonbox-thumb.png
  :scale: 90 %
 Naemonbox Project
