@@ -9,6 +9,7 @@ About Naemonbox
 A whole new way to share IT content with the various actors of an information system (Governance, Administrators, Technicians, Operators, …). And exciting new connections between apps and devices. All that and more make NaemonBox better than ever.
 
 `official site<https://naemonbox.com/>`_
+
 .. image:: /images/naemonbox-thumb.png
  :scale: 90 %
 Naemonbox Project
