@@ -10,10 +10,9 @@ A whole new way to share IT content with the various actors of an information sy
  :scale: 90 %
 Naemonbox Project
 ================
-The purpose of NAEMONBOX is to provide a quick and easy installation wich includes the most-used tools in the Nagios/Naemon community.
-NAEMONBOX avoid the tedious work of manually compiling and integrating Nagios addons avoiding outdated pre-packaged installations with no regular updates. NAEMONBOX bundles Naemon together with many important addons into a Gnu/Linux operating systems Debian 7. Having the Nagios/Naemon tools already installed and configured for you, will bring you more than you expect …
+NAEMONBOX is a tool that allows you to install and easy to use your own Monitoring server. Having the Nagios/Naemon tools already installed and configured for you, will bring you more than you expect …
 
-Naemon comes with a PHP based web-tool for configuring the monitoring software, provide graph for your performance data with PNP4Nagios, and customizable map with Nagvis, well integrated with Thruk. You won’t need to install another web interface. 
+NAEMONBOX comes with a PHP based web-tool to ease configuration and administration on One central storage. It manage groups, users and corresponding permissions and notifications. It provide Flexible preselection by device and monitoring categories with beautiful graphing of your performance data. It run distributed monitoring instances as master/worker instances to increase performance and availability in complex networks. It gives customizable map with Nagvis, well integrated with Thruk. You won’t need to install another web interface. 
 
    * Easy to install : install is mainly done with the install script of the release tarball.
    * Easy for new users : once installed, Naemonbox provide a single WebUI to interface with all modules and packs.
