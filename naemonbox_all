@@ -52,10 +52,10 @@ printf "$line"
 echo "Install MySQL specific packages and settings          " | tee -a $log_file
 printf "$line"
 
-dbpass="$1" echo -e "\n--- Install MySQL specific packages and settings ---\n"
+dbpass="$1" echo -e "\n--- Setup MySQL root password : the server does require a password ---\n"
         [ -n "$dbpass" ] || read -s -p "Enter MySQL root password: " dbpass
 
-echo -e "\n--- Install MySQL specific packages and settings ---\n"
+echo -e "\n--- Setting up basic configuration and configuration file ---\n"
 
 echo "libssl1.0.0 libssl1.0.0/restart-services    string" | debconf-set-selections
 echo "libssl1.0.0:amd64 libssl1.0.0/restart-services    string" | debconf-set-selections 
