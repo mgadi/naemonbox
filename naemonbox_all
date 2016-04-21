@@ -135,10 +135,10 @@ make install-init | tee -a $log_file
 update-rc.d npcd defaults
 rm /usr/local/pnp4nagios/share/install.php
 # patch Eric Coquard 29/11/2014
-rm -r $bindir/pnp4nagios-$pnp4nagios_version/
-cd /etc/naemon/conf.d/
-rm localhost.cfg printer.cfg switch.cfg windows.cfg
-cd $dir
+rm -r $bindir/pnp4nagios-$pnp4nagios_version/ | tee -a $log_file
+cd /etc/naemon/conf.d/ | tee -a $log_file
+rm localhost.cfg printer.cfg switch.cfg windows.cfg | tee -a $log_file
+cd $dir | tee -a $log_file
 cp contrib/naemon/*.cfg /etc/naemon/ | tee -a $log_file
 cp -r contrib/naemon/conf.d/*.cfg /etc/naemon/conf.d/ | tee -a $log_file
 cp -r contrib/naemon/conf.d/templates/*.cfg /etc/naemon/conf.d/templates/ | tee -a $log_fil
