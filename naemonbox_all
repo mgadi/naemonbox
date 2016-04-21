@@ -136,7 +136,8 @@ update-rc.d npcd defaults
 rm /usr/local/pnp4nagios/share/install.php
 # patch Eric Coquard 29/11/2014
 rm -r $bindir/pnp4nagios-$pnp4nagios_version/
-rm /etc/naemon/conf.d/localhost.cfg /etc/naemon/conf.d/printer.cfg /etc/naemon/conf.d/switch.cfg /etc/naemon/conf.d/windows.cfg
+cd /etc/naemon/conf.d/
+rm localhost.cfg printer.cfg switch.cfg windows.cfg
 cd $dir
 cp contrib/naemon/*.cfg /etc/naemon/ | tee -a $log_file
 cp -r contrib/naemon/conf.d/*.cfg /etc/naemon/conf.d/ | tee -a $log_file
