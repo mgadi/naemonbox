@@ -49,7 +49,7 @@ To use NaemonBox on openvz VPS, first you need to do as root (according to your 
 GNU/Linux Debian 7 (or later) Installation 
 =========
 
-`Naemonbox <https://naemonbox.com/>`_ require for running a machine with Debian GNU/Linux 7 or later ready (or based on Debian) that has network access. A video installation instructions in **expert mode** of Debian GNU / Linux 8 (codename " jessie ") on the 64-bit PC architecture (" amd64 ") is available `here <https://youtu.be/Eq0HP7HJWy0?t=2>`_ for French users.
+`Naemonbox <https://www.naemonbox.com/>`_ require for running a machine with Debian GNU/Linux 7 or later ready (or based on Debian) that has network access. A video installation instructions in **expert mode** of Debian GNU / Linux 8 (codename " jessie ") on the 64-bit PC architecture (" amd64 ") is available `here <https://youtu.be/Eq0HP7HJWy0?t=2>`_ for French users.
 
 Once you have access to your server, either directly or by SSH, you can install Naemonbox using the install script.
 
