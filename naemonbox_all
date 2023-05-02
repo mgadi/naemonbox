@@ -427,62 +427,70 @@ systemctl reload apache2
 }
 installation_mediawiki
 
-# Function: installation 
-installation_psdash(){
-printf "$line"
-echo "Start PSDASH Installation                        " | tee -a $log_file
-printf "$line"
-$apt install build-essential python-dev curl python-setuptools
-cd $bindir/psdash
-
-cd netifaces-$netifaces_version
-$python
-cd ..
-cd pyzmq-$pyzmq_version
-$python
-cd ..
-cd msgpack-python-$msgpackpython_version
-$python
-cd ..
-cd gevent-$gevent_version
-$python
-cd ..
-cd greenlet-$greenlet_version
-$python
-cd ..
-cd zerorpc-$zerorpc_version
-$python
-cd ..
-cd glob2-$glob2_version
-$python
-cd ..
-cd psutil-$psutil_version
-$python
-cd ..
-cd Werkzeug-$Werkzeug_version
-$python
-cd ..
-cd Jinja2-$Jinja2_version
-$python
-cd ..
-cd itsdangerous-$itsdangerous_version
-$python
-cd ..
-cd Flask-$Flask_version
-$python
-cd ..
-cd psdash-$psdash_version
-$python
-cd $bindir
-cp $bindir/init.d/psdash /etc/init.d/psdash
-cp $bindir/psdash/lib1/* /usr/lib/python2.7/
-cp $bindir/psdash/lib2/* /usr/local/lib/python2.7/dist-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/
-update-rc.d psdash defaults
-systemctl start psdash
-}
-installation_psdash
-
+## Function: installation 
+# this part of the script has been commented out due to "Flask vulnerable to possible disclosure of permanent session cookie due to missing Vary: Cookie header"
+#   "High severity" source 
+################################
+#   "flask"
+################################
+#   "CVE-2023-30861"
+################################
+#	installation_psdash(){
+#	printf "$line"
+#	echo "Start PSDASH Installation                        " | tee -a $log_file
+#	printf "$line"
+#	$apt install build-essential python-dev curl python-setuptools
+#	cd $bindir/psdash
+#	
+#	cd netifaces-$netifaces_version
+#	$python
+#	cd ..
+#	cd pyzmq-$pyzmq_version
+#	$python
+#	cd ..
+#	cd msgpack-python-$msgpackpython_version
+#	$python
+#	cd ..
+#	cd gevent-$gevent_version
+#	$python
+#	cd ..
+#	cd greenlet-$greenlet_version
+#	$python
+#	cd ..
+#	cd zerorpc-$zerorpc_version
+#	$python
+#	cd ..
+#	cd glob2-$glob2_version
+#	$python
+#	cd ..
+#	cd psutil-$psutil_version
+#	$python
+#	cd ..
+#	cd Werkzeug-$Werkzeug_version
+#	$python
+#	cd ..
+#	cd Jinja2-$Jinja2_version
+#	$python
+#	cd ..
+#	cd itsdangerous-$itsdangerous_version
+#	$python
+#	cd ..
+#	cd Flask-$Flask_version
+#	$python
+#	cd ..
+#	cd psdash-$psdash_version
+#	$python
+#	cd $bindir
+#	cp $bindir/init.d/psdash /etc/init.d/psdash
+#	cp $bindir/psdash/lib1/* /usr/lib/python2.7/
+#	cp $bindir/psdash/lib2/* /usr/local/lib/python2.7/dist-packages/gevent-1.0.1-py2.7-linux-x86_64.egg/gevent/
+#	update-rc.d psdash defaults
+#	systemctl start psdash
+#	}
+#	installation_psdash
+#
 # Function: installation backup-manager
+
 installation_backup(){
 
 $apt install backup-manager
