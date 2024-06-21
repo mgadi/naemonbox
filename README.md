@@ -1,5 +1,7 @@
 ## Welcome to the naemonbox project##
 
+[![Join the chat at https://gitter.im/mgadi/naemonbox](https://badges.gitter.im/mgadi/naemonbox.svg)](https://gitter.im/mgadi/naemonbox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=mgadi&url=https://github.com/mgadi/naemonbox&title=badges&language=&tags=github&category=software)
 
 Feel free to donate
